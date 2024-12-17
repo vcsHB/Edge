@@ -6,14 +6,14 @@ namespace Agents.Players.FSM
     {
         protected Player _player;
         protected PlayerStateMachine _stateMachine;
-        protected PlayerMovement _mover;
+        protected PlayerMover _mover;
 
 
         public PlayerState(Player player, PlayerStateMachine stateMachine, int animationHash)
         {
             _player = player;
             _stateMachine= stateMachine;
-            _mover = player.GetCompo<PlayerMovement>();
+            _mover = player.GetCompo<PlayerMover>();
         }
 
 
