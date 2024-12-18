@@ -9,8 +9,7 @@ namespace UIManage
         [SerializeField] protected bool _useUnscaledTime;
         [SerializeField] protected float _duration;
         protected CanvasGroup _canvasGroup;
-
-        protected bool _isActive;
+        [SerializeField] protected bool _isActive;
 
         protected virtual void Awake()
         {
