@@ -27,7 +27,7 @@ namespace Enemys
                 }
                 catch (Exception ex)
                 {
-                    Debug.LogError($"{state.className} 없다고");
+                    Debug.LogError($"{state.className} 없다고 {ex.Message}");
                 }
             }
 

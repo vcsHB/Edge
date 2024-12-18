@@ -1,3 +1,4 @@
+using Combat;
 using UnityEngine;
 
 namespace Enemys
@@ -6,7 +7,15 @@ namespace Enemys
     {
         public float explosionRange;
         public LayerMask targetLayer;
-        public int damage;
+        public DamageCaster DamageCaster { get; private set; }
+        public Transform attackObj;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            DamageCaster = GetComponentInChildren<DamageCaster>();
+
+        }
 
         private void OnDrawGizmos()
         {

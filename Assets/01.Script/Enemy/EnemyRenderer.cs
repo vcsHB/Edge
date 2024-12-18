@@ -32,8 +32,9 @@ namespace Enemys
             _enemy.transform.rotation = Quaternion.Euler(0, 0, dir);
         }
 
-        public void SetParam(AnimParamSO param, bool value) 
+        public void SetParam(AnimParamSO param, bool value)
             => _animator.SetBool(param.animHash, value);
+
 
         public void SetParam(AnimParamSO param, float value)
             => _animator.SetFloat(param.animHash, value);

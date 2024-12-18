@@ -1,4 +1,5 @@
 using Agents;
+using Combat;
 using UnityEngine;
 
 namespace Enemys
@@ -15,7 +16,7 @@ namespace Enemys
         {
             base.Enter();
             _enemy.CanMove = false;
-            Debug.Log(1);
+            _drone.attackObj.localScale = Vector3.one * _drone.explosionRange *2;
         }
 
         public override void Update()
@@ -23,11 +24,15 @@ namespace Enemys
             base.Update();
             if(_isAnimationEnd)
             {
-                if(_enemy.PlayerManager.Player.TryGetComponent<Health>(out Health health))
-                {
-                    health.ApplyDamage(_drone.damage);
-                }
+                _drone.ChangeState(EnemyStateEnum.Dead);
             }
+        }
+
+        public override void Attack()
+        {
+            Collider2D target = Physics2D.OverlapCircle(_drone.transform.position
+                , _drone.explosionRange - 0.5f, _drone.targetLayer);
+            _drone.DamageCaster.Cast(target);
         }
 
         public override void Exit()

@@ -12,7 +12,7 @@ namespace Enemys
         {
             base.Enter();
             //나중에 불링?
-            GameObject.Destroy(_enemy);
+            GameObject.Destroy(_enemy.gameObject);
         }
     }
 }
