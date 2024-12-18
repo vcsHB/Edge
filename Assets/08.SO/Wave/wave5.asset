@@ -15,5 +15,6 @@ MonoBehaviour:
   waveNum: 5
   spawnDelay: 0.5
   nextWaveTime: 4
-  Enemy: {fileID: 8545025646554083329, guid: 7d075550ae2d7a14e873866a188c3c82, type: 3}
-  enemyLevel: 0
+  enemies:
+  - enemyPrefab: {fileID: 8545025646554083329, guid: 7d075550ae2d7a14e873866a188c3c82, type: 3}
+    amount: 7

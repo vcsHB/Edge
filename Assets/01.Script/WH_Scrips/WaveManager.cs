@@ -9,8 +9,8 @@ namespace WaveSystem
 {
     public class WaveManager : MonoBehaviour
     {
+
         public event Action<int> OnNextWave;
-        private bool _isNextWave = false;
         [SerializeField] private List<WaveSO> waves;
         public Transform SpawnPoint;
 
@@ -18,7 +18,7 @@ namespace WaveSystem
         private int _currentWaveIndex;
         public int CurrnetWaveIndex => _currentWaveIndex; // 웨이브 인덱스
         public int WaveCount { get; private set; } // 현재 웨이브 진행 카운트 (증가하기만 함)
-        public int WaveLevel { get; private set; } = 1;
+        public int WaveLevel { get; private set; } = 1; //웨이브 카운트
 
 
         
@@ -29,12 +29,12 @@ namespace WaveSystem
         }
         private IEnumerator Wave()
         {
-            while (true) // 무한 반복을 위한 것
+            while (true) // 웨이브 무한루프
             {
-                _currentWaveIndex = 0;
-                while (_currentWaveIndex < waves.Count)
+                _currentWaveIndex = 0; // 웨이브 차례
+                while (_currentWaveIndex < waves.Count) // 만약 현재 웨이브 개수가 List안에 웨이브 개수보다 적을경우
                 {
-                    WaveSO currentWave = waves[_currentWaveIndex];
+                    WaveSO currentWave = waves[_currentWaveIndex]; // 
                     WaitForSeconds ws = new WaitForSeconds(currentWave.spawnDelay);
                     foreach(SpawnInfo info in currentWave.enemies)
                     {
@@ -70,11 +70,3 @@ namespace WaveSystem
 
     }
 }
-
-/// <summary>
-/// 잘못된 코드들
-/// 
-/// WHTestEnemy enemy = waves[i].Enemy;
-/// Instantiate(enemy, SpawnPoint.transform.position, Quaternion.identity);
-/// 원본에다가 연결했기에 작동하지 않았다.
-/// </summary>
