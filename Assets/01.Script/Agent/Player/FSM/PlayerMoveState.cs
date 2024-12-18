@@ -5,7 +5,8 @@ namespace Agents.Players.FSM
 
     public class PlayerMoveState : PlayerState
     {
-        
+        private float _currentMoveTime = 0f;
+        private float _moveDuration = 0.4f;        
 
         public PlayerMoveState(Player player, PlayerStateMachine stateMachine, int animationHash) : base(player, stateMachine, animationHash)
         {
@@ -14,11 +15,16 @@ namespace Agents.Players.FSM
         public override void Enter()
         {
             base.Enter();
+            _mover.SetPreviousPos(_player.transform.position);
         }
 
         public override void UpdateState()
         {
             base.UpdateState();
+            _currentMoveTime += Time.deltaTime * _player.PlayerStatus.edgeSlideSpeed.GetValue();
+            _mover.SetMovement(_currentMoveTime / _moveDuration);
+            if(_currentMoveTime > _moveDuration)
+                _stateMachine.ChangeState("Idle");
         }
 
         public override void Exit()

@@ -7,5 +7,7 @@ namespace StatSystem
     {
         public Stat edgeSlideSpeed;
         public Stat edgeMoveCooltime;
+        public Stat noLimitDuration;
+        
     }
 }
