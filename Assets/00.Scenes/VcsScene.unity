@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 70451135}
   - component: {fileID: 70451137}
   - component: {fileID: 70451136}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particle System (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5290,7 +5290,7 @@ GameObject:
   - component: {fileID: 130655648}
   - component: {fileID: 130655649}
   - component: {fileID: 130655650}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MoveStartFeedback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6169,7 +6169,7 @@ GameObject:
   - component: {fileID: 303500065}
   - component: {fileID: 303500067}
   - component: {fileID: 303500066}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AttackVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11835,7 +11835,7 @@ GameObject:
   - component: {fileID: 674249626}
   - component: {fileID: 674249628}
   - component: {fileID: 674249627}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ArriveVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17009,7 +17009,7 @@ GameObject:
   - component: {fileID: 829530090}
   - component: {fileID: 829530089}
   - component: {fileID: 829530091}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MoveArriveFeedback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17218,7 +17218,7 @@ GameObject:
   - component: {fileID: 888975820}
   - component: {fileID: 888975819}
   - component: {fileID: 888975821}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AttackHandle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17457,7 +17457,7 @@ GameObject:
   m_Component:
   - component: {fileID: 925922000}
   - component: {fileID: 925922001}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MoveLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17573,6 +17573,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1c8bc689a426d1148b04118207e16013, type: 2}
   SpawnPoint: {fileID: 1471583211}
   enemyList: []
+  _spawnRadius: 2.5
 --- !u!4 &942916379
 Transform:
   m_ObjectHideFlags: 0
@@ -18057,7 +18058,7 @@ GameObject:
   - component: {fileID: 1227722200}
   - component: {fileID: 1227722202}
   - component: {fileID: 1227722201}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23461,7 +23462,7 @@ GameObject:
   - component: {fileID: 1376345647}
   - component: {fileID: 1376345648}
   - component: {fileID: 1376345649}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23684,7 +23685,7 @@ GameObject:
   - component: {fileID: 1384887497}
   - component: {fileID: 1384887499}
   - component: {fileID: 1384887500}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -24111,7 +24112,7 @@ GameObject:
   - component: {fileID: 1464517519}
   - component: {fileID: 1464517521}
   - component: {fileID: 1464517520}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MoveVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30427,7 +30428,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1926118927}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Feedbacks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30541,7 +30542,7 @@ GameObject:
   - component: {fileID: 1975498783}
   - component: {fileID: 1975498785}
   - component: {fileID: 1975498784}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MoveStartVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -10,11 +10,14 @@ namespace Agents.Players
         private PlayerStateMachine _stateMachine;
         public PlayerStateMachine StateMachine => _stateMachine;
         [field: SerializeField] public PlayerStatusSO PlayerStatus { get; private set; }
+        public Health HealthCompo { get; private set; }
 
         protected override void Awake()
         {
-            PlayerStatus = Instantiate(PlayerStatus);
             base.Awake();
+            PlayerStatus = Instantiate(PlayerStatus);
+            HealthCompo = GetComponent<Health>();
+            HealthCompo.Initialize(PlayerStatus.health.GetValue());
             _stateMachine = new PlayerStateMachine(this);
             _stateMachine.Initialize("Idle");
         }

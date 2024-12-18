@@ -77,6 +77,8 @@ namespace Enemys
 
         public void ResetItem()
         {
+            HealthCompo.SetMaxHealth();
+            StateMachine.ChangeState(EnemyStateEnum.Idle);
         }
     }
 }

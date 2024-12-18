@@ -1,13 +1,9 @@
-using Agents;
 using Enemys;
 using Managers;
-using NUnit.Framework;
-using ObjectPooling;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 
 namespace WaveSystem
@@ -24,7 +20,7 @@ namespace WaveSystem
         public int CurrnetWaveIndex => _currentWaveIndex; // ���̺� �ε���
         public int WaveCount { get; private set; } // ���� ���̺� ���� ī��Ʈ (�����ϱ⸸ ��)
         public int WaveLevel { get; private set; } = 1; //���̺� ī��Ʈ
-
+        [SerializeField] private float _spawnRadius = 1f;
 
         
 
@@ -48,9 +44,10 @@ namespace WaveSystem
                         {
                             //WHTestEnemy enemy = Instantiate(
                             //info.enemyPrefab, SpawnPoint.transform.position, Quaternion.identity); // ���߿� Ǯ������ �ٲ�� ��.
-                            Enemy obj = PoolManager.Instance.Pop(info.enemyPrefab) as Enemy;
-                            obj.OnDeadEvent += HandleEnemyDie;
-                            enemyList.Add(obj);
+                            Enemy enemy = PoolManager.Instance.Pop(info.enemyPrefab) as Enemy;
+                            enemy.OnDeadEvent += HandleEnemyDie;
+                            enemyList.Add(enemy);
+                            enemy.transform.position = (Vector2)SpawnPoint.position + UnityEngine.Random.insideUnitCircle * _spawnRadius;
                             // ���ʹ� ���� ����
 
                             yield return ws;
