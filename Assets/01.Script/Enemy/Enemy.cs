@@ -1,6 +1,8 @@
 using Agents;
 using Players;
 using StatSystem;
+using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Enemys
@@ -34,7 +36,25 @@ namespace Enemys
             StateMachine.ChangeState(changeState);
         }
 
+        public void ActionDelay(float delay,Action action,bool firstAndList = false)
+        {
+            StartCoroutine(Delay(delay, action, firstAndList));
+        }
 
+        private IEnumerator Delay(float delay, Action action, bool firstAndList = false)
+        {
+            if(firstAndList)
+            {
+                yield return new WaitForSeconds(delay);
+                action?.Invoke();
+            }
+            else
+            {
+                action?.Invoke();
+                yield return new WaitForSeconds(delay);
+            }
+
+        }
     }
 }
 

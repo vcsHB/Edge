@@ -8,6 +8,7 @@ namespace Enemys
         private Enemy _enemy;
         public Transform obj;
         private Animator _animator;
+        public bool CanRotation { get; set; }
         public void AfterInit()
         {
         }
@@ -26,7 +27,8 @@ namespace Enemys
         {
             //Vector2 playerPos = _enemy.Player.PlayerTrm.position;
             //float dir = Mathf.Atan2(playerPos.y-transform.position.y,playerPos.x -  transform.position.x) * Mathf.Rad2Deg;
-
+            if (!CanRotation)
+                return;
             float dir = Mathf.Atan2(obj.position.y - transform.position.y, obj.position.x - transform.position.x) * Mathf.Rad2Deg - 90f;
 
             transform.rotation = Quaternion.Euler(0, 0, dir);

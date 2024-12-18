@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <type>k__BackingField: 1
-  _speed: 3
+  _speed: 10
 --- !u!50 &3081863218373399471
 Rigidbody2D:
   serializedVersion: 5
@@ -227,6 +227,6 @@ MonoBehaviour:
   _offset: {x: 0, y: 0.02}
   _targetLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 1088
   _castRadius: 0.05
-  _castTargetMaxAmount: 1
+  _castTargetMaxAmount: 2

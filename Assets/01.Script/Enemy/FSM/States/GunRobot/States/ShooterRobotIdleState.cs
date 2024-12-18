@@ -15,19 +15,13 @@ namespace Enemys
         public override void Enter()
         {
             base.Enter();
-            _enemy.StartCoroutine(StartDelay());
+            _enemy.ActionDelay(1, () => _enemy.ChangeState(EnemyStateEnum.Move));
         }
 
         public override void Update()
         {
             base.Update();
             
-        }
-
-        private IEnumerator StartDelay()
-        {
-            yield return new WaitForSeconds(1);
-            _enemy.ChangeState(EnemyStateEnum.Move);
         }
     }
 
