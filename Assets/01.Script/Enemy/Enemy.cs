@@ -7,12 +7,13 @@ using System.Collections;
 using UnityEngine;
 
 namespace Enemys
-{
+{   
     public class Enemy : Agent, IPoolable
     {
         public PlayerManagerSO PlayerManager;
         [SerializeField] private EnemyStateListSO states;
         public Action<IPoolable> OnDeadEvent;
+        [SerializeField] private int dropscore = 1000;
         [field:SerializeField]public StatusSO Stat{get;private set;}
         public Health HealthCompo{get; private set;}
 
@@ -64,6 +65,7 @@ namespace Enemys
         public virtual void Dead()
         {
             IPoolable obj = transform.root.GetComponentInChildren<IPoolable>();
+            ScoreManager.Instance.PlusScore(dropscore);
             OnDeadEvent?.Invoke(obj);
             PoolManager.Instance.Push(obj);
         }
