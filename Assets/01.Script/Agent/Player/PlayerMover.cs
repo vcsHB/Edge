@@ -9,6 +9,7 @@ namespace Agents.Players
 
         [Header("Events")]
         public UnityEvent OnArriveEvent;
+        public UnityEvent OnMoveStartEvent;
         [Header("Essential Setting")]
         public Action<Vector2> OnMovement;
         private Player _player;
@@ -88,6 +89,7 @@ namespace Agents.Players
 
         public void SetMovement(float ratio)
         {
+            ratio = MathFunctions.EaseOutExpo(ratio);
             Vector2 lerpPos = Vector2.Lerp(_previousPosition, _targetPoint.transform.position, ratio);
             transform.position = lerpPos;
             if (ratio >= 1f)
