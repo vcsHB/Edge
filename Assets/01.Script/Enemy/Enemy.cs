@@ -33,8 +33,6 @@ namespace Enemys
         {
             StateMachine.ChangeState(changeState);
         }
-
-
     }
 }
 
