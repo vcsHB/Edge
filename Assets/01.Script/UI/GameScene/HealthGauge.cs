@@ -1,8 +1,6 @@
-using System;
 using Agents;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Animations;
 using UnityEngine.UI;
 
 namespace UIManage

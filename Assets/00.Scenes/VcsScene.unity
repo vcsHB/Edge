@@ -408,7 +408,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 1
-  m_FillAmount: 0.635
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -421,6 +421,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 199810275}
   m_CullTransparentMesh: 1
+--- !u!114 &402303579 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 695730682923575671, guid: 43c5763863db1f1439321dccaa2b646b, type: 3}
+  m_PrefabInstance: {fileID: 166199202}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de51febad99f82439015283b9d4e728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &532684107
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,7 +708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4c9e17eec3d444409c0396e1cefca4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _owner: {fileID: 0}
+  _owner: {fileID: 402303579}
   _fillImage: {fileID: 1343710368}
   _changeDuration: 0.1
 --- !u!225 &594018554
@@ -5868,7 +5879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4c9e17eec3d444409c0396e1cefca4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _owner: {fileID: 0}
+  _owner: {fileID: 1157136679}
   _fillImage: {fileID: 1324674157}
   _changeDuration: 0.1
 --- !u!225 &687895789
@@ -6012,6 +6023,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3377067003108973455, guid: 43c5763863db1f1439321dccaa2b646b, type: 3}
   m_PrefabInstance: {fileID: 743655235}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &743655237 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 695730682923575671, guid: 43c5763863db1f1439321dccaa2b646b, type: 3}
+  m_PrefabInstance: {fileID: 743655235}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de51febad99f82439015283b9d4e728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &817337074
 GameObject:
   m_ObjectHideFlags: 0
@@ -6517,6 +6539,17 @@ MonoBehaviour:
   _owner: {fileID: 1384887499}
   _fillImage: {fileID: 1466580626}
   _changeDuration: 0.1
+--- !u!114 &1157136679 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 695730682923575671, guid: 43c5763863db1f1439321dccaa2b646b, type: 3}
+  m_PrefabInstance: {fileID: 44249475}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de51febad99f82439015283b9d4e728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1242343045
 GameObject:
   m_ObjectHideFlags: 0
@@ -7008,7 +7041,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1376345645}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -7024,7 +7057,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7045,7 +7078,7 @@ TrailRenderer:
   m_SortingLayerID: -1340071209
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Time: 0.7
+  m_Time: 0.1
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -7093,7 +7126,7 @@ TrailRenderer:
       ctime6: 0
       ctime7: 0
       atime0: 0
-      atime1: 65535
+      atime1: 39899
       atime2: 0
       atime3: 0
       atime4: 0
@@ -7101,7 +7134,7 @@ TrailRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
+      m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
@@ -7357,6 +7390,7 @@ MonoBehaviour:
   OnDieEvent:
     m_PersistentCalls:
       m_Calls: []
+  isResist: 0
 --- !u!1 &1448568383
 GameObject:
   m_ObjectHideFlags: 0
@@ -12967,7 +13001,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4c9e17eec3d444409c0396e1cefca4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _owner: {fileID: 0}
+  _owner: {fileID: 743655237}
   _fillImage: {fileID: 1124085816}
   _changeDuration: 0.1
 --- !u!225 &1827245534
@@ -18228,9 +18262,9 @@ SceneRoots:
   - {fileID: 725955583}
   - {fileID: 889921706}
   - {fileID: 571142136}
+  - {fileID: 2118924713}
   - {fileID: 1319864237}
   - {fileID: 1968181859}
-  - {fileID: 2118924713}
   - {fileID: 1593095868}
   - {fileID: 1772440921}
   - {fileID: 1384887494}
