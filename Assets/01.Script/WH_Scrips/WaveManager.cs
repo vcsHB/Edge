@@ -70,7 +70,7 @@ namespace WaveSystem
             Enemy enemy = poolable as Enemy;
             enemyList.Remove(enemy);
             PoolManager.Instance.Push(poolable);
-            poolable.ObjectPrefab.GetComponent<Enemy>().OnDeadEvent -= HandleEnemyDie;
+            enemy.OnDeadEvent -= HandleEnemyDie;
         }
 
 

@@ -7,18 +7,18 @@ public class SordBoomerang : MonoBehaviour
     public float duration = 1f;           // 전체 비행 시간 (0.5초 앞으로, 0.5초 뒤로)
     public AnimationCurve easeCurve;      // 검 회오리
     public LayerMask enemyLayer;          
-    public Transform owner;               // 검을 던지는 주체 (플레이어)
+    private Transform owner;               // 검을 던지는 주체 (플레이어)
 
     private Vector3 _startPosition;
     private Vector3 _targetPosition;
     private float _elapsedTime = 0f;
     private bool _isReturning = false;    // 현재 돌아오는 중인지 여부
 
-    public void Initialize(Vector3 targetPosition, Transform ownerTransform)
+    public void Initialize(Vector3 targetPosition)
     {
         _startPosition = transform.position;
         _targetPosition = targetPosition;
-        owner = ownerTransform;
+        owner = GameObject.Find("Player").GetComponent<Transform>();
     }
 
     private void Update()

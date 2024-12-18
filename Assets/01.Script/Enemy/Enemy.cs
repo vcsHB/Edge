@@ -63,7 +63,7 @@ namespace Enemys
 
         public virtual void Dead()
         {
-            IPoolable obj = transform.root.GetComponentInChildren<IPoolable>();
+            IPoolable obj = this as IPoolable;
             OnDeadEvent?.Invoke(obj);
             PoolManager.Instance.Push(obj);
         }

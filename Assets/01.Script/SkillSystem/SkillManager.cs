@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 public enum PlayerSkill
 {
     None = 0,
@@ -7,7 +8,7 @@ public enum PlayerSkill
     EnergyBim = 2,
     SordBoomerang = 3,
     DataBarier = 4,
-    KnifeSharpening = 5,
+    KnifeSharpening = 5
     //HighSpeedAttack = 6
 
 }
@@ -26,7 +27,7 @@ public class SkillManager : MonoSingleton<SkillManager>
         {
             if (skillEnum == PlayerSkill.None) continue; //넘어가기
 
-            Skill skillCompo = GetComponent($"{skillEnum.ToString()}Skill") as Skill; //ooSkill.cs
+            Skill skillCompo = GetComponent($"{skillEnum.ToString()}Skill") as Skill; 
             Type type = skillCompo.GetType(); //해당 인스턴스의 클래스의 타입을 가져온다.
             _skills.Add(type, skillCompo);
         }
@@ -42,6 +43,14 @@ public class SkillManager : MonoSingleton<SkillManager>
         foreach (Skill skill in _enabledSkillList)
         {
             skill.UseSkill();
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            GetSkill(PlayerSkill.EnergyBall).UseSkill();
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            GetSkill(PlayerSkill.EnergyBim).UseSkill();
         }
     }
 

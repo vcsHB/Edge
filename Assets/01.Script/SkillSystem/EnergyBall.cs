@@ -8,29 +8,35 @@ public class EnergyBall : MonoBehaviour
     private int _damage;
     private float _speed;
     private float _lifetime;
+    private float _slowAmount;
+    private float _slowDuration;
     private LayerMask _whatIsEnemy;
 
-    public void Initialize(int damage, float speed, float lifetime, LayerMask whatIsEnemy, Vector3 direction)
+    private Vector3 _direction;
+
+    public void Initialize(int damage, float speed, float lifetime, LayerMask whatIsEnemy, Vector3 direction, float slowAmount, float slowDuration)
     {
         _damage = damage;
         _speed = speed;
         _lifetime = lifetime;
         _whatIsEnemy = whatIsEnemy;
+        _direction = direction;
+        _slowAmount = slowAmount;
+        _slowDuration = slowDuration;
 
-        transform.forward = direction;
-
-        // 1초 후 속도 감소 시작
+        // 속도 감소 설정 (Ease 적용)
         DOVirtual.DelayedCall(1f, () =>
         {
             DOTween.To(() => _speed, x => _speed = x, 0, 0.5f).SetEase(Ease.OutCubic);
         });
 
-        Destroy(gameObject, _lifetime); // 수명 종료 후 삭제
+        // 에너지볼 수명 종료
+        Destroy(gameObject, _lifetime);
     }
 
     private void Update()
     {
-        transform.position += transform.forward * _speed * Time.deltaTime;
+        transform.position += _direction * _speed * Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -42,16 +48,17 @@ public class EnergyBall : MonoBehaviour
             if (enemyHealth != null)
             {
                 enemyHealth.ApplyDamage(_damage);
+                Debug.Log(enemyHealth);
             }
 
             // 적 이동 속도 감소
             var enemyStatus = other.GetComponent<StatusSO>();
             if (enemyStatus != null)
             {
-                float slowEffect = enemyStatus.moveSpeed.GetValue() * -0.5f;
+                float slowEffect = enemyStatus.moveSpeed.GetValue() * -_slowAmount;
                 enemyStatus.moveSpeed.AddModifier(slowEffect);
 
-                DOVirtual.DelayedCall(1.5f, () =>
+                DOVirtual.DelayedCall(_slowDuration, () =>
                 {
                     enemyStatus.moveSpeed.RemoveModifier(slowEffect);
                 });
