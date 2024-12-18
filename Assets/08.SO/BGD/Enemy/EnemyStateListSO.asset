@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2d19fad0b284ba47ad2e2791e2208d7, type: 3}
   m_Name: EnemyStateListSO
   m_EditorClassIdentifier: 
-  states: []
+  states:
+  - {fileID: 11400000, guid: b50e025ba8fd57b4cb273a506ea9eba9, type: 2}
+  - {fileID: 11400000, guid: 0b4d7002114c8e947a1611a45144f8db, type: 2}
+  - {fileID: 11400000, guid: 547e72dc8270e294f8c13c3e685ba20f, type: 2}

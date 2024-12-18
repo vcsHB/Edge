@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 023bf9a0bad10cf44971a940b29db428, type: 3}
-  m_Name: DroneIdleState
+  m_Name: DroneMoveState
   m_EditorClassIdentifier: 
-  stateEnum: 0
-  className: Enemys.DroneIdleState
-  animParam: {fileID: 11400000, guid: 9993c663a595f7e4f8c2198061f513f6, type: 2}
+  stateEnum: 1
+  className: Enemys.DroneMoveState
+  animParam: {fileID: 11400000, guid: 1a89f1406aff0194586bbab347c02f73, type: 2}

@@ -4,26 +4,26 @@ namespace Enemys
 {
     public class EnemyState
     {
-        private bool _isAnimationEnd;
+        protected bool _isAnimationEnd;
         protected Enemy _enemy;
         protected AnimParamSO _animParam;
-        protected Animator _animator;
+        protected EnemyRenderer _animator;
         public EnemyState(Enemy enemy,AnimParamSO anim)
         {
             _enemy = enemy;
             _animParam = anim;
-            _animator = enemy.GetComponent<Animator>();
+            _animator = enemy.GetCompo<EnemyRenderer>();
         }
 
         public virtual void Enter()
         {
-            _animator.SetBool(_animParam.animHash, true);
+            _animator.SetParam(_animParam, true);
             _isAnimationEnd = false;
         }
 
         public virtual void Exit()
         {
-            _animator.SetBool(_animParam.animHash, false);
+            _animator.SetParam(_animParam, false);
 
         }
         public virtual void Update()
@@ -34,6 +34,11 @@ namespace Enemys
         public virtual void AnimationEndTrigger()
         {
             _isAnimationEnd = true;
+        }
+
+        public virtual void Attack()
+        {
+
         }
     }
 }
