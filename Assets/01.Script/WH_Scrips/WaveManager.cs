@@ -1,5 +1,7 @@
 using Agents;
 using Enemys;
+using Managers;
+using NUnit.Framework;
 using ObjectPooling;
 using System;
 using System.Collections;
@@ -19,9 +21,9 @@ namespace WaveSystem
 
         public List<Enemy> enemyList;
         private int _currentWaveIndex;
-        public int CurrnetWaveIndex => _currentWaveIndex; // ¿þÀÌºê ÀÎµ¦½º
-        public int WaveCount { get; private set; } // ÇöÀç ¿þÀÌºê ÁøÇà Ä«¿îÆ® (Áõ°¡ÇÏ±â¸¸ ÇÔ)
-        public int WaveLevel { get; private set; } = 1; //¿þÀÌºê Ä«¿îÆ®
+        public int CurrnetWaveIndex => _currentWaveIndex; // ï¿½ï¿½ï¿½Ìºï¿½ ï¿½Îµï¿½ï¿½ï¿½
+        public int WaveCount { get; private set; } // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½Æ® (ï¿½ï¿½ï¿½ï¿½ï¿½Ï±â¸¸ ï¿½ï¿½)
+        public int WaveLevel { get; private set; } = 1; //ï¿½ï¿½ï¿½Ìºï¿½ Ä«ï¿½ï¿½Æ®
 
 
         
@@ -32,67 +34,44 @@ namespace WaveSystem
         }
         private IEnumerator Wave()
         {
-            while (true) // ¿þÀÌºê ¹«ÇÑ·çÇÁ
+            while (true) // ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½Ñ·ï¿½ï¿½ï¿½
             {
-                _currentWaveIndex = 0; // ¿þÀÌºê Â÷·Ê
-                while (_currentWaveIndex < waves.Count) // ¸¸¾à ÇöÀç ¿þÀÌºê °³¼ö°¡ List¾È¿¡ ¿þÀÌºê °³¼öº¸´Ù ÀûÀ»°æ¿ì
+                _currentWaveIndex = 0; // ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½
+                while (_currentWaveIndex < waves.Count) // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Listï¿½È¿ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 {
                     WaveSO currentWave = waves[_currentWaveIndex]; // 
                     WaitForSeconds ws = new WaitForSeconds(currentWave.spawnDelay);
                     foreach(SpawnInfo info in currentWave.enemies)
                     {
-                        int enemyCount = info.amount + WaveLevel * 2; // ¿þÀÌºê ·¹º§¿¡ µû¶ó ÀûÀÌ ¸¹¾ÆÁü
+                        int enemyCount = info.amount + WaveLevel * 2; // ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                         for(int i = 0; i < enemyCount; i++)
                         {
                             //WHTestEnemy enemy = Instantiate(
-                            //info.enemyPrefab, SpawnPoint.transform.position, Quaternion.identity); // ³ªÁß¿¡ Ç®¸µÀ¸·Î ¹Ù²ã¾ß ÇÔ.
+                            //info.enemyPrefab, SpawnPoint.transform.position, Quaternion.identity); // ï¿½ï¿½ï¿½ß¿ï¿½ Ç®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½ï¿½ ï¿½ï¿½.
                             Enemy obj = PoolManager.Instance.Pop(info.enemyPrefab) as Enemy;
                             obj.OnDeadEvent += HandleEnemyDie;
                             enemyList.Add(obj);
-                            // ¿¡³Ê¹Ì ·¹º§ ¼³Á¤
+                            // ï¿½ï¿½ï¿½Ê¹ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
                             yield return ws;
                         }
                     }
-                    yield return new WaitUntil(() => enemyList.Count == 0); // ´Ù ÀâÀ»¶§±îÁö ±â´Ù¸®±â
-                    OnNextWave?.Invoke(WaveCount); // Å¬¸®¾î invoke
-                    yield return new WaitForSeconds(currentWave.nextWaveTime); // ¿þÀÌºê ÅÒ ±â´Ù¸®±â
+                    yield return new WaitUntil(() => enemyList.Count == 0); // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ù¸ï¿½ï¿½ï¿½
+                    OnNextWave?.Invoke(WaveCount); // Å¬ï¿½ï¿½ï¿½ï¿½ invoke
+                    yield return new WaitForSeconds(currentWave.nextWaveTime); // ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ ï¿½ï¿½Ù¸ï¿½ï¿½ï¿½
 
                     _currentWaveIndex++;
                 }
-                // ¿þÀÌºê ÇÑ »çÀÌÅ¬ ³¡³µÀ»¶§
+                // ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å¬ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 WaveLevel++;
             }
         }
 
-        private void HandleEnemyDie(IPoolable poolable)
+        private void HandleEnemyDie(Enemy enemy)
         {
-            Enemy enemy = poolable as Enemy;
             enemyList.Remove(enemy);
-            PoolManager.Instance.Push(poolable);
             enemy.OnDeadEvent -= HandleEnemyDie;
+            ScoreManager.Instance.GainScore(enemy.dropScore + (int)(enemy.dropScore * WaveLevel * 0.1f));
         }
-
-
-        //private void HandleEnemyDie(IPoolable obj)
-        //{
-        //    Debug.Log("enemydie");
-        //    enemyList.Remove(obj);
-        //    PoolManager.Instance.Push(obj);
-        //    if (obj.ObjectPrefab.TryGetComponent(out Health health))
-        //    {
-        //        health.OnDieEvent.RemoveListener(HandleEnemyDie(obj));
-        //    }
-        //    return null;
-        //}
-
-        //private void HandleEnemyDie()
-        //{
-        //    Debug.Log("enemydie");
-        //    enemyList.Remove(enemy);
-        //    PoolManager.Instance.Push(enemy);
-        //    enemy.OnDieEvent -= HandleEnemyDie;
-        //}
-
     }
 }
