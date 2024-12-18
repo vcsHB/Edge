@@ -9,7 +9,7 @@ namespace Enemys
     {
         public PlayerManagerSO PlayerManager;
         [SerializeField] private EnemyStateListSO states;
-        public StatusSO stat;
+        [field:SerializeField]public StatusSO Stat{get;private set;}
         public Health HealthCompo{get; private set;}
 
         public bool CanMove { get; set; } = true;
@@ -21,7 +21,7 @@ namespace Enemys
             StateMachine = new EnemyStateMachine(this, states);
             StateMachine.Initialize(EnemyStateEnum.Idle);
             HealthCompo = GetComponent<Health>();
-            HealthCompo.Initialize(stat.health.GetValue());
+            HealthCompo.Initialize(Stat.health.GetValue());
         }
 
         private void Update()

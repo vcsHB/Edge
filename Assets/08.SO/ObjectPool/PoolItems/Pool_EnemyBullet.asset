@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 023bf9a0bad10cf44971a940b29db428, type: 3}
-  m_Name: ShooterIdleState
+  m_Script: {fileID: 11500000, guid: 7c849feb582448d42a8491aa630deaca, type: 3}
+  m_Name: Pool_EnemyBullet
   m_EditorClassIdentifier: 
-  stateEnum: 0
-  className: Enemys.ShooterRobotIdleState
-  animParam: {fileID: 11400000, guid: 9993c663a595f7e4f8c2198061f513f6, type: 2}
+  enumName: EnemyBullet
+  poolingName: EnemyBullet
+  description: 
+  poolCount: 100
+  prefabObject: {fileID: 6386741783463609375, guid: dbf6baa3dc69f2e4fb5a156a32369f80, type: 3}

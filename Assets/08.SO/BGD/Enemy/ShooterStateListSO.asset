@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2d19fad0b284ba47ad2e2791e2208d7, type: 3}
   m_Name: ShooterStateListSO
   m_EditorClassIdentifier: 
-  states: []
+  states:
+  - {fileID: 11400000, guid: 21bf7268a7a1e81439986b4dd46a1898, type: 2}
+  - {fileID: 11400000, guid: 13ebe1a3b2a8a594b9da9e220ac3da36, type: 2}
+  - {fileID: 11400000, guid: 1c92f6ffe45c9df41bb4d16969efd265, type: 2}
