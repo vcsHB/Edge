@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.3, y: -1.3}
+  m_AnchoredPosition: {x: 1.3, y: 1.3}
   m_SizeDelta: {x: 2, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &1258882373065377092
@@ -104,7 +104,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 12
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b648fe4ddfc7a9640b23b59a092d058d, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -173,7 +173,7 @@ MonoBehaviour:
   _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_renderer: {fileID: 1258882373065377092}
   m_maskType: 0
 --- !u!1 &1279714721026506976
@@ -322,6 +322,7 @@ MonoBehaviour:
   _leftTimeText: {fileID: 646320651137495657}
   _reviveCooltime: 30
   _reviveTimeMultiple: 1.8
+  _maxHealth: 100
 --- !u!114 &695730682923575671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10233,6 +10234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60d6f87ce78ceb44e893ad7f3a335fb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enabledSprite: {fileID: 5245258650962204304, guid: 4616d1854ae72974da3a9af4e17c8cd8, type: 3}
+  _disabledSprite: {fileID: -2012346671, guid: 4616d1854ae72974da3a9af4e17c8cd8, type: 3}
   _destroyVFX: {fileID: 8890057613749373298}
   _reviveVFX: {fileID: 1206148564420782388}
 --- !u!1 &8862885791125675999

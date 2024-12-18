@@ -25,13 +25,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 914766671559865582}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.19, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3934682419873356393}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
 --- !u!212 &2750822242313942062
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -115,7 +115,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.588, y: 0.463, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1051633398807032803}
@@ -211,11 +211,11 @@ MonoBehaviour:
   OnCastEvent:
     m_PersistentCalls:
       m_Calls: []
-  _offset: {x: 0, y: 0.02}
+  _offset: {x: 0, y: 0}
   _targetLayer:
     serializedVersion: 2
     m_Bits: 1088
-  _castRadius: 0.05
+  _castRadius: 0.4
   _castTargetMaxAmount: 2
 --- !u!114 &403125093461781174
 MonoBehaviour:
