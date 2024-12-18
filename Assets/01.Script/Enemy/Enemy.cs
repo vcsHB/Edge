@@ -1,4 +1,5 @@
 using Agents;
+using ObjectPooling;
 using Players;
 using StatSystem;
 using System;
@@ -54,6 +55,17 @@ namespace Enemys
                 yield return new WaitForSeconds(delay);
             }
 
+        }
+
+        public virtual void Dead()
+        {
+            IPoolable obj = transform.root.GetComponentInChildren<IPoolable>();
+            PoolManager.Instance.Push(obj);
+        }
+
+        public void UpgradeEnemyStat(int level)
+        {
+            Stat.health.baseValue += level * 10;
         }
     }
 }

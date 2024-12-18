@@ -22,7 +22,7 @@ namespace Enemys
         {
             base.Update();
 
-            if ((_enemy.GetCompo<EnemyRenderer>().obj.transform.position - _enemy.transform.position).sqrMagnitude < 1)
+            if ((_enemy.PlayerManager.PlayerTrm.position - _enemy.transform.position).sqrMagnitude < 4)
                 _enemy.CanMove = false;
             else
                 _enemy.CanMove = true;

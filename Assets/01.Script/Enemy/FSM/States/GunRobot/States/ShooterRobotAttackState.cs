@@ -30,7 +30,7 @@ namespace Enemys
             
             _enemy.CanMove = false;
             //_playerPos = _enemy.PlayerManager.PlayerTrm.position;
-            _playerPos = _renderer.obj.transform.position;
+            _playerPos = _enemy.PlayerManager.PlayerTrm.position;
         }
 
         public override void Attack()

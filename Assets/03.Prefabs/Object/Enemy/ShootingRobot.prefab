@@ -301,7 +301,20 @@ MonoBehaviour:
       m_Calls: []
   OnDieEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 541819607950389567}
+        m_TargetAssemblyTypeName: Enemys.Enemy, Assembly-CSharp
+        m_MethodName: Dead
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  isResist: 0
 --- !u!50 &894269382123990392
 Rigidbody2D:
   serializedVersion: 5
@@ -432,7 +445,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2394020b61d5e1f4daeb045166517092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj: {fileID: 0}
 --- !u!114 &4961845176718442243
 MonoBehaviour:
   m_ObjectHideFlags: 0
