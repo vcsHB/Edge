@@ -1,3 +1,4 @@
+using System;
 using Combat;
 using UnityEngine;
 using UnityEngine.Events;
@@ -6,6 +7,7 @@ namespace Agents
     public class Health : MonoBehaviour, IDamageable, IHealable
     {
         public UnityEvent OnHealthChangedEvent;
+        public Action<float, float> OnHealthValueChangedEvent;
         public UnityEvent OnDieEvent;
 
         public float MaxHealth => _maxHealth;
@@ -17,29 +19,39 @@ namespace Agents
             _maxHealth = health;
             SetMaxHealth();
         }
-        
+
         private void SetMaxHealth()
         {
             _currentHealth = MaxHealth;
+            InvokeHealthChange();
+
         }
 
         public void ApplyDamage(float damage)
         {
             _currentHealth -= damage;
             CheckDie();
+            InvokeHealthChange();
+
         }
 
         public void Restore(float amount)
         {
             _currentHealth += amount;
-
+            InvokeHealthChange();
         }
         private void CheckDie()
         {
-            if(_currentHealth <= 0)
+            if (_currentHealth <= 0)
             {
                 OnDieEvent?.Invoke();
             }
+        }
+
+        private void InvokeHealthChange()
+        {
+            OnHealthValueChangedEvent?.Invoke(_currentHealth, MaxHealth);
+            OnHealthChangedEvent?.Invoke();
         }
 
     }

@@ -52,10 +52,10 @@ namespace Agents.Players
 
             if (hit.collider == null)
                 return false;
-                Debug.Log("쏨");
 
             if (hit.collider.TryGetComponent(out MovePoint movePoint))
             {
+                OnMoveStartEvent?.Invoke();
                 SetMovePoint(movePoint);
             }
 

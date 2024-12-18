@@ -5,21 +5,29 @@ namespace Agents.Players.FSM
 
     public class PlayerRenderer : MonoBehaviour, IAgentComponent
     {
+        private Player _player;
+        [SerializeField] private GameObject _moveLight;
+        public void Initialize(Agent agent)
+        {
+            _player = agent as Player;
+        }
 
-        
         public void AfterInit()
         {
-            throw new System.NotImplementedException();
         }
 
         public void Dispose()
         {
-            throw new System.NotImplementedException();
         }
 
-        public void Initialize(Agent agent)
+        public void SetDisableMoveLight()
         {
-            throw new System.NotImplementedException();
+            _moveLight.SetActive(false);
+        }
+
+        public void SetEnableMoveLight()
+        {
+            _moveLight.SetActive(true);
         }
 
     }
