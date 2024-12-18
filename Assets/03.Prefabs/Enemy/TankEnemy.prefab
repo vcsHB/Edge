@@ -9,10 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4095799508313093780}
-  - component: {fileID: 4924067286868633367}
   - component: {fileID: 5378667065079062244}
+  - component: {fileID: -5026466204716280915}
   - component: {fileID: 2987696959155941672}
-  m_Layer: 0
+  - component: {fileID: 4924067286868633367}
+  m_Layer: 7
   m_Name: TankEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,26 +38,6 @@ Transform:
   - {fileID: 7214832465552989564}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4924067286868633367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7178033086810643907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3ae7667e9dc8964d944c476cd612190, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerManager: {fileID: 11400000, guid: 0b182390795dd2d45815d0b62b4d5afb, type: 2}
-  states: {fileID: 11400000, guid: 2445f49f2058c49478a587f42144361a, type: 2}
-  <Stat>k__BackingField: {fileID: 11400000, guid: 8060153662d3c9a449f0c0a5d6b05343, type: 2}
-  <type>k__BackingField: 4
-  radius: 1
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 1088
 --- !u!50 &5378667065079062244
 Rigidbody2D:
   serializedVersion: 5
@@ -84,6 +65,42 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &-5026466204716280915
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7178033086810643907}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 1
 --- !u!114 &2987696959155941672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,6 +120,27 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isResist: 0
+--- !u!114 &4924067286868633367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7178033086810643907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3ae7667e9dc8964d944c476cd612190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerManager: {fileID: 11400000, guid: 0b182390795dd2d45815d0b62b4d5afb, type: 2}
+  states: {fileID: 11400000, guid: 2445f49f2058c49478a587f42144361a, type: 2}
+  <Stat>k__BackingField: {fileID: 11400000, guid: 8060153662d3c9a449f0c0a5d6b05343, type: 2}
+  <type>k__BackingField: 4
+  dropScore: 20
+  radius: 1
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 1088
 --- !u!1 &7467021195745920089
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,7 +154,7 @@ GameObject:
   - component: {fileID: 784229444528432371}
   - component: {fileID: 5874360979797534896}
   - component: {fileID: 6981324090568173270}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +287,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7214832465552989564}
   - component: {fileID: 2152963137990184279}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +332,7 @@ GameObject:
   - component: {fileID: 1976187383589114265}
   - component: {fileID: 3913159273326241460}
   - component: {fileID: 2966865790614133970}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DamageCast
   m_TagString: Untagged
   m_Icon: {fileID: 0}

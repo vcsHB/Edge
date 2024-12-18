@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4610823013058538726}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightFirePos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1896728775353810101}
   - component: {fileID: 1972901912525259875}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 78013906605956156}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LeftFirePos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8649118934835937408}
   - component: {fileID: 7197614228616427074}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 159913794858638876}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FIrePos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,10 +236,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2546020633607318194}
-  - component: {fileID: 541819607950389567}
-  - component: {fileID: 1812448187885914794}
   - component: {fileID: 894269382123990392}
-  m_Layer: 0
+  - component: {fileID: -6077257534962567466}
+  - component: {fileID: 1812448187885914794}
+  - component: {fileID: 541819607950389567}
+  m_Layer: 7
   m_Name: ShootingRobot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,27 +264,69 @@ Transform:
   - {fileID: 1896728775353810101}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &541819607950389567
-MonoBehaviour:
+--- !u!50 &894269382123990392
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8543928260550288874}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!58 &-6077257534962567466
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8543928260550288874}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e63730c0320b61458dcc11ba50c1dc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerManager: {fileID: 11400000, guid: 0b182390795dd2d45815d0b62b4d5afb, type: 2}
-  states: {fileID: 11400000, guid: 8927956b3593dea459a1e0e29ea3cf6c, type: 2}
-  <Stat>k__BackingField: {fileID: 11400000, guid: db39e35197f34cf4390392e0b3a2a8a4, type: 2}
-  bulletCnt: 2
-  moveTime: 0.5
-  bulletFirePos:
-  - {fileID: 78013906605956156}
-  - {fileID: 4610823013058538726}
-  <type>k__BackingField: 3
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5
 --- !u!114 &1812448187885914794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,33 +358,28 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   isResist: 0
---- !u!50 &894269382123990392
-Rigidbody2D:
-  serializedVersion: 5
+--- !u!114 &541819607950389567
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8543928260550288874}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e63730c0320b61458dcc11ba50c1dc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerManager: {fileID: 11400000, guid: 0b182390795dd2d45815d0b62b4d5afb, type: 2}
+  states: {fileID: 11400000, guid: 8927956b3593dea459a1e0e29ea3cf6c, type: 2}
+  <Stat>k__BackingField: {fileID: 11400000, guid: db39e35197f34cf4390392e0b3a2a8a4, type: 2}
+  <type>k__BackingField: 3
+  dropScore: 15
+  bulletCnt: 2
+  moveTime: 0.5
+  bulletFirePos:
+  - {fileID: 78013906605956156}
+  - {fileID: 4610823013058538726}
 --- !u!1 &8567215049147215902
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,7 +393,7 @@ GameObject:
   - component: {fileID: 2201223324890775405}
   - component: {fileID: 4961845176718442243}
   - component: {fileID: 5241761850881258636}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
