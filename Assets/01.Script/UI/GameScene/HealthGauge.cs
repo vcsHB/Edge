@@ -1,8 +1,6 @@
-using System;
 using Agents;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Animations;
 using UnityEngine.UI;
 
 namespace UIManage
@@ -18,7 +16,8 @@ namespace UIManage
             _owner.OnHealthValueChangedEvent += HandleGaugeRefresh;
         }
 
-        private void OnDestroy() {
+        private void OnDestroy()
+        {
             _owner.OnHealthValueChangedEvent -= HandleGaugeRefresh;
         }
 
