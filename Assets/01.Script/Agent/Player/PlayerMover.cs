@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
 using ObjectManage;
-using TMPro;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Events;
 namespace Agents.Players
