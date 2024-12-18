@@ -4,7 +4,6 @@ using System.Collections;
 
 public class DataBarierSkill : Skill
 {
-    public float cooldown = 10f;            // 스킬 쿨타임
     public float duration = 2f;             // 배리어 지속 시간
     public float damageReduction = 0.75f;   // 피해 감소율
     public float explosionRadius = 3f;      // 폭발 반경
@@ -15,7 +14,7 @@ public class DataBarierSkill : Skill
 
     private void Awake()
     {
-        _playerHealth = GetComponent<Health>();
+        _playerHealth = GameObject.Find("Player").GetComponent<Health>();
         if (_playerHealth == null)
         {
             Debug.LogError("Health 컴포넌트가 연결되지 않음.");
@@ -47,7 +46,7 @@ public class DataBarierSkill : Skill
 
     private IEnumerator ApplyDamageReduction(float duration)
     {
-        // 피해감소 어케해 ...
+        
 
         yield return new WaitForSeconds(duration);
 
