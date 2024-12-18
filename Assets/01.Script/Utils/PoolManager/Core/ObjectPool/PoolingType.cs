@@ -2,6 +2,6 @@ namespace ObjectPooling
 {
     public enum PoolingType
     {
-        SoundPlayer,EnemyBullet,DroneEnemy,ShooterEnemy,
+        SoundPlayer,EnemyBullet,DroneEnemy,ShooterEnemy,TankEnemy,
     }
 }
