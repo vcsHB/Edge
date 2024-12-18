@@ -23,6 +23,7 @@ namespace Agents.Players
         public bool isEdgeMove;
         private Vector2 _previousPosition;
         private MovePoint _targetPoint;
+        public float MoveDistance => Vector2.Distance(_previousPosition, _targetPoint.transform.position);
 
         private Vector2 _moveDirection;
         public Vector2 Velocity { get; private set; }
@@ -45,20 +46,22 @@ namespace Agents.Players
         }
 
 
-        public void SetMoveTarget(Vector2 direction)
+        public bool SetMoveTarget(Vector2 direction)
         {
-            if (!isEdgeMove) return;
+            if (!isEdgeMove) return false;
             SetPreviousPos(transform.position);
             RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, _moveTargetDetectLength, _moveTargetLayer);
 
             if (hit.collider == null)
-                return;
+                return false;
                 Debug.Log("쏨");
 
             if (hit.collider.TryGetComponent(out MovePoint movePoint))
             {
                 SetMovePoint(movePoint);
             }
+
+            return true;
         }
 
         public void SetPreviousPos(Vector2 position)

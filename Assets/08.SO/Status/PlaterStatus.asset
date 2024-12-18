@@ -25,7 +25,7 @@ MonoBehaviour:
     baseValue: 1
     modifier: []
   edgeSlideSpeed:
-    baseValue: 2
+    baseValue: 0.4
     modifier: []
   edgeMoveCooltime:
     baseValue: 0.05

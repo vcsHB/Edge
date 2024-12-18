@@ -17,6 +17,7 @@ namespace Agents.Players.FSM
             base.Enter();
             _currentMoveTime = 0f;
             _mover.SetPreviousPos(_player.transform.position);
+            _moveDuration = 0.01f * _mover.MoveDistance;
         }
 
         public override void UpdateState()
