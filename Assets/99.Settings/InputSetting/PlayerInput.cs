@@ -11,6 +11,7 @@ namespace InputManage
         public event Action OnInteractEvent;
         public event Action<Vector2> OnMoveEvent;
         public Vector2 InputDirection { get; private set; }
+        public Vector2 MousePosition { get; private set; }
 
 
         private Controls _controls;
@@ -46,10 +47,6 @@ namespace InputManage
             }
         }
 
-        public void OnLook(InputAction.CallbackContext context)
-        {
-        }
-
         public void OnMove(InputAction.CallbackContext context)
         {
             InputDirection = context.ReadValue<Vector2>();
@@ -59,6 +56,13 @@ namespace InputManage
             }
 
         }
+
+        public void OnMouse(InputAction.CallbackContext context)
+        {
+            MousePosition = Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>());
+            
+        }
+
     }
 
 }
