@@ -9,7 +9,7 @@ namespace WaveSystem
         public int waveNum;
         public float spawnDelay;
         public float nextWaveTime;
-        public GameObject Enemy;
+        public WHTestEnemy Enemy;
         public int enemyLevel;
 
         //[Header("EnemySpawnPoint")]
