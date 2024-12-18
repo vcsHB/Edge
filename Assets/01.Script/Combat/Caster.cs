@@ -35,5 +35,13 @@ namespace Combat
             OnCastEvent?.Invoke();
         }
 
+#if UNITY_EDITOR
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere((Vector2)transform.position + _offset, _castRadius);
+        }
+#endif 
+
     }
 }
