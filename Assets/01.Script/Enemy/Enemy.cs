@@ -30,6 +30,7 @@ namespace Enemys
             StateMachine.Initialize(EnemyStateEnum.Idle);
             HealthCompo = GetComponent<Health>();
             HealthCompo.Initialize(Stat.health.GetValue());
+           // HealthCompo.OnDieEvent.AddListener(Dead);
         }
 
         private void Update()

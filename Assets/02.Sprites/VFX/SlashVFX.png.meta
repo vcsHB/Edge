@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9f7dea5df4d6e9b41b2f5a12f14a9538
+guid: d75ccec26731a5f408bc6a60e9a4347d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -904327692956269928
-    second: Player_Sword_Nolimit_0
+      213: 447260118533356211
+    second: SlashVFX_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -48,9 +48,9 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 0
-  alignment: 7
-  spritePivot: {x: 0.5, y: 0}
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player_Sword_Nolimit_0
+      name: SlashVFX_0
       rect:
         serializedVersion: 2
-        x: 9
+        x: 0
         y: 0
-        width: 10
+        width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8920bcc21ce2373f0800000000000000
-      internalID: -904327692956269928
+      spriteID: 3ba316745bcf43600800000000000000
+      internalID: 447260118533356211
       vertices: []
       indices: 
       edges: []
@@ -126,7 +126,7 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Player_Sword_Nolimit_0: -904327692956269928
+      SlashVFX_0: 447260118533356211
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

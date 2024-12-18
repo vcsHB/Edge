@@ -9,10 +9,9 @@ namespace Agents.Players
     {
         private Player _player;
 
-        [SerializeField] private Transform _attackHandle;
-        private Caster _caster;
-        private DamageCaster _damageCaster;
-
+        [SerializeField] private PlayerWeapon _weapon;
+        [SerializeField] private float _weaponDistance = 1.3f;
+        
 
         public void AfterInit()
         {
@@ -28,15 +27,17 @@ namespace Agents.Players
 
             _player.PlayerInput.OnAttackEvent += HandleAttackEvent;
 
-            _caster = _attackHandle.GetComponent<Caster>();
-            _damageCaster = _attackHandle.GetComponent<DamageCaster>();
+            
         }
 
         private void HandleAttackEvent()
         {
             float damage = _player.PlayerStatus.attackDamage.GetValue();
-            _damageCaster.SetDmaage(damage);
-            _caster.Cast();
+            Vector2 mousePos = _player.PlayerInput.MousePosition;
+            Vector2 direction = mousePos - (Vector2)transform.position;
+            direction.Normalize();
+            _weapon.transform.localPosition = direction * _weaponDistance;
+           _weapon.Attack(damage, 10f);
 
         }
     }

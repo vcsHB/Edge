@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Combat
 {
-    public class Bullet : MonoBehaviour, IPoolable
+    public class Bullet : MonoBehaviour, IPoolable, IDamageable
     {
         private Rigidbody2D _rbCompo;
         public Vector2 MoveDir { get; set; }
@@ -27,7 +27,6 @@ namespace Combat
 
         private void OnDestroy()
         {
-            _caster.OnCastEvent.AddListener(HandleDestroyEvent);
         }
 
         private void Update()
@@ -43,6 +42,11 @@ namespace Combat
         private void HandleDestroyEvent()
         {
             PoolManager.Instance.Push(this);
+        }
+
+        public void ApplyDamage(float damage)
+        {
+            HandleDestroyEvent();
         }
     }
 
