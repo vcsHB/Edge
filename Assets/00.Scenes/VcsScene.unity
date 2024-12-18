@@ -389,6 +389,7 @@ GameObject:
   - component: {fileID: 130655647}
   - component: {fileID: 130655648}
   - component: {fileID: 130655649}
+  - component: {fileID: 130655650}
   m_Layer: 0
   m_Name: MoveStartFeedback
   m_TagString: Untagged
@@ -436,6 +437,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _vfx: {fileID: 1464517521}
+--- !u!114 &130655650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130655646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5145f7a3ee4aefc4787274767788ce9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundSO: {fileID: 11400000, guid: b8234a0b647ccf4469bcf0f4ef0057f7, type: 2}
 --- !u!1 &158447815
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,7 +996,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 212608291}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 433737860}
+        m_TargetAssemblyTypeName: UIManage.PausePanel, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &212608291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7048,6 +7074,7 @@ GameObject:
   - component: {fileID: 829530088}
   - component: {fileID: 829530090}
   - component: {fileID: 829530089}
+  - component: {fileID: 829530091}
   m_Layer: 0
   m_Name: MoveArriveFeedback
   m_TagString: Untagged
@@ -7096,6 +7123,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e010ab53abc384b8472bdcff60e154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &829530091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829530087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5145f7a3ee4aefc4787274767788ce9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundSO: {fileID: 11400000, guid: a0a2580f947195b43af00cb192286ea1, type: 2}
 --- !u!1 &884762624
 GameObject:
   m_ObjectHideFlags: 0

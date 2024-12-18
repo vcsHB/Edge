@@ -46,6 +46,7 @@ namespace UIManage
         public override void Open()
         {
             _isActive = true;
+            Time.timeScale = 0f;
             _horizontal_1.DOFillAmount(1f, _duration).SetUpdate(_useUnscaledTime);
             _horizontal_2.DOFillAmount(1f, _duration).SetUpdate(_useUnscaledTime).
                 OnComplete(() =>
@@ -75,6 +76,7 @@ namespace UIManage
                         _canvasGroup.interactable = false;
                         _canvasGroup.blocksRaycasts = false;
                         _isActive = false;
+                         Time.timeScale = 1f;
 
                     });
                 });

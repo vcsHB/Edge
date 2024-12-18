@@ -13,6 +13,11 @@ namespace FeedbackSystem
         public override void CreateFeedback()
         {
             SoundPlayer soundPlayer = PoolManager.Instance.Pop(PoolingType.SoundPlayer) as SoundPlayer;
+            if(soundPlayer == null)
+            {
+                Debug.Log("???");
+                return;
+            }
             soundPlayer.PlaySound(_soundSO);
         }
 
