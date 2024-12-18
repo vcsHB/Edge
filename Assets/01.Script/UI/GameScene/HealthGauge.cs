@@ -16,7 +16,8 @@ namespace UIManage
             _owner.OnHealthValueChangedEvent += HandleGaugeRefresh;
         }
 
-        private void OnDestroy() {
+        private void OnDestroy()
+        {
             _owner.OnHealthValueChangedEvent -= HandleGaugeRefresh;
         }
 
