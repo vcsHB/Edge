@@ -8,15 +8,19 @@ using UnityEngine;
 
 namespace Enemys
 {
-    public class Enemy : Agent
+    public class Enemy : Agent, IPoolable
     {
         public PlayerManagerSO PlayerManager;
         [SerializeField] private EnemyStateListSO states;
+        public Action<IPoolable> OnDeadEvent;
         [field:SerializeField]public StatusSO Stat{get;private set;}
         public Health HealthCompo{get; private set;}
 
         public bool CanMove { get; set; } = true;
         public EnemyStateMachine StateMachine { get; private set; }
+        [field:SerializeField]public PoolingType type { get ; set ; }
+
+        public GameObject ObjectPrefab => gameObject;
 
         protected override void Awake()
         {
@@ -60,12 +64,17 @@ namespace Enemys
         public virtual void Dead()
         {
             IPoolable obj = transform.root.GetComponentInChildren<IPoolable>();
+            OnDeadEvent?.Invoke(obj);
             PoolManager.Instance.Push(obj);
         }
 
         public void UpgradeEnemyStat(int level)
         {
             Stat.health.baseValue += level * 10;
+        }
+
+        public void ResetItem()
+        {
         }
     }
 }

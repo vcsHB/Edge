@@ -5,14 +5,12 @@ using UnityEngine;
 
 namespace Enemys
 {
-    public class DroneEnemy : Enemy, IPoolable
+    public class DroneEnemy : Enemy
     {
         public float explosionRange;
         public LayerMask targetLayer;
         public DamageCaster DamageCaster { get; private set; }
-        [field: SerializeField] public PoolingType type { get; set; }
 
-        public GameObject ObjectPrefab => gameObject;
 
         public Transform attackObj;
 
@@ -20,10 +18,6 @@ namespace Enemys
         {
             base.Awake();
             DamageCaster = GetComponentInChildren<DamageCaster>();
-
-        }
-        public void ResetItem()
-        {
 
         }
 #if UNITY_EDITOR
