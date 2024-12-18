@@ -6,7 +6,7 @@ namespace ObjectManage
     public class MovePoint : MonoBehaviour
     {
         private Collider2D _collider;
-        
+
 
         private void Awake()
         {
@@ -20,7 +20,7 @@ namespace ObjectManage
 
         public void Exit()
         {
-            _collider.enabled = false;
+            _collider.enabled = true;
         }
     }
 }

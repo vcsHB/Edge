@@ -8,7 +8,7 @@ namespace StatSystem
         public float baseValue;
         public List<float> modifier;
 
-        private bool _isValueChanged;
+        private bool _isValueChanged = true;
         private float _cashedValue;
         public float GetValue()
         {
@@ -20,6 +20,7 @@ namespace StatSystem
             {
                 result += modifier[i];
             }
+            _cashedValue = result;
             _isValueChanged = false;
             return result;
         }

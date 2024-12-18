@@ -53,6 +53,7 @@ namespace Agents.Players
 
             if (hit.collider == null)
                 return;
+                Debug.Log("쏨");
 
             if (hit.collider.TryGetComponent(out MovePoint movePoint))
             {
@@ -79,7 +80,7 @@ namespace Agents.Players
 
 
         #region Edge move
-        
+
         public void SetMovement(Vector2 direction)
         {
             _moveDirection = direction;

@@ -21,7 +21,6 @@ namespace Agents.Players
 
         private void Update()
         {
-
             _stateMachine.UpdateState();
         }
 

@@ -15,6 +15,7 @@ namespace Agents.Players.FSM
         public override void Enter()
         {
             base.Enter();
+            _currentMoveTime = 0f;
             _mover.SetPreviousPos(_player.transform.position);
         }
 
@@ -22,6 +23,7 @@ namespace Agents.Players.FSM
         {
             base.UpdateState();
             _currentMoveTime += Time.deltaTime * _player.PlayerStatus.edgeSlideSpeed.GetValue();
+            Debug.Log("_currentMoveTime / _moveDuration : " +_currentMoveTime / _moveDuration);
             _mover.SetMovement(_currentMoveTime / _moveDuration);
             if(_currentMoveTime > _moveDuration)
                 _stateMachine.ChangeState("Idle");
