@@ -1,5 +1,6 @@
 using Agents;
 using UnityEngine;
+using System.Collections;
 
 public class DataBarierSkill : Skill
 {
@@ -17,7 +18,7 @@ public class DataBarierSkill : Skill
         _playerHealth = GetComponent<Health>();
         if (_playerHealth == null)
         {
-            Debug.LogError("Health 컴포넌트가 연결되지 않았습니다.");
+            Debug.LogError("Health 컴포넌트가 연결되지 않음.");
         }
     }
 
@@ -44,10 +45,12 @@ public class DataBarierSkill : Skill
         StartCoroutine(ApplyDamageReduction(duration));
     }
 
-    private System.Collections.IEnumerator ApplyDamageReduction(float duration)
+    private IEnumerator ApplyDamageReduction(float duration)
     {
-        _playerHealth.ApplyDamage(damageReduction); // 피해 감소 적용
+        // 피해감소 어케해 ...
+
         yield return new WaitForSeconds(duration);
-        // 피해 감소 해제
+
     }
+
 }
