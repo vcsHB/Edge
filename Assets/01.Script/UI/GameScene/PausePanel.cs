@@ -1,4 +1,5 @@
 using DG.Tweening;
+using InputManage;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +8,8 @@ namespace UIManage
 
     public class PausePanel : UIPanel
     {
-        
+        [SerializeField] private UIInputReader _inputReader;
+
         [SerializeField] private Image _horizontal_1;
         [SerializeField] private Image _horizontal_2;
         [SerializeField] private Image _vertical_1;
@@ -19,11 +21,31 @@ namespace UIManage
         protected override void Awake()
         {
             base.Awake();
+
+            _inputReader.OnEscEvent += HandleToggle;
         }
 
-        [ContextMenu("Ming")]
+
+        private void OnDestroy()
+        {
+            _inputReader.OnEscEvent -= HandleToggle;
+        }
+
+        public void HandleToggle()
+        {
+            if (_isActive)
+            {
+                Close();
+            }
+            else
+            {
+                Open();
+            }
+        }
+
         public override void Open()
         {
+            _isActive = true;
             _horizontal_1.DOFillAmount(1f, _duration).SetUpdate(_useUnscaledTime);
             _horizontal_2.DOFillAmount(1f, _duration).SetUpdate(_useUnscaledTime).
                 OnComplete(() =>
@@ -40,7 +62,6 @@ namespace UIManage
 
         }
 
-        [ContextMenu("Mang")]
         public override void Close()
         {
             _infoPanelCanvasGroup.DOFade(0f, 0.1f).SetUpdate(_useUnscaledTime);
@@ -53,6 +74,8 @@ namespace UIManage
                     {
                         _canvasGroup.interactable = false;
                         _canvasGroup.blocksRaycasts = false;
+                        _isActive = false;
+
                     });
                 });
 

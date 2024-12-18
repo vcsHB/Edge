@@ -1302,10 +1302,12 @@ MonoBehaviour:
   _useUnscaledTime: 1
   _duration: 0.2
   _isActive: 0
+  _inputReader: {fileID: 11400000, guid: 82c0b3a4868751f4491ab3da4cf35bf6, type: 2}
   _horizontal_1: {fileID: 967836956}
   _horizontal_2: {fileID: 1801704886}
   _vertical_1: {fileID: 1734965688}
   _vertical_2: {fileID: 239599305}
+  _infoPanelCanvasGroup: {fileID: 1470748689}
 --- !u!225 &433737861
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1315,8 +1317,8 @@ CanvasGroup:
   m_GameObject: {fileID: 433737858}
   m_Enabled: 1
   m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!1 &532684107
 GameObject:
@@ -14025,7 +14027,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1470748685}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
