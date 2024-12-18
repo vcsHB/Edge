@@ -1,0 +1,64 @@
+using System;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+namespace InputManage
+{
+    [CreateAssetMenu(menuName = "SO/Input/PlayerInput")]
+    public class PlayerInput : ScriptableObject, Controls.IPlayerActions
+    {
+        public event Action OnAttackEvent;
+        public event Action OnInteractEvent;
+        public event Action<Vector2> OnMoveEvent;
+        public Vector2 InputDirection { get; private set; }
+
+
+        private Controls _controls;
+
+        private void OnEnable()
+        {
+            if (_controls == null)
+            {
+                _controls = new Controls();
+                _controls.Player.SetCallbacks(this);
+            }
+            _controls.Player.Enable();
+        }
+
+        private void OnDisable()
+        {
+            _controls.Player.Disable();
+        }
+
+        public void OnAttack(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                OnAttackEvent?.Invoke();
+            }
+        }
+
+        public void OnInteract(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                OnInteractEvent?.Invoke();
+            }
+        }
+
+        public void OnLook(InputAction.CallbackContext context)
+        {
+        }
+
+        public void OnMove(InputAction.CallbackContext context)
+        {
+            InputDirection = context.ReadValue<Vector2>();
+            if (context.performed)
+            {
+                OnMoveEvent?.Invoke(InputDirection);
+            }
+
+        }
+    }
+
+}
