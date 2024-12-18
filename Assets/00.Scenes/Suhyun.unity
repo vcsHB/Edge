@@ -130,6 +130,8 @@ GameObject:
   - component: {fileID: 1083011075}
   - component: {fileID: 1083011074}
   - component: {fileID: 1083011076}
+  - component: {fileID: 1083011077}
+  - component: {fileID: 1083011078}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -222,6 +224,40 @@ MonoBehaviour:
   arrow: {fileID: 5915885583403949880, guid: 4e04badf27f071042b3a246d96a13c6c, type: 3}
   playerSpeed: 5
   playerHP: 100
+--- !u!114 &1083011077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083011073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80d79cae8050ea0408e559c2382918e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <PlayerInput>k__BackingField: {fileID: 11400000, guid: b24ab240d3078af4cb0f6ee35d4f7fdd, type: 2}
+  <PlayerStatus>k__BackingField: {fileID: 11400000, guid: 0c61b65f7174ab44b95ecb1194836950, type: 2}
+--- !u!114 &1083011078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083011073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15cd3caec0857aa4aadbc3461f01b0a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnArriveEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _moveTargetLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  _moveTargetDetectLength: 50
+  isEdgeMove: 1
 --- !u!1 &1146288741
 GameObject:
   m_ObjectHideFlags: 0

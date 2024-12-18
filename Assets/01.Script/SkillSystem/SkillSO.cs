@@ -1,7 +1,6 @@
-using suyhun;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SOSkill", menuName = "Scriptable Objects/SOSkill")]
+[CreateAssetMenu(fileName = "SkillSO", menuName = "SO/Skill")]
 public class SOSkill : ScriptableObject
 {
     // Ω∫≈≥ Ω∫≈»
