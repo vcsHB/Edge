@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: ShooterEnemy
   m_EditorClassIdentifier: 
   health:
-    baseValue: 0
+    baseValue: 20
     modifier: []
   moveSpeed:
-    baseValue: 0
+    baseValue: 3
     modifier: []
   defense:
     baseValue: 0
