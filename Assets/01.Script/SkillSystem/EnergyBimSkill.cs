@@ -1,22 +1,17 @@
 using UnityEngine;
 using InputManage; // PlayerInput 네임스페이스 참조
 
+//마우스의 방향으로 에너지빔을 발사.에너지빔은 직선형태이며 빔에 닿은 적에게 80의 피해를 주고, 명중한 적을 밀쳐낸다.
+//에너지빔 시전 중에 플레이어 이동 불가능
+//지속시간 0.75초 (0.1초 소환, 0.4초동안 빔이 유지되고 0.25초동안 빔이 사라짐.) 
+//쿨타임 12초
+
 public class EnergyBimSkill : Skill
 {
     public float damagePerSecond = 50f; // 초당 피해량
-    public float duration = 2f;         // 빔 지속 시간
-    public float cooldown = 8f;         // 쿨타임
-    public LayerMask whatIsEnemy;       // 적 레이어
+    public float duration = 0.75f;         // 빔 지속 시간
     [SerializeField] private EnergyBim _energyBimPrefab;
     [SerializeField] private PlayerInput _playerInput; // PlayerInput 참조
-
-    private void Awake()
-    {
-        if (_playerInput == null)
-        {
-            Debug.LogError("PlayerInput이 연결되지 않았습니다.");
-        }
-    }
 
     public override bool UseSkill()
     {
