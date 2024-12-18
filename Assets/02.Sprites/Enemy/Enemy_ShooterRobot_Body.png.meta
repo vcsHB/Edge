@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d996b1991a04c884a853ea0e45b90b94
+guid: afb745312078b744080fc6d4738f098e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3115320574220013819
-    second: arrowPng_0
+      213: 4374683223673247087
+    second: Enemy_ShooterRobot_Body_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,10 +72,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 32
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: arrowPng_0
+      name: Enemy_ShooterRobot_Body_0
       rect:
         serializedVersion: 2
-        x: 32
-        y: 160
-        width: 512
-        height: 112
+        x: 0
+        y: 2
+        width: 32
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bf099db7e87db3b20800000000000000
-      internalID: 3115320574220013819
+      spriteID: f6597efb63ff5bc30800000000000000
+      internalID: 4374683223673247087
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      arrowPng_0: 3115320574220013819
+      Enemy_ShooterRobot_Body_0: 4374683223673247087
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

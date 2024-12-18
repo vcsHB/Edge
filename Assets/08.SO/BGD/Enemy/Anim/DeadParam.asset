@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0f71b1304eddbd47b73833d86722ee3, type: 3}
-  m_Name: table
+  m_Script: {fileID: 11500000, guid: 200135b1fb86c3c4dacf33bc03511f7f, type: 3}
+  m_Name: DeadParam
   m_EditorClassIdentifier: 
-  datas:
-  - {fileID: 11400000, guid: 89e550232e775dc4ea0f9f2797d6be0e, type: 2}
-  - {fileID: 11400000, guid: 441020eceb6d57f4c9770e1e079d068f, type: 2}
+  animName: Dead
+  animHash: 1293411866
