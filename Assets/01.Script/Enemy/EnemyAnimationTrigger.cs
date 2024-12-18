@@ -34,7 +34,7 @@ namespace Enemys
         public void AttackTrigger()
         {
             AttackEvent?.Invoke();
-            _enemy.StateMachine.CurrentState.Attack();
+            //_enemy.StateMachine.CurrentState.Attack();
         }
 
     }
