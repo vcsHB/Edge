@@ -35,7 +35,7 @@ namespace Enemys
         {
             base.Update();
 
-            if ((_enemy.PlayerManager.PlayerTrm.position - _enemy.transform.position).sqrMagnitude <= 2.5f)
+            if ((_enemy.PlayerManager.PlayerTrm.position - _enemy.transform.position).sqrMagnitude <= _enemy.radius / 2)
                 _enemy.CanMove = false;
             else
                 _enemy.CanMove = true;
