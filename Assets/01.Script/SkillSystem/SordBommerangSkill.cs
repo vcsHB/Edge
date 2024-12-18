@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class SordBoomerangSkill : Skill
 {
-    public float cooldown = 11f;           // 스킬 쿨타임
     public float boomerangDuration = 1f;   // 부메랑의 전체 비행 시간
     public float damage = 30f;             // 부메랑 피해량
     public AnimationCurve easeCurve;       // 부메랑의 움직임 곡선
@@ -33,7 +32,7 @@ public class SordBoomerangSkill : Skill
         Vector3 targetPosition = _playerInput.MousePosition; // 마우스 위치
 
         SordBoomerang boomerang = Instantiate(_boomerangPrefab, startPosition, Quaternion.identity);
-        boomerang.Initialize(targetPosition, transform);
+        boomerang.Initialize(targetPosition);
         boomerang.damage = damage;
         boomerang.duration = boomerangDuration;
         boomerang.easeCurve = easeCurve;

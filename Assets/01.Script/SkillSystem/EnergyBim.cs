@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class EnergyBim : MonoBehaviour
 {
+
+
     private float _damagePerSecond; // 초당 피해량
     private float _duration;       // 지속 시간
     private LayerMask _whatIsEnemy;
