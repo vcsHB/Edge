@@ -7,7 +7,7 @@ public enum PlayerSkill
     EnergyBim = 2,
     SordBoomerang = 3,
     DataBarier = 4,
-    //KnifeSharpening = 5,
+    KnifeSharpening = 5,
     //HighSpeedAttack = 6
 
 }

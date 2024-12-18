@@ -132,6 +132,8 @@ GameObject:
   - component: {fileID: 208810757}
   - component: {fileID: 208810759}
   - component: {fileID: 208810760}
+  - component: {fileID: 208810762}
+  - component: {fileID: 208810761}
   m_Layer: 0
   m_Name: SkillManager
   m_TagString: Untagged
@@ -232,6 +234,39 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   owner: {fileID: 1083011075}
+--- !u!114 &208810761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208810755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e269d2070cc98e4fba5f97a0caa621d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boostedDamage: 60
+  duration: 5
+--- !u!114 &208810762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208810755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b35eb64949d0cfa4ea715604821da46e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageReduction: 0.75
+  duration: 2
+  explosionRadius: 3
+  explosionDamage: 60
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &1083011073
 GameObject:
   m_ObjectHideFlags: 0
