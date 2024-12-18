@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <type>k__BackingField: 1
-  _speed: 3
+  _speed: 10
 --- !u!50 &3081863218373399471
 Rigidbody2D:
   serializedVersion: 5
@@ -172,8 +172,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1051633398807032803}
-  - component: {fileID: 797981371563237544}
   - component: {fileID: 1335427423486953203}
+  - component: {fileID: 403125093461781174}
   m_Layer: 0
   m_Name: DamageCaster
   m_TagString: Untagged
@@ -196,19 +196,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3934682419873356393}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &797981371563237544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8578140034787325363}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d4b381f1229a4044a23d266d1421afd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damage: 2
 --- !u!114 &1335427423486953203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +214,19 @@ MonoBehaviour:
   _offset: {x: 0, y: 0.02}
   _targetLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 1088
   _castRadius: 0.05
-  _castTargetMaxAmount: 1
+  _castTargetMaxAmount: 2
+--- !u!114 &403125093461781174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8578140034787325363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7741701e975e26840b8aa31443e0182d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 2

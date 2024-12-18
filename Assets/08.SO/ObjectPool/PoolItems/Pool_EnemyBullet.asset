@@ -15,5 +15,5 @@ MonoBehaviour:
   enumName: EnemyBullet
   poolingName: EnemyBullet
   description: 
-  poolCount: 100
+  poolCount: 20
   prefabObject: {fileID: 6386741783463609375, guid: dbf6baa3dc69f2e4fb5a156a32369f80, type: 3}

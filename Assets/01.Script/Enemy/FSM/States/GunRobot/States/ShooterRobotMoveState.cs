@@ -21,6 +21,12 @@ namespace Enemys
         public override void Update()
         {
             base.Update();
+
+            if ((_enemy.PlayerManager.PlayerTrm.position - _enemy.transform.position).sqrMagnitude < 4)
+                _enemy.CanMove = false;
+            else
+                _enemy.CanMove = true;
+
             if (_moveTime >= 0)
             {
                 _moveTime -= Time.deltaTime;

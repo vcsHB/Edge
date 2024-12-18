@@ -33,8 +33,8 @@ namespace Enemys
         {
             if (_enemy.CanMove)
             {
-                //Vector2 dir = (_enemy.PlayerManager.PlayerTrm.position - transform.position).normalized;
-                Vector2 dir = (_rend.obj.transform.position - transform.position).normalized;
+                Vector2 dir = (_enemy.PlayerManager.PlayerTrm.position - transform.position).normalized;
+                //Vector2 dir = (_rend.obj.transform.position - transform.position).normalized;
                 _rbCompo.linearVelocity = dir * _enemy.Stat.moveSpeed.baseValue;
 
             }

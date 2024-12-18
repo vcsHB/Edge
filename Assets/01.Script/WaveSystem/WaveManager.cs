@@ -17,7 +17,7 @@ namespace WaveSystem
         [SerializeField] private List<WaveSO> waves;
         public Transform SpawnPoint;
 
-        public List<IPoolable> enemyList;
+        public List<Enemy> enemyList;
         private int _currentWaveIndex;
         public int CurrnetWaveIndex => _currentWaveIndex; // 웨이브 인덱스
         public int WaveCount { get; private set; } // 현재 웨이브 진행 카운트 (증가하기만 함)
@@ -46,12 +46,8 @@ namespace WaveSystem
                         {
                             //WHTestEnemy enemy = Instantiate(
                             //info.enemyPrefab, SpawnPoint.transform.position, Quaternion.identity); // 나중에 풀링으로 바꿔야 함.
-                            IPoolable obj = PoolManager.Instance.Pop(info.enemyPrefab);
-                            
-                            if (obj.ObjectPrefab.TryGetComponent(out Health health))
-                            {
-                                health.OnDieEvent.AddListener(HandleEnemyDie(obj));
-                            }
+                            Enemy obj = PoolManager.Instance.Pop(info.enemyPrefab) as Enemy;
+                            obj.OnDeadEvent += HandleEnemyDie;
                             enemyList.Add(obj);
                             // 에너미 레벨 설정
 
@@ -69,17 +65,26 @@ namespace WaveSystem
             }
         }
 
-        private UnityAction HandleEnemyDie(IPoolable obj)
+        private void HandleEnemyDie(IPoolable poolable)
         {
-            Debug.Log("enemydie");
-            enemyList.Remove(obj);
-            PoolManager.Instance.Push(obj);
-            if (obj.ObjectPrefab.TryGetComponent(out Health health))
-            {
-                health.OnDieEvent.RemoveListener(HandleEnemyDie(obj));
-            }
-            return null;
+            Enemy enemy = poolable as Enemy;
+            enemyList.Remove(enemy);
+            PoolManager.Instance.Push(poolable);
+            poolable.ObjectPrefab.GetComponent<Enemy>().OnDeadEvent -= HandleEnemyDie;
         }
+
+
+        //private void HandleEnemyDie(IPoolable obj)
+        //{
+        //    Debug.Log("enemydie");
+        //    enemyList.Remove(obj);
+        //    PoolManager.Instance.Push(obj);
+        //    if (obj.ObjectPrefab.TryGetComponent(out Health health))
+        //    {
+        //        health.OnDieEvent.RemoveListener(HandleEnemyDie(obj));
+        //    }
+        //    return null;
+        //}
 
         //private void HandleEnemyDie()
         //{

@@ -13,6 +13,7 @@ namespace Agents
         public float MaxHealth => _maxHealth;
         private float _maxHealth;
         private float _currentHealth = 0;
+        public bool isResist;
 
         public void Initialize(float health)
         {
@@ -29,6 +30,7 @@ namespace Agents
 
         public void ApplyDamage(float damage)
         {
+            if(isResist) return;
             _currentHealth -= damage;
             CheckDie();
             InvokeHealthChange();

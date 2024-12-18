@@ -32,7 +32,10 @@ namespace Enemys
         {
             Collider2D target = Physics2D.OverlapCircle(_drone.transform.position
                 , _drone.explosionRange - 0.5f, _drone.targetLayer);
-            _drone.DamageCaster.Cast(target);
+            if(target != null)
+            {
+                _drone.DamageCaster.Cast(target);
+            }
         }
 
         public override void Exit()

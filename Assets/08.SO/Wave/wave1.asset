@@ -15,5 +15,5 @@ MonoBehaviour:
   spawnDelay: 0.5
   nextWaveTime: 3
   enemies:
-  - enemyPrefab: 0
+  - enemyPrefab: 3
     amount: 3
