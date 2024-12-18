@@ -6,7 +6,7 @@ namespace Enemys
     public class EnemyState
     {
         protected bool _isAnimationEnd;
-        protected Enemy _enemy;
+        private Enemy _enemy;
         protected AnimParamSO _animParam;
         protected EnemyRenderer _animator;
         protected EnemyAnimationTrigger _animTrigger;

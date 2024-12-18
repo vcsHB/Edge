@@ -1,5 +1,6 @@
 using Agents;
 using Players;
+using StatSystem;
 using UnityEngine;
 
 namespace Enemys
@@ -8,6 +9,8 @@ namespace Enemys
     {
         public PlayerManagerSO PlayerManager;
         [SerializeField] private EnemyStateListSO states;
+        public StatusSO stat;
+        public Health HealthCompo{get; private set;}
 
         public bool CanMove { get; set; } = true;
         public EnemyStateMachine StateMachine { get; private set; }
@@ -17,6 +20,8 @@ namespace Enemys
             base.Awake();
             StateMachine = new EnemyStateMachine(this, states);
             StateMachine.Initialize(EnemyStateEnum.Idle);
+            HealthCompo = GetComponent<Health>();
+            HealthCompo.Initialize(stat.health.GetValue());
         }
 
         private void Update()

@@ -13,12 +13,12 @@ namespace Enemys
         public override void Enter()
         {
             base.Enter();
-            _enemy.CanMove = true;
+            _drone.CanMove = true;
         }
 
         public override void Exit()
         {
-            _enemy.CanMove = false;
+            _drone.CanMove = false;
             base.Exit();
         }
 

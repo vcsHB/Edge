@@ -1,4 +1,5 @@
 using Combat;
+using StatSystem;
 using UnityEngine;
 
 namespace Enemys
@@ -16,12 +17,13 @@ namespace Enemys
             DamageCaster = GetComponentInChildren<DamageCaster>();
 
         }
-
+        #if UNITY_EDITOR
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(transform.position, explosionRange);
         }
+        #endif
     }
 }
 

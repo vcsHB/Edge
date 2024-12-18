@@ -4,8 +4,10 @@ namespace Enemys
 {
     public class DroneIdleState : EnemyState
     {
+        private Enemy _enemy;
         public DroneIdleState(Enemy enemy, AnimParamSO anim) : base(enemy, anim)
         {
+            _enemy = enemy;
         }
 
         public override void Enter()

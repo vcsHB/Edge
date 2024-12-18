@@ -15,7 +15,7 @@ namespace Enemys
         public override void Enter()
         {
             base.Enter();
-            _enemy.CanMove = false;
+            _drone.CanMove = false;
             _drone.attackObj.localScale = Vector3.one * _drone.explosionRange *2;
         }
 
