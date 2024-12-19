@@ -8,6 +8,7 @@ namespace Enemys
     {
         private TankEnemy _enemy;
         private float _listTime = 0;
+        private float oneMove;
         public TankMoveState(Enemy enemy, AnimParamSO anim) : base(enemy, anim)
         {
             _enemy = enemy as TankEnemy;
@@ -27,11 +28,6 @@ namespace Enemys
             base.Exit();
         }
 
-        private void HandleAttackCheck()
-        {
-            _enemy.ChangeState(EnemyStateEnum.Attack);
-        }
-
         public override void Update()
         {
             base.Update();
@@ -39,6 +35,9 @@ namespace Enemys
             if ((_enemy.PlayerManager.PlayerTrm.position - _enemy.transform.position).sqrMagnitude <= _enemy.radius * 2)
                 _enemy.CanMove = false;
             else
+            {
+                
+            }
                 _enemy.CanMove = true;
 
             if (_listTime + _enemy.attackCoolTime > Time.time && _listTime != 0)

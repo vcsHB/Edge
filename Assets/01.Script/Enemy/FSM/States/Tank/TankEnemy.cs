@@ -10,6 +10,7 @@ namespace Enemys
         public float radius;
         public LayerMask targetMask;
         public float attackCoolTime;
+        public float oneMoveTime;
 
         protected override void Awake()
         {
