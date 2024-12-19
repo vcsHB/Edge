@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class DataBarier : MonoBehaviour
 {
+    // 데이터 베리어
     public float damageReduction = 0.75f;    // 피해 감소율
     public float duration = 2f;             // 배리어 지속 시간
+
     public float explosionRadius = 3f;      // 폭발 반경
     public float explosionDamage = 60f;     // 폭발 피해량
     public LayerMask enemyLayer;            // 적 레이어
@@ -18,7 +20,7 @@ public class DataBarier : MonoBehaviour
         transform.position = owner.position;
         _isActive = true;
 
-        // 시작 시 배리어 시각 효과를 활성화하거나 파티클 추가 가능
+        // + 베리어 효과 파티클?
         Invoke(nameof(Explode), duration); // duration 후 폭발 실행
     }
 
@@ -35,8 +37,8 @@ public class DataBarier : MonoBehaviour
     {
         _isActive = false;
 
-        // 폭발 효과 (파티클 추가 가능)
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRadius, enemyLayer);
+        // 폭발 효과 (파티클 추가 ?)
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius, enemyLayer);
         foreach (var collider in hitColliders)
         {
             var enemyHealth = collider.GetComponent<Health>();
@@ -46,12 +48,12 @@ public class DataBarier : MonoBehaviour
             }
         }
 
-        Destroy(gameObject); // 배리어 오브젝트 제거
+        Destroy(gameObject);
     }
 
     private void OnDrawGizmosSelected()
     {
-        // 폭발 반경을 시각적으로 확인 (디버깅용)
+        // 디버깅용
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }

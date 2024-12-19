@@ -16,7 +16,7 @@ public class SordBoomerangSkill : Skill
     {
         if (_playerInput == null)
         {
-            Debug.LogError("PlayerInput이 연결되지 않았습니다.");
+            Debug.LogError("PlayerInput이 연결되지 않음");
         }
     }
 
@@ -33,7 +33,7 @@ public class SordBoomerangSkill : Skill
         Vector3 startPosition = GameObject.Find("Player").transform.position; // 플레이어 위치
         Vector3 targetPosition = _playerInput.MousePosition; // 마우스 위치
 
-        SordBoomerang boomerang = Instantiate(_boomerangPrefab, startPosition, Quaternion.identity);
+        SordBoomerang boomerang = Instantiate(_boomerangPrefab, startPosition, Quaternion.identity); 
         boomerang.Initialize(targetPosition);
         boomerang.damage = damage;
         boomerang.duration = boomerangDuration;

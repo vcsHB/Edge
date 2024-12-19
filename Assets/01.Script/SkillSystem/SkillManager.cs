@@ -56,6 +56,10 @@ public class SkillManager : MonoSingleton<SkillManager>
         {
             GetSkill(PlayerSkill.SordBoomerang).UseSkill();
         }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            GetSkill(PlayerSkill.DataBarier).UseSkill();
+        }
     }
 
     public T GetSkill<T>() where T : Skill
