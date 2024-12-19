@@ -1,5 +1,7 @@
 using ObjectManage;
+using UnityEditor.ShaderGraph.Drawing.Inspector.PropertyDrawers;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Core.MapConrtrolSystem
 {
@@ -9,6 +11,12 @@ namespace Core.MapConrtrolSystem
         [SerializeField] private MovePoint[] _points;
         [SerializeField] private LineRenderer _railRenderer;
         [SerializeField] private Vector2[] _offsets;
+
+        [Header("Clamping Setting")]
+        [SerializeField] private Transform _topClamper;
+        [SerializeField] private Transform _leftClamper;
+        [SerializeField] private Transform _rightClamper;
+        [SerializeField] private Transform _bottomClamper;
 
         private void Awake()
         {
@@ -40,6 +48,11 @@ namespace Core.MapConrtrolSystem
             Debug.Log($"Top Right: {topRight}");
             Debug.Log($"Bottom Left: {bottomLeft}");
             Debug.Log($"Bottom Right: {bottomRight}");
+
+            _topClamper.position = new Vector2(0, topLeft.y);
+            _leftClamper.position = new Vector2(topLeft.x, 0);
+            _rightClamper.position = new Vector2(bottomRight.x, 0);
+            _bottomClamper.position = new Vector2(0, bottomLeft.y);
         }
 
         public void SetAnchor(int index, Vector2 position)
