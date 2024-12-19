@@ -2,8 +2,6 @@ using Combat;
 using UnityEngine;
 namespace Agents.Players.Combat
 {
-
-
     public class PlayerBomb : PlayerWeapon
     {
         [SerializeField] private float _attackCooltime = 0.4f;

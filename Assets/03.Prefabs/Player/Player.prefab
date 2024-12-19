@@ -49,6 +49,7 @@ MonoBehaviour:
   _weapons:
   - {fileID: 3084783225414105228}
   - {fileID: 8102968174160161100}
+  _weaponHandleTrm: {fileID: 0}
   _weaponDistance: 1.3
 --- !u!1 &569926579824994311
 GameObject:
@@ -10111,6 +10112,7 @@ Transform:
   - {fileID: 1626062717127813928}
   - {fileID: 3624509610752524970}
   - {fileID: 8987118867955369582}
+  - {fileID: 9095395476736100816}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &7120326336360556105
@@ -25174,6 +25176,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _soundSO: {fileID: 11400000, guid: a0a2580f947195b43af00cb192286ea1, type: 2}
+--- !u!1 &7577660112298428467
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9095395476736100816}
+  - component: {fileID: 111288932769153251}
+  m_Layer: 6
+  m_Name: SkillController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9095395476736100816
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7577660112298428467}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6572366842343403428}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &111288932769153251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7577660112298428467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07b0156b5c2a6f4788d98375786d0ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7648236860727369676
 GameObject:
   m_ObjectHideFlags: 0
@@ -25342,7 +25388,7 @@ MonoBehaviour:
       m_Calls: []
   _normalDamage: 1
   _attackCooltime: 0.4
-  _aimTrm: {fileID: 0}
+  _aim: {fileID: 0}
 --- !u!1 &8331206450381338089
 GameObject:
   m_ObjectHideFlags: 0

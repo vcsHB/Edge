@@ -13,6 +13,7 @@ namespace WaveSystem
     public class WaveManager : MonoBehaviour
     {
         public UnityEvent OnWaveStartEvent;
+        public UnityEvent OnWaveClearEvent;
         public event Action<int> OnNextWave;
         [SerializeField] private List<WaveSO> waves;
         public Transform SpawnPoint;
@@ -61,6 +62,7 @@ namespace WaveSystem
                         }
                     }
                     yield return new WaitUntil(() => enemyList.Count == 0); // �� ���������� ��ٸ���
+                    OnWaveClearEvent?.Invoke();
                     OnNextWave?.Invoke(WaveCount); // Ŭ���� invoke
                     yield return new WaitForSeconds(currentWave.nextWaveTime); // ���̺� �� ��ٸ���
 

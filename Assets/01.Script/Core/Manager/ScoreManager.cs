@@ -3,6 +3,8 @@ using Agents.Players;
 using Core;
 using StatSystem;
 using UnityEngine;
+using UnityEngine.Jobs;
+using WaveSystem;
 namespace Managers
 {
 
@@ -17,6 +19,8 @@ namespace Managers
 
         private Stat _scoreBonusStat;
         private Stat _feverFillMultuipleStat;
+        [Header("NoLimit Setting")]
+
         [SerializeField] private int _maxFeverScore;
 
         [SerializeField] private int _currentFeverFill;
@@ -25,6 +29,9 @@ namespace Managers
 
         public bool IsNoLimit { get; private set; }
 
+        [Header("Level Up Setting")]
+        [SerializeField] private int _levelUpWaveTerm = 4; // 몇 웨이브마다 증강체가 나오는가
+        private int _currentWaveStack = 0;
 
         private void Start()
         {
@@ -78,5 +85,18 @@ namespace Managers
             IsNoLimit = false;
             VolumeManager.Instance.HandleChromaticDisable();
         }
+
+
+        public void HandleWaveClear()
+        {
+            _currentWaveStack++;
+            if(_currentWaveStack > _levelUpWaveTerm)
+            {
+                _currentWaveStack = 0;
+
+                _player.HealthCompo.SetMaxHealth();
+                UpgradeManager.Instance.DropUpgradeItem();
+            }
+        } 
     }
 }
