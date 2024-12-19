@@ -8,8 +8,8 @@ public enum PlayerSkill
     EnergyBim = 2,
     SordBoomerang = 3,
     DataBarier = 4,
-    KnifeSharpening = 5
-    //HighSpeedAttack = 6
+    KnifeSharpening = 5,
+    HighSpeedAttack = 6
 
 }
 
@@ -59,6 +59,14 @@ public class SkillManager : MonoSingleton<SkillManager>
         if (Input.GetKeyDown(KeyCode.F))
         {
             GetSkill(PlayerSkill.DataBarier).UseSkill();
+        }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            GetSkill(PlayerSkill.KnifeSharpening).UseSkill();
+        }
+        if(Input.GetKeyDown(KeyCode.B))
+        {
+            GetSkill(PlayerSkill.HighSpeedAttack).UseSkill();
         }
     }
 

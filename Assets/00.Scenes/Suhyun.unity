@@ -5037,6 +5037,7 @@ GameObject:
   - component: {fileID: 208810759}
   - component: {fileID: 208810763}
   - component: {fileID: 208810760}
+  - component: {fileID: 208810764}
   m_Layer: 0
   m_Name: SkillManager
   m_TagString: Untagged
@@ -5098,8 +5099,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 2
-      outSlope: 2
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -5107,8 +5108,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -5130,13 +5131,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403ab20c9ef3a2b4ab724de348a9fc86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillEnabled: 0
+  skillEnabled: 1
   _cooldown: 13
   _isAutoSkill: 0
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 128
+  _playerStatus: {fileID: 11400000, guid: 0c61b65f7174ab44b95ecb1194836950, type: 2}
+  duration: 5
+  attackIncrease: 20
 --- !u!114 &208810761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5199,7 +5203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe1dffa102b25b74f9832ad9154a5be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillEnabled: 0
+  skillEnabled: 1
   _cooldown: 10
   _isAutoSkill: 0
   player: {fileID: 0}
@@ -5211,6 +5215,28 @@ MonoBehaviour:
   explosionRadius: 3
   explosionDamage: 60
   _barierPrefab: {fileID: 7959739239863602447, guid: c2da6ef80f1e214498356323a8f95f0e, type: 3}
+  _playerStatus: {fileID: 11400000, guid: 0c61b65f7174ab44b95ecb1194836950, type: 2}
+--- !u!114 &208810764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208810755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adf63594e79919b44bfd9a49a9e29c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillEnabled: 1
+  _cooldown: 13
+  _isAutoSkill: 0
+  player: {fileID: 0}
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 128
+  _playerStatus: {fileID: 11400000, guid: 0c61b65f7174ab44b95ecb1194836950, type: 2}
+  duration: 5
 --- !u!1 &407115379
 GameObject:
   m_ObjectHideFlags: 0
