@@ -62,13 +62,6 @@ namespace Agents.Players
             _currentInteractObject.Interact(_player);
             
         }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere
-                (transform.position, _detectRadius);
-        }
     }
 
     
