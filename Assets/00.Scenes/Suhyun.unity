@@ -4961,6 +4961,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5015943054266422757, guid: 57e71bae09a47844bb3005525639c4fd, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3243062928147619045, guid: 57e71bae09a47844bb3005525639c4fd, type: 3}
       propertyPath: m_CollisionDetection
       value: 1
@@ -5016,10 +5020,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9091508977194539842, guid: 57e71bae09a47844bb3005525639c4fd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1339708226}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57e71bae09a47844bb3005525639c4fd, type: 3}
 --- !u!1 &208810755
 GameObject:
@@ -5036,6 +5037,7 @@ GameObject:
   - component: {fileID: 208810759}
   - component: {fileID: 208810763}
   - component: {fileID: 208810760}
+  - component: {fileID: 208810764}
   m_Layer: 0
   m_Name: SkillManager
   m_TagString: Untagged
@@ -5097,8 +5099,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 2
-      outSlope: 2
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -5106,8 +5108,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -5115,9 +5117,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 128
   _boomerangPrefab: {fileID: 756817803827202842, guid: f47101f7a164b9a4685dc61251a2c1f5, type: 3}
   _playerInput: {fileID: 11400000, guid: b24ab240d3078af4cb0f6ee35d4f7fdd, type: 2}
 --- !u!114 &208810760
@@ -5132,13 +5131,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403ab20c9ef3a2b4ab724de348a9fc86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillEnabled: 0
+  skillEnabled: 1
   _cooldown: 13
   _isAutoSkill: 0
   player: {fileID: 0}
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 128
+  _playerStatus: {fileID: 11400000, guid: 0c61b65f7174ab44b95ecb1194836950, type: 2}
+  duration: 5
+  attackIncrease: 20
 --- !u!114 &208810761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5201,7 +5203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe1dffa102b25b74f9832ad9154a5be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillEnabled: 0
+  skillEnabled: 1
   _cooldown: 10
   _isAutoSkill: 0
   player: {fileID: 0}
@@ -5213,6 +5215,28 @@ MonoBehaviour:
   explosionRadius: 3
   explosionDamage: 60
   _barierPrefab: {fileID: 7959739239863602447, guid: c2da6ef80f1e214498356323a8f95f0e, type: 3}
+  _playerStatus: {fileID: 11400000, guid: 0c61b65f7174ab44b95ecb1194836950, type: 2}
+--- !u!114 &208810764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208810755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adf63594e79919b44bfd9a49a9e29c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillEnabled: 1
+  _cooldown: 13
+  _isAutoSkill: 0
+  player: {fileID: 0}
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 128
+  _playerStatus: {fileID: 11400000, guid: 0c61b65f7174ab44b95ecb1194836950, type: 2}
+  duration: 5
 --- !u!1 &407115379
 GameObject:
   m_ObjectHideFlags: 0
@@ -5967,48 +5991,6 @@ Transform:
   - {fileID: 1683127643}
   m_Father: {fileID: 1829369453}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1339708221 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9091508977194539842, guid: 57e71bae09a47844bb3005525639c4fd, type: 3}
-  m_PrefabInstance: {fileID: 166998374}
-  m_PrefabAsset: {fileID: 0}
---- !u!70 &1339708226
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1339708221}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
-  m_Direction: 0
 --- !u!1 &1683127642
 GameObject:
   m_ObjectHideFlags: 0

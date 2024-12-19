@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86e207b0b10054f4ea0e8fd3d8ebf60f, type: 3}
   m_Name: wave5
   m_EditorClassIdentifier: 
-  spawnDelay: 0.1
+  spawnDelay: 0.2
   nextWaveTime: 2
   enemies:
   - enemyPrefab: 2

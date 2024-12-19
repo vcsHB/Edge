@@ -38,6 +38,7 @@ public class EnergyBim : MonoBehaviour
 
         foreach (var hit in hits)
         {
+            Debug.Log($"에너지빔ㅁ: 공격받은적은 {hit.collider.gameObject.name} ");
             var enemyHealth = hit.collider.GetComponent<Health>();
             if (enemyHealth != null)
             {
