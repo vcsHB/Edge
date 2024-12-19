@@ -4474,7 +4474,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 1384887498}
   _score: 0
-  _maxFeverScore: 40
+  _maxFeverScore: 200
   _currentFeverFill: 0
   _levelUpWaveTerm: 1
 --- !u!4 &1385806783
@@ -11572,14 +11572,6 @@ PrefabInstance:
     - target: {fileID: 1371713252667552057, guid: b88d2512a2b0561498aa779d7be028c7, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2091012472551295688, guid: b88d2512a2b0561498aa779d7be028c7, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2708355891839848425, guid: b88d2512a2b0561498aa779d7be028c7, type: 3}
-      propertyPath: _castRadius
-      value: 2.29
       objectReference: {fileID: 0}
     - target: {fileID: 3084783225414105228, guid: b88d2512a2b0561498aa779d7be028c7, type: 3}
       propertyPath: _aim
