@@ -6,17 +6,17 @@ using Agents.Players;
 
 public class DataBarierSkill : Skill
 {
-    // ¹è¸®¾î¸¦ ¼ÒÈ¯ÇÏ°í "2ÃÊ µ¿¾È ÇÃ·¹ÀÌ¾î°¡ ¹Þ´Â ¸ðµç ÇÇÇØ°¡ 75% °¨¼ÒÇÑ´Ù". 2ÃÊ ÀÌÈÄ ¹Ý°æ 3 ¹üÀ§ ³» Àû¿¡°Ô 60ÀÇ ÇÇÇØ¸¦ °¡ÇÑ´Ù. ÄðÅ¸ÀÓ 10ÃÊ
+    // ï¿½è¸®ï¿½î¸¦ ï¿½ï¿½È¯ï¿½Ï°ï¿½ "2ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½Þ´ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø°ï¿½ 75% ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½". 2ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ý°ï¿½ 3 ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 60ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¸ï¿½ ï¿½ï¿½ï¿½Ñ´ï¿½. ï¿½ï¿½Å¸ï¿½ï¿½ 10ï¿½ï¿½
 
-    public float duration = 2f;             // ¹è¸®¾î Áö¼Ó ½Ã°£
-    public float damageReduction = 0.75f;   // ÇÇÇØ °¨¼ÒÀ² 75ÆÛ
-    public float explosionRadius = 3f;      // Æø¹ß ¹Ý°æ(¹üÀ§3)
-    public float explosionDamage = 60f;     // Æø¹ß ÇÇÇØ·®(60)
+    public float duration = 2f;             // ï¿½è¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
+    public float damageReduction = 0.75f;   // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 75ï¿½ï¿½
+    public float explosionRadius = 3f;      // ï¿½ï¿½ï¿½ï¿½ ï¿½Ý°ï¿½(ï¿½ï¿½ï¿½ï¿½3)
+    public float explosionDamage = 60f;     // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø·ï¿½(60)
     private Transform playerTrm;
-    [SerializeField] private DataBarier _barierPrefab; // ¹è¸®¾î ÇÁ¸®ÆÕ
+    [SerializeField] private DataBarier _barierPrefab; // ï¿½è¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     private PlayerStatusSO _playerStatus;
 
-    private Health _playerHealth;           // ÇÃ·¹ÀÌ¾îÀÇ Ã¼·Â ÄÄÆ÷³ÍÆ®
+    private Health _playerHealth;           // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 
     private void Awake()
     {
@@ -37,32 +37,32 @@ public class DataBarierSkill : Skill
 
     private void ActivateBarier()
     {
-        // ¹è¸®¾î »ý¼º
+        // ï¿½è¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         DataBarier barier = Instantiate(_barierPrefab, playerTrm.position, Quaternion.identity);
-        barier.Initialize(playerTrm);
         barier.damageReduction = damageReduction;
         barier.duration = duration;
         barier.explosionRadius = explosionRadius;
         barier.explosionDamage = explosionDamage;
         barier.enemyLayer = whatIsEnemy;
+        barier.Initialize(playerTrm);
 
-        // 2ÃÊ µ¿¾È ÇÃ·¹ÀÌ¾î°¡ ¹Þ´Â ÇÇÇØ °¨¼Ò È¿°ú Àû¿ë
+        // 2ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½Þ´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È¿ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         StartCoroutine(ApplyDamageReduction(duration));
     }
 
     private IEnumerator ApplyDamageReduction(float duration)
     {
-        Debug.Log("¹Þ´Â ÇÇÇØ °¨¼Ò ½ÃÀÛ");
+        Debug.Log("ï¿½Þ´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 
-        // ¹æ¾î·Â Áõ°¡
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         float originalDefense = _playerStatus.defense.GetValue();
-        float additionalDefense = originalDefense * damageReduction; // ±âÁ¸ ¹æ¾î·ÂÀÇ 75%¸¸Å­ Ãß°¡
+        float additionalDefense = originalDefense * damageReduction; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 75%ï¿½ï¿½Å­ ï¿½ß°ï¿½
         _playerStatus.defense.AddModifier(additionalDefense);
 
         yield return new WaitForSeconds(duration);
 
-        // ¹æ¾î·Â º¹¿ø
-        Debug.Log("¹Þ´Â ÇÇÇØ °¨¼Ò Á¾·á");
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        Debug.Log("ï¿½Þ´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
         _playerStatus.defense.RemoveModifier(additionalDefense);
     }
 }
