@@ -1,7 +1,8 @@
 using UnityEngine;
 using InputManage; // PlayerInput 네임스페이스 참조
 
-//마우스의 방향으로 에너지빔을 발사.에너지빔은 직선형태이며 빔에 닿은 적에게 80의 피해를 주고, 명중한 적을 밀쳐낸다.
+//마우스의 방향으로 에너지빔을 발사.에너지빔은 직선형태이며 빔에 닿은 적에게 80의 피해를 주고, 
+//명중한 적을 밀쳐낸다.
 //에너지빔 시전 중에 플레이어 이동 불가능
 //지속시간 0.75초 (0.1초 소환, 0.4초동안 빔이 유지되고 0.25초동안 빔이 사라짐.) 
 //쿨타임 12초
@@ -23,7 +24,7 @@ public class EnergyBimSkill : Skill
 
     private void SpawnEnergyBim()
     {
-        Vector3 start = transform.position;
+        Vector3 start = GameObject.Find("Player").transform.position;
         Vector3 mouseWorldPosition = _playerInput.MousePosition;
 
         Vector3 direction = (mouseWorldPosition - start).normalized;
