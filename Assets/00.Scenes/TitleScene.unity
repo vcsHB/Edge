@@ -1297,7 +1297,7 @@ MonoBehaviour:
       m_Calls: []
   _isOnceInteract: 0
   _canInteract: 1
-  _scneeName: GameScene
+  _scneeName: VcsScene
   _movePanel:
   - {fileID: 1375512175}
   - {fileID: 2059030792}
