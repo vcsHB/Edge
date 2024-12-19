@@ -21,6 +21,8 @@ namespace Managers
 
         [SerializeField] private int _currentFeverFill;
 
+        public bool IsNoLimit { get; private set; }
+
 
         private void Start()
         {
@@ -33,14 +35,18 @@ namespace Managers
         public void GainScore(int score)
         {
             int addValue = score + (int)(score * 0.1f * _scoreBonusStat.GetValue());
-            int addFeverValue = score + (int)(score * 0.1f * _feverFillMultuipleStat.GetValue());
             _score += addValue;
-            _currentFeverFill += addFeverValue;
+            if (!IsNoLimit)
+            {
+                int addFeverValue = score + (int)(score * 0.1f * _feverFillMultuipleStat.GetValue());
+                _currentFeverFill += addFeverValue;
+            }
             OnScoreChangedEvent?.Invoke(_score);
             if (_currentFeverFill >= _maxFeverScore)
             {
                 _currentFeverFill = 0;
                 // 실질적인 노리미트 타임을 적용해야함
+                StartNoLimit();
             }
             OnFeverChangedEvent?.Invoke(_currentFeverFill, _maxFeverScore);
         }
@@ -48,8 +54,17 @@ namespace Managers
 
         private void StartNoLimit()
         {
-            PlayerManager.Instance.Player.StateMachine.ChangeState("NoLimitIdle");
-            VolumeManager.Instance.SetChromatic(1.5f);
+            IsNoLimit = true;
+            PlayerManager.Instance.Player.StateMachine.ChangeState("NoLimitEnter");
+            VolumeManager.Instance.SetChromatic(0.12f);
+
+
+        }
+
+        public void SetEndNoLimit()
+        {
+            IsNoLimit = false;
+            VolumeManager.Instance.HandleChromaticDisable();
         }
     }
 }
