@@ -12,10 +12,8 @@ public class PoolManager : MonoSingleton<PoolManager>
     
     private void Awake()
     {
-        Debug.Log(listSO.datas.Count);
         foreach (PoolingItemSO item in listSO.datas)
         {
-            Debug.Log($"[ Load Pools ] {item.prefab.type.ToString()}");
             CreatePool(item);
         }
     }
