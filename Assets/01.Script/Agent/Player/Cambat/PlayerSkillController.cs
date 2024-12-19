@@ -8,8 +8,8 @@ namespace Agents.Players.Combat
     {
         private Player _player;
 
-        private Queue<PlayerSkill> _skillQueue;
-        private Dictionary<PlayerSkill, Skill> _skillDictionary;
+        private Queue<PlayerSkill> _skillQueue = new();
+        private Dictionary<PlayerSkill, Skill> _skillDictionary = new Dictionary<PlayerSkill, Skill>();
         private PlayerSkill[] _indexer = null;
 
 

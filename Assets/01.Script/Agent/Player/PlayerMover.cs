@@ -28,6 +28,7 @@ namespace Agents.Players
         public Vector2 Velocity { get; private set; }
         private Collider2D[] hits;
         private float _limitDetectRadius = 100f;
+        public bool canMove = true;
 
         public void Initialize(Agent agent)
         {
@@ -47,6 +48,7 @@ namespace Agents.Players
 
         public bool SetMoveTarget(Vector2 direction)
         {
+            if(!canMove) return false;
             if (_isMoving) return false;
             if (!isEdgeMove) return false;
             SetPreviousPos(transform.position);
@@ -72,6 +74,7 @@ namespace Agents.Players
 
         private void FixedUpdate()
         {
+            if(!canMove) return;
             if (!isEdgeMove)
             {
                 Velocity = _moveDirection * _player.PlayerStatus.moveSpeed.GetValue();
