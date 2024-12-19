@@ -92,7 +92,7 @@ namespace Agents.Players
 
         public void SetMovement(float ratio)
         {
-            ratio = MathFunctions.EaseInCubic(ratio);
+            ratio = MathFunctions.EaseInSine(ratio);
             Vector2 lerpPos = Vector2.Lerp(_previousPosition, _targetPoint.transform.position, ratio);
             transform.position = lerpPos;
             if (ratio >= 1f)
