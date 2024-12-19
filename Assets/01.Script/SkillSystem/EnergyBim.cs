@@ -28,7 +28,13 @@ public class EnergyBim : MonoBehaviour
     {
         Vector3 start = _lineRenderer.GetPosition(0);
         Vector3 end = _lineRenderer.GetPosition(1);
-        RaycastHit[] hits = Physics.RaycastAll(start, (end - start).normalized, Vector3.Distance(start, end), _whatIsEnemy);
+        Vector2 direction = (end - start).normalized;
+
+        float distance = Vector2.Distance(start, end);
+        float lineWidth = _lineRenderer.startWidth / 2f; // 라인의 두께의 반만큼 반지름 사용
+
+        // 2D CircleCast로 충돌 감지
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(start, lineWidth, direction, distance, _whatIsEnemy);
 
         foreach (var hit in hits)
         {
@@ -39,4 +45,6 @@ public class EnergyBim : MonoBehaviour
             }
         }
     }
+
+
 }

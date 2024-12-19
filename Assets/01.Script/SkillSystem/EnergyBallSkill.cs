@@ -8,7 +8,7 @@ using InputManage;
 //쿨타임 6초
 public class EnergyBallSkill : Skill
 {
-    public int damage = 30;          // 피해량
+    public int damage = 4;          // 피해량
     public float speed = 3f;        // 초기 속도
     public float lifetime = 1.5f;    // 에너지볼 지속시간
     public float slowDuration = 1.5f; // 적 이동 속도 감소 지속 시간
@@ -34,8 +34,6 @@ public class EnergyBallSkill : Skill
         // 마우스 방향 계산 
         Vector3 direction = (mouseWorldPosition - playerPosition).normalized;
         //direction.y = 0; 
-
-        Debug.Log("EnergyBall Direction: " + direction);
 
         // 에너지볼 생성
         EnergyBall energyBall = Instantiate(_energyBallPrefab, playerPosition, Quaternion.identity);
