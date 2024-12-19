@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace FeedbackSystem
@@ -8,12 +6,14 @@ namespace FeedbackSystem
     public class FeedbackPlayer : MonoBehaviour
     {
         private Feedback[] _feedbacks;
-        private void Awake() {
+        private void Awake()
+        {
             _feedbacks = GetComponents<Feedback>();
         }
 
         public void CreateFeedback()
         {
+            if(_feedbacks == null) return;
             for (int i = 0; i < _feedbacks.Length; i++)
             {
                 _feedbacks[i].CreateFeedback();
