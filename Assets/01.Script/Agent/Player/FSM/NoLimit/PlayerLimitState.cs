@@ -1,14 +1,15 @@
 using System.Collections;
+using Managers;
 using ObjectManage;
 using UnityEngine;
 namespace Agents.Players.FSM
 {
 
 
-    public class PlayerLimitState : PlayerState
+    public class PlayerLimitState : PlayerNoLimitState
     {
         private MovePoint _targetPoint;
-        private float _backDuration;
+        private float _backDuration = 0.3f;
 
         public PlayerLimitState(Player player, PlayerStateMachine stateMachine, int animationHash) : base(player, stateMachine, animationHash)
         {
@@ -18,6 +19,7 @@ namespace Agents.Players.FSM
         public override void Enter()
         {
             base.Enter();
+             _attackController.SelectWeapon(0);
             _player.StartCoroutine(LimitCoroutine());
         }
 
@@ -25,6 +27,7 @@ namespace Agents.Players.FSM
         {
             _targetPoint = _mover.GetNearMovePoint();
             _mover.SetPreviousPos(_player.transform.position);
+            _mover.SetMovePoint(_targetPoint);
 
             float currentTime = 0f;
             while (currentTime <= _backDuration)
@@ -33,7 +36,11 @@ namespace Agents.Players.FSM
                 _mover.SetMovement(currentTime / _backDuration);
                 yield return null;
             }
+            _mover.SetEdgeMode(true);
+            _mover.StopImmediately();
+            _limiter.SetLimit();
             _stateMachine.ChangeState("Idle");
+            ScoreManager.Instance.SetEndNoLimit();
         }
     }
 }

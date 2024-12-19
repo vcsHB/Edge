@@ -1,7 +1,6 @@
-using Agents;
-using Agents.Players;
-using Combat;
+using ObjectManage;
 using ObjectPooling;
+using UnityEditor.Build;
 using UnityEngine;
 
 namespace Combat
@@ -15,6 +14,7 @@ namespace Combat
         public GameObject ObjectPrefab => gameObject;
 
         [SerializeField] private float _speed;
+        [SerializeField] private PoolingType _breakVFXType;
         private Caster _caster;
 
 
@@ -41,6 +41,9 @@ namespace Combat
 
         private void HandleDestroyEvent()
         {
+            VFXPlayer vfx = PoolManager.Instance.Pop(_breakVFXType) as VFXPlayer;
+            vfx.transform.position = transform.position;
+            vfx.Play();
             PoolManager.Instance.Push(this);
         }
 

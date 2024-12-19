@@ -1,15 +1,15 @@
 using UnityEngine;
 using InputManage;
 using Agents.Players;
-//¸¶¿ì½ºÀÇ ¹æÇâÀ¸·Î ¿¡³ÊÁöºöÀ» ¹ß»ç. ¤·
-//¿¡³ÊÁöºöÀº Á÷¼±ÇüÅÂÀÌ¸ç ºö¿¡ ´êÀº Àû¿¡°Ô 80ÀÇ ÇÇÇØ¸¦ ÁÖ°í, ¸íÁßÇÑ ÀûÀ» ¹ÐÃÄ³½´Ù. ¤·
-//¿¡³ÊÁöºöÀº ½ÃÀü Áß¿¡ ÀÌµ¿ÀÌ ºÒ°¡´ÉÇÏ´Ù. (½ÃÀü½Ã°£ 0.75ÃÊ) (0.1ÃÊ ¼ÒÈ¯, 0.4ÃÊµ¿¾È ºöÀÌ À¯ÁöµÇ°í 0.25ÃÊµ¿¾È ºöÀÌ »ç¶óÁü.) 
-//ÄðÅ¸ÀÓ 12ÃÊ
+//ï¿½ï¿½ï¿½ì½ºï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½. ï¿½ï¿½
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 80ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¸ï¿½ ï¿½Ö°ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½. ï¿½ï¿½
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß¿ï¿½ ï¿½Ìµï¿½ï¿½ï¿½ ï¿½Ò°ï¿½ï¿½ï¿½ï¿½Ï´ï¿½. (ï¿½ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ 0.75ï¿½ï¿½) (0.1ï¿½ï¿½ ï¿½ï¿½È¯, 0.4ï¿½Êµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ 0.25ï¿½Êµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½.) 
+//ï¿½ï¿½Å¸ï¿½ï¿½ 12ï¿½ï¿½
 public class EnergyBimSkill : Skill
 {
-    public float damagePerSecond = 80f; // ÃÊ´ç ÇÇÇØ·®
-    public float duration = 0.75f;      // ºö ÀüÃ¼ Áö¼Ó ½Ã°£
-    public float knockbackForce = 10f;  // ¹ÐÃÄ³»±â Èû
+    public float damagePerSecond = 80f; // ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½Ø·ï¿½
+    public float duration = 0.75f;      // ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
+    public float knockbackForce = 10f;  // ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ ï¿½ï¿½
 
     [SerializeField] private EnergyBim _energyBimPrefab;
     [SerializeField] private PlayerInput _playerInput;
@@ -22,7 +22,7 @@ public class EnergyBimSkill : Skill
         if (!base.UseSkill() || _isSkillActive) return false;
 
         _isSkillActive = true;
-        _playerMover.enabled = false; // ÇÃ·¹ÀÌ¾î ÀÌµ¿ ºñÈ°¼ºÈ­
+        _playerMover.canMove = false;
 
         SpawnEnergyBim();
         return true;
@@ -33,18 +33,18 @@ public class EnergyBimSkill : Skill
         Vector3 start = GameObject.Find("Player").transform.position;
         Vector3 mouseWorldPosition = _playerInput.MousePosition;
         Vector3 direction = (mouseWorldPosition - start).normalized;
-        Vector3 end = start + direction * 10f; // ºö ÃÖ´ë »ç°Å¸® 10
+        Vector3 end = start + direction * 10f; // ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½Å¸ï¿½ 10
 
         EnergyBim energyBim = Instantiate(_energyBimPrefab, start, Quaternion.identity);
         energyBim.Initialize(damagePerSecond, duration, knockbackForce, whatIsEnemy, start, end);
 
-        // ½ºÅ³ Áö¼Ó ½Ã°£ µ¿¾È ÇÃ·¹ÀÌ¾î ÀÌµ¿ ºÒ°¡
+        // ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Ìµï¿½ ï¿½Ò°ï¿½
         Invoke(nameof(EnablePlayerMovement), duration);
     }
 
     private void EnablePlayerMovement()
     {
-        _playerMover.enabled = true;
+        _playerMover.canMove = true;
     }
 
 

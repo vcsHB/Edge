@@ -1,8 +1,6 @@
-using System;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
-using static UnityEngine.Rendering.DebugUI;
 
 namespace Core
 {
@@ -56,14 +54,18 @@ namespace Core
         {
             _soundData.SFX = value;
             mixer.SetFloat("Volume_SFX", value);
-            BGDJson.ToJson(_soundData,"Sound",true);
+            
         }
 
         private void BGMValueChange(float value)
         {
             _soundData.BGM = value;
             mixer.SetFloat("Volume_BGM", value);
-            BGDJson.ToJson(_soundData, "Sound", true);
+        }
+
+        public void SaveSoundData()
+        {
+            BGDJson.ToJson(_soundData,"Sound",true);
         }
 
         private void OnDestroy()

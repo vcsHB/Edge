@@ -16,7 +16,8 @@ public enum PlayerSkill
 public class SkillManager : MonoSingleton<SkillManager>
 {
     private Dictionary<Type, Skill> _skills;
-    private List<Skill> _enabledSkillList; //½ºÅ³¸®½ºÆ® È°¼ºÈ­
+    private List<Skill> _enabledSkillList; //ï¿½ï¿½Å³ï¿½ï¿½ï¿½ï¿½Æ® È°ï¿½ï¿½È­
+    public event Action<PlayerSkill> OnSelectSkillEvent;
 
     private void Awake()
     {
@@ -25,10 +26,10 @@ public class SkillManager : MonoSingleton<SkillManager>
 
         foreach (PlayerSkill skillEnum in Enum.GetValues(typeof(PlayerSkill)))
         {
-            if (skillEnum == PlayerSkill.None) continue; //³Ñ¾î°¡±â
+            if (skillEnum == PlayerSkill.None) continue; //ï¿½Ñ¾î°¡ï¿½ï¿½
 
             Skill skillCompo = GetComponent($"{skillEnum.ToString()}Skill") as Skill; 
-            Type type = skillCompo.GetType(); //ÇØ´ç ÀÎ½ºÅÏ½ºÀÇ Å¬·¡½ºÀÇ Å¸ÀÔÀ» °¡Á®¿Â´Ù.
+            Type type = skillCompo.GetType(); //ï¿½Ø´ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
             _skills.Add(type, skillCompo);
         }
     }
@@ -90,5 +91,10 @@ public class SkillManager : MonoSingleton<SkillManager>
             return target;
         }
         return null;
+    }
+
+    public void SelectSkill(PlayerSkill skillType)
+    {
+        OnSelectSkillEvent?.Invoke(skillType);
     }
 }

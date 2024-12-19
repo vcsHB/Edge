@@ -1,7 +1,5 @@
 using ObjectManage;
-using UnityEditor.EditorTools;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 namespace Core.MapConrtrolSystem
 {
@@ -48,6 +46,12 @@ namespace Core.MapConrtrolSystem
         {
             _points[index].transform.position = position;
             _railRenderer.SetPosition(index, position);
+
+        }
+
+        public Vector2 GetRandomPointPosition()
+        {
+            return _points[Random.Range(0, _points.Length)].transform.position;
         }
 
     }

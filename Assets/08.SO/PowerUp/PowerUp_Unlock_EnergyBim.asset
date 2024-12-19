@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54c1aa48dd868d14c80d75e9bd6477c3, type: 3}
-  m_Name: PowerUp_Arrow
+  m_Name: PowerUp_Unlock_EnergyBim
   m_EditorClassIdentifier: 
-  code: Arrow
+  id: 2
+  code: Unlock_EnergyBim
   shouldBeUnlock: 0
-  title: 
+  title: "\uC5D0\uB108\uC9C0 \uBE14\uB77C\uC2A4\uD130"
   description: 
-  icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 0}
   effectList:
-  - {fileID: 11400000, guid: c8695de0da9af5645ae690732c32db4e, type: 2}
+  - {fileID: 11400000, guid: 3896abf5c22ecc24bb85e4120480637a, type: 2}

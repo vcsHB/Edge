@@ -3,6 +3,8 @@ using Agents.Players;
 using Core;
 using StatSystem;
 using UnityEngine;
+using UnityEngine.Jobs;
+using WaveSystem;
 namespace Managers
 {
 
@@ -17,10 +19,19 @@ namespace Managers
 
         private Stat _scoreBonusStat;
         private Stat _feverFillMultuipleStat;
+        [Header("NoLimit Setting")]
+
         [SerializeField] private int _maxFeverScore;
 
         [SerializeField] private int _currentFeverFill;
+        private float _currentNoLimitedTime = 0f;
+        private float _noLimitDuration;
 
+        public bool IsNoLimit { get; private set; }
+
+        [Header("Level Up Setting")]
+        [SerializeField] private int _levelUpWaveTerm = 4; // 몇 웨이브마다 증강체가 나오는가
+        private int _currentWaveStack = 0;
 
         private void Start()
         {
@@ -29,27 +40,63 @@ namespace Managers
             _feverFillMultuipleStat = _player.PlayerStatus.feverFillMultiple;
         }
 
+        private void Update()
+        {
+            if (!IsNoLimit) return;
+            _currentNoLimitedTime += Time.deltaTime;
+            OnFeverChangedEvent?.Invoke(100 - (int)(_currentNoLimitedTime / _noLimitDuration * 100), 100);
+        }
+
 
         public void GainScore(int score)
         {
             int addValue = score + (int)(score * 0.1f * _scoreBonusStat.GetValue());
-            int addFeverValue = score + (int)(score * 0.1f * _feverFillMultuipleStat.GetValue());
             _score += addValue;
-            _currentFeverFill += addFeverValue;
+            if (!IsNoLimit)
+            {
+                int addFeverValue = score + (int)(score * 0.1f * _feverFillMultuipleStat.GetValue());
+                _currentFeverFill += addFeverValue;
+                OnFeverChangedEvent?.Invoke(_currentFeverFill, _maxFeverScore);
+            }
             OnScoreChangedEvent?.Invoke(_score);
             if (_currentFeverFill >= _maxFeverScore)
             {
                 _currentFeverFill = 0;
                 // 실질적인 노리미트 타임을 적용해야함
+                StartNoLimit();
             }
-            OnFeverChangedEvent?.Invoke(_currentFeverFill, _maxFeverScore);
         }
 
 
         private void StartNoLimit()
         {
-            PlayerManager.Instance.Player.StateMachine.ChangeState("NoLimitIdle");
-            VolumeManager.Instance.SetChromatic(1.5f);
+            IsNoLimit = true;
+            _noLimitDuration = _player.PlayerStatus.noLimitDuration.GetValue();
+            _player.StateMachine.ChangeState("NoLimitEnter");
+            _currentNoLimitedTime = 0;
+
+            VolumeManager.Instance.SetChromatic(0.18f);
+
+
         }
+
+        public void SetEndNoLimit()
+        {
+            IsNoLimit = false;
+            VolumeManager.Instance.HandleChromaticDisable();
+        }
+
+
+        public void HandleWaveClear()
+        {
+            _currentWaveStack++;
+            if(_currentWaveStack > _levelUpWaveTerm)
+            {
+                _currentWaveStack = 0;
+
+                _player.HealthCompo.SetMaxHealth();
+                UpgradeManager.Instance.DropUpgradeItem();
+            }
+        } 
     }
 }
