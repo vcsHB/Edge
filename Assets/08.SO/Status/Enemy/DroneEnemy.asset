@@ -15,8 +15,11 @@ MonoBehaviour:
   health:
     baseValue: 20
     modifier: []
+  attackDamage:
+    baseValue: 0
+    modifier: []
   moveSpeed:
-    baseValue: 5
+    baseValue: 7
     modifier: []
   defense:
     baseValue: 0

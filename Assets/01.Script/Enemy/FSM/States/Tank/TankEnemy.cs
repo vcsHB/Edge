@@ -9,6 +9,7 @@ namespace Enemys
         public Caster Caster { set; get; }
         public float radius;
         public LayerMask targetMask;
+        public float attackCoolTime;
 
         protected override void Awake()
         {
