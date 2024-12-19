@@ -5,7 +5,7 @@ using UnityEngine;
 public class HighSpeedAttackSkill : Skill
 {
     // 쿨타임 13초
-    [SerializeField] private PlayerStatusSO _playerStatus;
+    private PlayerStatusSO _playerStatus;
     [SerializeField] private float duration = 5f;  // 지속 시간
     private float originalAttackSpeed;             // 원래의 공격 속도
 
@@ -21,6 +21,7 @@ public class HighSpeedAttackSkill : Skill
     {
         Debug.Log("고속단련 - 공속 증가");
         // 기본 공격 속도 50% 증가
+        _playerStatus = player.PlayerStatus;
         originalAttackSpeed = _playerStatus.attackSpeed.GetValue(); // 원래 공격 속도 값 저장
         float increasedAttackSpeed = originalAttackSpeed * 1.5f;   // 공격 속도 50% 증가
         _playerStatus.attackSpeed.AddModifier(increasedAttackSpeed - originalAttackSpeed);  // 공격 속도 증가
