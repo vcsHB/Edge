@@ -19,7 +19,7 @@ namespace FeedbackSystem
 
         public override void CreateFeedback()
         {
-            if(_isBlinking) return;
+            if(_isBlinking || !gameObject.activeInHierarchy) return;
             _isBlinking = true;
             StartCoroutine(BlinkCoroutine());
         }
