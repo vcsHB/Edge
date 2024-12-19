@@ -17,6 +17,8 @@ namespace UIManage
             _rectTrm = transform as RectTransform;
         }
 
+        [ContextMenu("Debug Open")]
+
         public override void Open()
         {
             if (_isActive) return;
