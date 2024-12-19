@@ -1,11 +1,13 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 using System.Collections;
 
 public class TutorialManager : MonoBehaviour
 {
     public TextMeshProUGUI tutorialText; // 텍스트 출력용 UI
     public float typingSpeed = 0.05f;    // 타이핑 속도 (글자당 딜레이)
+    [SerializeField] private Image enterImage; // 엔터 이미지
 
     private int currentIndex = 0;        // 현재 메시지 인덱스
     public GameObject waveManager;       // 웨이브 매니저 오브젝트
@@ -34,6 +36,7 @@ public class TutorialManager : MonoBehaviour
     void Start()
     {
         StartTyping();
+        enterImage.enabled = false; // 초기에는 이미지 숨김
     }
 
     void Update()
@@ -45,6 +48,7 @@ public class TutorialManager : MonoBehaviour
                 StopCoroutine(typingCoroutine); // 타이핑 중지
                 tutorialText.text = messages[currentIndex]; // 전체 텍스트 출력
                 isTyping = false;
+                enterImage.enabled = true; // 엔터 이미지 표시
             }
         }
         else if (Input.GetKeyDown(KeyCode.Return)) // 엔터: 다음 메시지로 이동
@@ -53,6 +57,7 @@ public class TutorialManager : MonoBehaviour
             {
                 currentIndex++;
                 StartTyping();
+                enterImage.enabled = false; // 다음 메시지가 출력되면 이미지 숨김
             }
         }
     }
@@ -60,6 +65,7 @@ public class TutorialManager : MonoBehaviour
     private void StartTyping()
     {
         typingCoroutine = StartCoroutine(TypeMessage(messages[currentIndex]));
+        enterImage.enabled = false; // 타이핑 중에는 이미지 숨김
     }
 
     private IEnumerator TypeMessage(string message)
@@ -74,6 +80,7 @@ public class TutorialManager : MonoBehaviour
         }
 
         isTyping = false; // 타이핑 완료
+        enterImage.enabled = true; // 타이핑이 끝나면 이미지 표시
 
         // 인덱스 7에서 웨이브 매니저 시작
         if (currentIndex == 7 && !isWaveStarted)
