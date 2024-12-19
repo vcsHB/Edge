@@ -35,9 +35,9 @@ namespace Managers
 
         private void Update()
         {
-            if(!IsNoLimit) return;
+            if (!IsNoLimit) return;
             _currentNoLimitedTime += Time.deltaTime;
-            OnFeverChangedEvent?.Invoke(100 -(int)(_currentNoLimitedTime / _noLimitDuration * 100), 100);
+            OnFeverChangedEvent?.Invoke(100 - (int)(_currentNoLimitedTime / _noLimitDuration * 100), 100);
         }
 
 
@@ -49,6 +49,7 @@ namespace Managers
             {
                 int addFeverValue = score + (int)(score * 0.1f * _feverFillMultuipleStat.GetValue());
                 _currentFeverFill += addFeverValue;
+                OnFeverChangedEvent?.Invoke(_currentFeverFill, _maxFeverScore);
             }
             OnScoreChangedEvent?.Invoke(_score);
             if (_currentFeverFill >= _maxFeverScore)
@@ -57,7 +58,6 @@ namespace Managers
                 // 실질적인 노리미트 타임을 적용해야함
                 StartNoLimit();
             }
-            OnFeverChangedEvent?.Invoke(_currentFeverFill, _maxFeverScore);
         }
 
 

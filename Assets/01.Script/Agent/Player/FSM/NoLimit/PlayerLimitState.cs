@@ -19,6 +19,7 @@ namespace Agents.Players.FSM
         public override void Enter()
         {
             base.Enter();
+             _attackController.SelectWeapon(0);
             _player.StartCoroutine(LimitCoroutine());
         }
 
@@ -35,11 +36,11 @@ namespace Agents.Players.FSM
                 _mover.SetMovement(currentTime / _backDuration);
                 yield return null;
             }
-
             _mover.SetEdgeMode(true);
+            _mover.StopImmediately();
             _limiter.SetLimit();
-            ScoreManager.Instance.SetEndNoLimit();
             _stateMachine.ChangeState("Idle");
+            ScoreManager.Instance.SetEndNoLimit();
         }
     }
 }

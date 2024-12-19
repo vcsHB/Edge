@@ -1,6 +1,3 @@
-using Agents;
-using Agents.Players;
-using Combat;
 using ObjectPooling;
 using UnityEngine;
 

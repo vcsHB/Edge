@@ -16,6 +16,7 @@ namespace Agents.Players.FSM
             _mover.SetEdgeMode(false);
             _limiter.SetUnLimit();
             _stateMachine.ChangeState("NoLimitIdle");
+            _attackController.SelectWeapon(1);
         
         }
 
