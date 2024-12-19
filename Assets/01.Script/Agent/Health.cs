@@ -21,7 +21,7 @@ namespace Agents
             SetMaxHealth();
         }
 
-        private void SetMaxHealth()
+        public void SetMaxHealth()
         {
             _currentHealth = MaxHealth;
             InvokeHealthChange();

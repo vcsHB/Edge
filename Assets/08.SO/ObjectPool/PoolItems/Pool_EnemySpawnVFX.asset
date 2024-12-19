@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c849feb582448d42a8491aa630deaca, type: 3}
+  m_Name: Pool_EnemySpawnVFX
+  m_EditorClassIdentifier: 
+  enumName: EnemySpawnVFX
+  poolingName: EnemySpawnVFX
+  description: 
+  poolCount: 20
+  prefabObject: {fileID: 5550519222727971899, guid: 1d7b1df4c22acbf4ea0d4eaed2bdbf72, type: 3}
