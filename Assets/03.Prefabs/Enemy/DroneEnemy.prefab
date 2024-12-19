@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 247916572429783226}
   - component: {fileID: 2207495088325025649}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 174651159776332830}
   - component: {fileID: 862783595818389651}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wings_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4442782180882266239}
   - component: {fileID: 176103081593246233}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wings_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,7 +228,7 @@ GameObject:
   m_Component:
   - component: {fileID: 680938129796171799}
   - component: {fileID: 1418241086586033032}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DamageCaster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 8642007262057462346}
   - component: {fileID: 3481894979499386343}
   - component: {fileID: 3834121176042877347}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,7 +410,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7071034166505949486}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -446,7 +446,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8303483677069153613}
   - component: {fileID: 7988529183138498790}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wings_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -533,7 +533,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8938566245693192626}
   - component: {fileID: 1062669111353968367}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wings_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -620,7 +620,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849152049810734516}
   - component: {fileID: 114378637465909065}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ExplosionRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -707,9 +707,10 @@ GameObject:
   m_Component:
   - component: {fileID: 9209335952989870115}
   - component: {fileID: 3243062928147619045}
+  - component: {fileID: -5015943054266422757}
   - component: {fileID: 8550353831112334263}
   - component: {fileID: 5664465824893749152}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DroneEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -761,6 +762,42 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &-5015943054266422757
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9091508977194539842}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.9
 --- !u!114 &8550353831112334263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -807,9 +844,10 @@ MonoBehaviour:
   PlayerManager: {fileID: 11400000, guid: 0b182390795dd2d45815d0b62b4d5afb, type: 2}
   states: {fileID: 11400000, guid: 2c45e35b6c42f424a9afe21903516554, type: 2}
   <Stat>k__BackingField: {fileID: 11400000, guid: f68d21c37854b6a458347af72b321784, type: 2}
+  <type>k__BackingField: 2
+  dropScore: 10
   explosionRange: 1.2
   targetLayer:
     serializedVersion: 2
     m_Bits: 1088
-  <type>k__BackingField: 2
   attackObj: {fileID: 8849152049810734516}

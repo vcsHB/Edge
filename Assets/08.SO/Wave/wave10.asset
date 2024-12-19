@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86e207b0b10054f4ea0e8fd3d8ebf60f, type: 3}
   m_Name: wave10
   m_EditorClassIdentifier: 
-  spawnDelay: 1
-  nextWaveTime: 10
+  spawnDelay: 0.1
+  nextWaveTime: 2
   enemies:
+  - enemyPrefab: 4
+    amount: 2
+  - enemyPrefab: 3
+    amount: 5
   - enemyPrefab: 2
-    amount: 12
+    amount: 5

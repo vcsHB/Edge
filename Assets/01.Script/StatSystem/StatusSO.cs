@@ -5,6 +5,7 @@ namespace StatSystem
     public class StatusSO : ScriptableObject
     {
         public Stat health;
+        public Stat attackDamage;
         public Stat moveSpeed;
         public Stat defense;
         public Stat attackSpeed;
