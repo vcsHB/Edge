@@ -38,7 +38,6 @@ namespace Agents.Players
 
         public void AfterInit()
         {
-
         }
 
         public void Dispose()

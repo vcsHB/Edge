@@ -42,6 +42,11 @@ namespace UI
             yield return new WaitForSeconds(1.5f);
             _player.canMove = true;
         }
+
+        public void HandleMoveToTutorial()
+        {
+            SceneManager.LoadScene("TutorialScene");
+        }
     }
 }
 
