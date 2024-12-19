@@ -25,8 +25,9 @@ namespace Enemys
         public override void Update()
         {
             base.Update();
-            if (Physics2D.OverlapCircle(_drone.transform.position
-                , _drone.explosionRange-0.5f, _drone.targetLayer))
+            Collider2D target = Physics2D.OverlapCircle(_drone.transform.position
+                , _drone.explosionRange-0.5f, _drone.targetLayer);
+            if (target != null)
             {
                 _drone.ChangeState(EnemyStateEnum.Attack);
             }

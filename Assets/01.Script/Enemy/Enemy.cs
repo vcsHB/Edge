@@ -12,13 +12,14 @@ namespace Enemys
     {
         public PlayerManagerSO PlayerManager;
         [SerializeField] private EnemyStateListSO states;
-        public Action<IPoolable> OnDeadEvent;
+        public Action<Enemy> OnDeadEvent;
         [field:SerializeField]public StatusSO Stat{get;private set;}
         public Health HealthCompo{get; private set;}
 
         public bool CanMove { get; set; } = true;
         public EnemyStateMachine StateMachine { get; private set; }
         [field:SerializeField]public PoolingType type { get ; set ; }
+        public int dropScore;
 
         public GameObject ObjectPrefab => gameObject;
 
@@ -29,6 +30,7 @@ namespace Enemys
             StateMachine.Initialize(EnemyStateEnum.Idle);
             HealthCompo = GetComponent<Health>();
             HealthCompo.Initialize(Stat.health.GetValue());
+           // HealthCompo.OnDieEvent.AddListener(Dead);
         }
 
         private void Update()
@@ -63,9 +65,9 @@ namespace Enemys
 
         public virtual void Dead()
         {
-            IPoolable obj = this as IPoolable;
-            OnDeadEvent?.Invoke(obj);
-            PoolManager.Instance.Push(obj);
+            
+            OnDeadEvent?.Invoke(this);
+            PoolManager.Instance.Push(this);
         }
 
         public void UpgradeEnemyStat(int level)
@@ -75,7 +77,8 @@ namespace Enemys
 
         public void ResetItem()
         {
-
+            HealthCompo.SetMaxHealth();
+            StateMachine.ChangeState(EnemyStateEnum.Idle);
         }
     }
 }

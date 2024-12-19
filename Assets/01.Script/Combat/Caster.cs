@@ -25,6 +25,7 @@ namespace Combat
         public void Cast()
         {
             _hits = Physics2D.OverlapCircleAll((Vector2)transform.position + _offset, _castRadius, _targetLayer);
+            if(_hits.Length < 1) return;
             for (int i = 0; i < _hits.Length; i++)
             {
                 for (int j = 0; j < _casters.Length; j++)
@@ -38,7 +39,7 @@ namespace Combat
 #if UNITY_EDITOR
         private void OnDrawGizmos()
         {
-            Gizmos.color = Color.green;
+            Gizmos.color = Color.red;
             Gizmos.DrawWireSphere((Vector2)transform.position + _offset, _castRadius);
         }
 #endif 
