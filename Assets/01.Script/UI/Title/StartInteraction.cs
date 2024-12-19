@@ -62,11 +62,11 @@ namespace InteractSystem
             for(int i =0;i < _movePannel.Length ; i++)
             {
                 _movePannel[i].Open();
-                yield return new WaitForSeconds(0.2f);
+                yield return new WaitForSeconds(0.1f);
             }
 
-            _lineObj.transform.DOMoveY(-9,1.5f);
-
+            _lineObj.transform.DOMoveY(-15,0.7f);
+            yield return new WaitForSeconds(1.5f); 
             SceneManager.LoadScene(_scneeName);
 
 

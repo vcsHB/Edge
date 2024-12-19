@@ -30,6 +30,7 @@ namespace WaveSystem
         {
             StartCoroutine(Wave());
         }
+
         private IEnumerator Wave()
         {
             while (true) // ���̺� ���ѷ���
