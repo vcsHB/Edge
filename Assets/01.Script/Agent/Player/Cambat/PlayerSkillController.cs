@@ -10,7 +10,7 @@ namespace Agents.Players.Combat
 
         private Queue<PlayerSkill> _skillQueue;
         private Dictionary<PlayerSkill, Skill> _skillDictionary;
-        private PlayerSkill[] _indexer;
+        private PlayerSkill[] _indexer = null;
 
 
         public void Initialize(Agent agent)
@@ -52,12 +52,14 @@ namespace Agents.Players.Combat
 
         private void HandleUseSkill1()
         {
+            if(_indexer == null) return;
             if (_indexer.Length < 1) return;
             _skillDictionary[_indexer[0]].UseSkill();
         }
 
         private void HandleUseSkill2()
         {
+            if(_indexer == null) return;
             if (_indexer.Length < 2) return;
             _skillDictionary[_indexer[1]].UseSkill();
 
