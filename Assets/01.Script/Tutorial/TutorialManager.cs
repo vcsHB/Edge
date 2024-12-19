@@ -10,7 +10,6 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private Image enterImage; // 엔터 이미지
 
     private int currentIndex = 0;        // 현재 메시지 인덱스
-    public GameObject waveManager;       // 웨이브 매니저 오브젝트
     private bool isWaveStarted = false;  // 웨이브 시작 여부
     private bool isTyping = false;       // 텍스트가 타이핑 중인지 여부
     private Coroutine typingCoroutine;   // 현재 실행 중인 타이핑 코루틴 참조
@@ -80,11 +79,5 @@ public class TutorialManager : MonoBehaviour
         isTyping = false; // 타이핑 완료
         enterImage.enabled = true; // 타이핑이 끝나면 이미지 표시
 
-        // 인덱스 7에서 웨이브 매니저 시작
-        if (currentIndex == 7 && !isWaveStarted)
-        {
-            isWaveStarted = true;
-            Instantiate(waveManager);
-        }
     }
 }
