@@ -48,6 +48,7 @@ public class EnergyBall : MonoBehaviour
             if (enemyHealth != null)
             {
                 enemyHealth.ApplyDamage(_damage);
+                Debug.Log(enemyHealth);
             }
 
             // 적 이동 속도 감소

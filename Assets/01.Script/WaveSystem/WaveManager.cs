@@ -71,7 +71,7 @@ namespace WaveSystem
             ScoreManager.Instance.PlusScore(199);
             enemyList.Remove(enemy);
             PoolManager.Instance.Push(poolable);
-            poolable.ObjectPrefab.GetComponent<Enemy>().OnDeadEvent -= HandleEnemyDie;
+            enemy.OnDeadEvent -= HandleEnemyDie;
         }
 
 
