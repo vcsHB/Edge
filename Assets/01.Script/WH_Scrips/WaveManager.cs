@@ -5,13 +5,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 namespace WaveSystem
 {
     public class WaveManager : MonoBehaviour
     {
-
+        public UnityEvent OnWaveStartEvent;
         public event Action<int> OnNextWave;
         [SerializeField] private List<WaveSO> waves;
         public Transform SpawnPoint;
@@ -38,6 +39,7 @@ namespace WaveSystem
                 {
                     WaveSO currentWave = waves[_currentWaveIndex]; // 
                     WaitForSeconds ws = new WaitForSeconds(currentWave.spawnDelay);
+                    OnWaveStartEvent?.Invoke();
                     foreach (SpawnInfo info in currentWave.enemies)
                     {
                         int enemyCount = info.amount + WaveLevel * 2; // ���̺� ������ ���� ���� ������

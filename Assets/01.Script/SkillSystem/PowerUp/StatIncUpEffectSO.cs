@@ -1,5 +1,8 @@
 ﻿
 using System;
+using Core;
+using Players;
+using StatSystem;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "SO/Items/PowerUp/Effect/StatInc")]
@@ -10,7 +13,7 @@ public class StatIncUpEffectSO : PowerUpEffectSO
     
     public override void UseEffect()
     {
-        //PlayerManager.Instance.Player.Stat.AddModifier(targetStat, increaseValue);
+        PlayerManager.Instance.Player.PlayerStatus.AddModifier(targetStat, increaseValue);
     }
 
     public override bool CanUpgradeEffect()
