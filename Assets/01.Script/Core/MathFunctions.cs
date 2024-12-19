@@ -14,4 +14,9 @@ public static class MathFunctions
     {
         return Mathf.Clamp01(x * x * x);
     }
+
+    public static float EaseInSine(float x)
+    {
+        return 1 - Mathf.Cos((x * Mathf.PI) / 2);
+    }
 }

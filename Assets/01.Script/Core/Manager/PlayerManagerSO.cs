@@ -8,6 +8,8 @@ namespace Players
     {
         private Player _player;
 
+        public static object PlayerManager { get; internal set; }
+
         public Player Player
         {
             get

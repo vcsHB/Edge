@@ -5,7 +5,7 @@ using UnityEngine.Rendering.Universal;
 namespace Managers
 {
 
-    public class VolumeManager : MonoBehaviour
+    public class VolumeManager : MonoSingleton<VolumeManager>
     {
         [SerializeField] private Volume _globalVolume;
         private ChromaticAberration _chromaticEffect;
