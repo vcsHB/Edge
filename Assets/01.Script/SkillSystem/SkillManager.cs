@@ -44,30 +44,30 @@ public class SkillManager : MonoSingleton<SkillManager>
         {
             skill.UseSkill();
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.F1))
         {
             GetSkill(PlayerSkill.EnergyBall).UseSkill();
         }
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.F2))
         {
             GetSkill(PlayerSkill.EnergyBim).UseSkill();
         }
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.F3))
         {
             GetSkill(PlayerSkill.SordBoomerang).UseSkill();
         }
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F4))
         {
             GetSkill(PlayerSkill.DataBarier).UseSkill();
         }
-        if (Input.GetKeyDown(KeyCode.H))
+        if (Input.GetKeyDown(KeyCode.F5))
         {
             GetSkill(PlayerSkill.KnifeSharpening).UseSkill();
         }
-        //if(Input.GetKeyDown(KeyCode.B))
-        //{
-        //    GetSkill(PlayerSkill.HighSpeedAttack).UseSkill();
-        //}
+        if (Input.GetKeyDown(KeyCode.F6))
+        {
+            GetSkill(PlayerSkill.HighSpeedAttack).UseSkill();
+        }
     }
 
     public T GetSkill<T>() where T : Skill
