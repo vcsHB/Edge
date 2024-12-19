@@ -3,7 +3,7 @@ namespace InteractSystem
 {
     public class UpgradeItem : InteractObject
     {
-        private PowerUpSO _powerUpSO;
+        [SerializeField] private PowerUpSO _powerUpSO;
         [SerializeField] private PlayerSkill _skillEnumType;
 
         private void Awake()
