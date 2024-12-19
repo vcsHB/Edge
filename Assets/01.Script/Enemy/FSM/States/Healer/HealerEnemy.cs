@@ -10,6 +10,8 @@ namespace Enemys
         public float skillRadius;
         public float safetyDistance;
         public LayerMask targetLayer;
+
+
         [Space]
         [Header("HealingSetting")]
         public float healingCnt;
