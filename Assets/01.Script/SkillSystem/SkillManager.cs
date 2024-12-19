@@ -64,10 +64,10 @@ public class SkillManager : MonoSingleton<SkillManager>
         {
             GetSkill(PlayerSkill.KnifeSharpening).UseSkill();
         }
-        if(Input.GetKeyDown(KeyCode.B))
-        {
-            GetSkill(PlayerSkill.HighSpeedAttack).UseSkill();
-        }
+        //if(Input.GetKeyDown(KeyCode.B))
+        //{
+        //    GetSkill(PlayerSkill.HighSpeedAttack).UseSkill();
+        //}
     }
 
     public T GetSkill<T>() where T : Skill

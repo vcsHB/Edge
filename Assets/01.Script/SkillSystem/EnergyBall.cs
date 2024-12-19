@@ -1,4 +1,5 @@
 using Agents;
+using Enemys;
 using StatSystem;
 using System.Collections;
 using UnityEngine;
@@ -14,7 +15,7 @@ public class EnergyBall : MonoBehaviour
 
     private Vector3 _direction;
 
-    private bool _isSlowed = false;  // 이동 속도 감소 상태 추적
+    private bool _isSlowed = false;  // 이미 슬로우된상태인지
 
     public void Initialize(int damage, float speed, float lifetime, LayerMask whatIsEnemy, Vector3 direction, float slowAmount, float slowDuration)
     {
@@ -26,7 +27,7 @@ public class EnergyBall : MonoBehaviour
         _slowAmount = slowAmount;
         _slowDuration = slowDuration;
 
-        // 에너지볼 속도 감소 코루틴 시작
+        // 에너지볼 속도 감소 코루틴
         StartCoroutine(SlowDownOverTime());
 
         Destroy(gameObject, _lifetime);  // 일정 시간 후 에너지볼 삭제
@@ -79,7 +80,7 @@ public class EnergyBall : MonoBehaviour
             }
 
             // 적 이동 속도 감소
-            var enemyStatus = other.GetComponent<StatusSO>();
+            var enemyStatus = other.GetComponent<Enemy>().Stat;
             if (enemyStatus != null && !_isSlowed)
             {
                 _isSlowed = true;
