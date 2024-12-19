@@ -40,7 +40,6 @@ namespace Enemys
             }
             else
                 _rbCompo.linearVelocity = Vector2.zero;
-
         }
 
         public void SetMovemenet(Vector2 movement)
