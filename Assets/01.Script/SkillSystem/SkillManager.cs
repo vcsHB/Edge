@@ -10,7 +10,6 @@ public enum PlayerSkill
     DataBarier = 4,
     KnifeSharpening = 5,
     HighSpeedAttack = 6
-
 }
 
 public class SkillManager : MonoSingleton<SkillManager>

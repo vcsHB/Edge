@@ -33,7 +33,6 @@ namespace Agents.Players
             _player.PlayerStatus.attackSpeed.AddModifier(2f);
             _noLimitDuration = _player.PlayerStatus.noLimitDuration.GetValue();
             _currentTime = 0f;
-
         }
 
         public void SetLimit()
@@ -55,7 +54,5 @@ namespace Agents.Players
                 _player.StateMachine.ChangeState("Limit");
             }
         }
-
-
     }
 }
