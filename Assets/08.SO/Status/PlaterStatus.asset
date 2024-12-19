@@ -19,7 +19,7 @@ MonoBehaviour:
     baseValue: 2
     modifier: []
   moveSpeed:
-    baseValue: 4
+    baseValue: 35
     modifier: []
   defense:
     baseValue: 2
@@ -34,5 +34,11 @@ MonoBehaviour:
     baseValue: 0.05
     modifier: []
   noLimitDuration:
-    baseValue: 10
+    baseValue: 5
+    modifier: []
+  feverFillMultiple:
+    baseValue: 0
+    modifier: []
+  scoreBonus:
+    baseValue: 0
     modifier: []

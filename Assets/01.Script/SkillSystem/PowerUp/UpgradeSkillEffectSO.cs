@@ -40,6 +40,7 @@ public class UpgradeSkillEffectSO : PowerUpEffectSO
         {
             MethodUpgrade();
         }
+        SkillManager.Instance.SelectSkill(targetSkill);
     }
 
     

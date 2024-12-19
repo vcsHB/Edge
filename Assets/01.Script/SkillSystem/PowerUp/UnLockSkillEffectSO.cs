@@ -6,11 +6,12 @@ using UnityEngine;
 public class UnLockSkillEffectSO : PowerUpEffectSO
 {
     public PlayerSkill unLockSkill;
-    
+
     public override void UseEffect()
     {
         Skill skill = SkillManager.Instance.GetSkill(unLockSkill);
         skill.UnlockSkill();
+        SkillManager.Instance.SelectSkill(unLockSkill);
     }
 
     public override bool CanUpgradeEffect()
