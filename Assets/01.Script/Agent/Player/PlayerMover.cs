@@ -100,6 +100,7 @@ namespace Agents.Players
                 _isMoving = false;
                 OnArriveEvent?.Invoke();
                 _targetPoint.Enter();
+                StopImmediately();
 
             }
         }

@@ -20,6 +20,8 @@ namespace Managers
         [SerializeField] private int _maxFeverScore;
 
         [SerializeField] private int _currentFeverFill;
+        private float _currentNoLimitedTime = 0f;
+        private float _noLimitDuration;
 
         public bool IsNoLimit { get; private set; }
 
@@ -29,6 +31,13 @@ namespace Managers
 
             _scoreBonusStat = _player.PlayerStatus.scoreBonus;
             _feverFillMultuipleStat = _player.PlayerStatus.feverFillMultiple;
+        }
+
+        private void Update()
+        {
+            if(!IsNoLimit) return;
+            _currentNoLimitedTime += Time.deltaTime;
+            OnFeverChangedEvent?.Invoke(100 -(int)(_currentNoLimitedTime / _noLimitDuration * 100), 100);
         }
 
 
@@ -55,8 +64,11 @@ namespace Managers
         private void StartNoLimit()
         {
             IsNoLimit = true;
-            PlayerManager.Instance.Player.StateMachine.ChangeState("NoLimitEnter");
-            VolumeManager.Instance.SetChromatic(0.12f);
+            _noLimitDuration = _player.PlayerStatus.noLimitDuration.GetValue();
+            _player.StateMachine.ChangeState("NoLimitEnter");
+            _currentNoLimitedTime = 0;
+
+            VolumeManager.Instance.SetChromatic(0.18f);
 
 
         }

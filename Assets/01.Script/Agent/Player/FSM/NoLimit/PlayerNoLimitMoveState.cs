@@ -12,7 +12,8 @@ namespace Agents.Players.FSM
         {
             base.UpdateState();
             Vector2 direction = _player.PlayerInput.InputDirection;
-            Debug.Log("리미트 모드 밍밍 Direction: " + direction);
+            //Debug.Log("리미트 모드 밍밍 Direction: " + direction);
+            _mover.SetMovement(direction);
 
             if (direction.magnitude < 0.1f)
             {
