@@ -19,6 +19,7 @@ namespace Agents.Players
 
         // Move
         public bool isEdgeMove;
+        private bool _isMoving = false;
         private Vector2 _previousPosition;
         private MovePoint _targetPoint;
         public float MoveDistance => Vector2.Distance(_previousPosition, _targetPoint.transform.position);
@@ -46,9 +47,10 @@ namespace Agents.Players
 
         public bool SetMoveTarget(Vector2 direction)
         {
+            if(_isMoving) return false;
             if (!isEdgeMove) return false;
             SetPreviousPos(transform.position);
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, _moveTargetDetectLength, _moveTargetLayer);
+            RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position + 2f * direction.normalized, direction, _moveTargetDetectLength, _moveTargetLayer);
 
             if (hit.collider == null)
                 return false;
@@ -57,6 +59,7 @@ namespace Agents.Players
             {
                 OnMoveStartEvent?.Invoke();
                 SetMovePoint(movePoint);
+                _isMoving = true;
             }
 
             return true;
@@ -89,11 +92,12 @@ namespace Agents.Players
 
         public void SetMovement(float ratio)
         {
-            ratio = MathFunctions.EaseInCubic(ratio);
+            ratio = MathFunctions.EaseInSine(ratio);
             Vector2 lerpPos = Vector2.Lerp(_previousPosition, _targetPoint.transform.position, ratio);
             transform.position = lerpPos;
             if (ratio >= 1f)
             {
+                _isMoving = false;
                 OnArriveEvent?.Invoke();
                 _targetPoint.Enter();
 

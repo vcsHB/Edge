@@ -4,6 +4,7 @@ using UnityEngine;
 [CustomEditor(typeof(PowerUpSO))]
 public class CustomPowerUp : Editor
 {
+    private SerializedProperty idProp;
     private SerializedProperty codeProp;
     private SerializedProperty shouldBeUnlockProp;
     private SerializedProperty titleProp;
@@ -19,6 +20,7 @@ public class CustomPowerUp : Editor
     {
         //왜했는지 기억나니? 텍스트 입력에 포커스 
         GUIUtility.keyboardControl = 0;
+        idProp = serializedObject.FindProperty("id");
         codeProp = serializedObject.FindProperty("code");
         shouldBeUnlockProp = serializedObject.FindProperty("shouldBeUnlock");
         titleProp = serializedObject.FindProperty("title");
@@ -55,9 +57,11 @@ public class CustomPowerUp : Editor
             EditorGUILayout.BeginVertical();
             {
 
+                EditorGUILayout.PropertyField(idProp);
                 EditorGUILayout.BeginHorizontal();
                 {
                     EditorGUI.BeginChangeCheck();
+
                     string prevName = codeProp.stringValue;
                     EditorGUILayout.PrefixLabel("Code");
                     EditorGUILayout.DelayedTextField(codeProp, GUIContent.none);
