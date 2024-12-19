@@ -48,6 +48,7 @@ namespace Core
         public void ShowDescription(PowerUpSO powerUp, Vector2 position)
         {
             _descriptionPanel.SetPowerUp(powerUp);
+            //_descriptionPanel.transform.position = 
         }
 
 

@@ -15,4 +15,4 @@ MonoBehaviour:
   code: UnLimitSpeed
   type: 0
   targetStat: 8
-  increaseValue: 0
+  increaseValue: 1
