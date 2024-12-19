@@ -29960,6 +29960,7 @@ MonoBehaviour:
   _duration: 0.1
   _isActive: 1
   _currentScore: {fileID: 254408191}
+  _impactScale: {x: 1.6, y: 1.6, z: 1}
 --- !u!1 &1772440917
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using Enemys;
 using Managers;
+using ObjectManage;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace WaveSystem
         public int WaveLevel { get; private set; } = 1; //���̺� ī��Ʈ
         [SerializeField] private float _spawnRadius = 1f;
 
-        
+
 
         private void Start()
         {
@@ -37,17 +38,21 @@ namespace WaveSystem
                 {
                     WaveSO currentWave = waves[_currentWaveIndex]; // 
                     WaitForSeconds ws = new WaitForSeconds(currentWave.spawnDelay);
-                    foreach(SpawnInfo info in currentWave.enemies)
+                    foreach (SpawnInfo info in currentWave.enemies)
                     {
                         int enemyCount = info.amount + WaveLevel * 2; // ���̺� ������ ���� ���� ������
-                        for(int i = 0; i < enemyCount; i++)
+                        for (int i = 0; i < enemyCount; i++)
                         {
                             //WHTestEnemy enemy = Instantiate(
                             //info.enemyPrefab, SpawnPoint.transform.position, Quaternion.identity); // ���߿� Ǯ������ �ٲ�� ��.
                             Enemy enemy = PoolManager.Instance.Pop(info.enemyPrefab) as Enemy;
                             enemy.OnDeadEvent += HandleEnemyDie;
                             enemyList.Add(enemy);
-                            enemy.transform.position = (Vector2)SpawnPoint.position + UnityEngine.Random.insideUnitCircle * _spawnRadius;
+                            Vector2 randomPos = (Vector2)SpawnPoint.position + UnityEngine.Random.insideUnitCircle * _spawnRadius; ;
+                            enemy.transform.position = randomPos;
+                            VFXPlayer vfxPlayer = PoolManager.Instance.Pop(ObjectPooling.PoolingType.EnemySpawnVFX) as VFXPlayer;
+                            vfxPlayer.transform.position = randomPos;
+                            vfxPlayer.Play();
                             // ���ʹ� ���� ����
 
                             yield return ws;
