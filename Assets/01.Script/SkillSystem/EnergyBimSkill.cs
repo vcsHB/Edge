@@ -9,7 +9,7 @@ using InputManage; // PlayerInput 네임스페이스 참조
 
 public class EnergyBimSkill : Skill
 {
-    public float damagePerSecond = 50f; // 초당 피해량
+    public float damagePerSecond = 20f; // 초당 피해량
     public float duration = 0.75f;         // 빔 지속 시간
     [SerializeField] private EnergyBim _energyBimPrefab;
     [SerializeField] private PlayerInput _playerInput; // PlayerInput 참조
