@@ -1,3 +1,4 @@
+using Core;
 using DG.Tweening;
 using InputManage;
 using UnityEngine;
@@ -77,6 +78,7 @@ namespace UIManage
                         _canvasGroup.blocksRaycasts = false;
                         _isActive = false;
                          Time.timeScale = 1f;
+                         SoundManager.Instance.SaveSoundData();
 
                     });
                 });
