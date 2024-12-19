@@ -3163,7 +3163,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1c8bc689a426d1148b04118207e16013, type: 2}
   SpawnPoint: {fileID: 1471583211}
   enemyList: []
-  _spawnRadius: 2.5
+  _spawnRadius: 4
 --- !u!4 &942916379
 Transform:
   m_ObjectHideFlags: 0
@@ -11572,6 +11572,14 @@ PrefabInstance:
     - target: {fileID: 1371713252667552057, guid: b88d2512a2b0561498aa779d7be028c7, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2091012472551295688, guid: b88d2512a2b0561498aa779d7be028c7, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2708355891839848425, guid: b88d2512a2b0561498aa779d7be028c7, type: 3}
+      propertyPath: _castRadius
+      value: 2.29
       objectReference: {fileID: 0}
     - target: {fileID: 3084783225414105228, guid: b88d2512a2b0561498aa779d7be028c7, type: 3}
       propertyPath: _aim

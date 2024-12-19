@@ -19,7 +19,7 @@ MonoBehaviour:
     baseValue: 2
     modifier: []
   moveSpeed:
-    baseValue: 9
+    baseValue: 35
     modifier: []
   defense:
     baseValue: 2

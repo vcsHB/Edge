@@ -18,4 +18,5 @@ MonoBehaviour:
   title: 
   description: 
   icon: {fileID: 0}
-  effectList: []
+  effectList:
+  - {fileID: 11400000, guid: 98a825e99fd935545af8fc21583cde31, type: 2}

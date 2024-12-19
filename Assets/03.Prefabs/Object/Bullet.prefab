@@ -137,6 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <type>k__BackingField: 1
   _speed: 10
+  _breakVFXType: 10
 --- !u!50 &3081863218373399471
 Rigidbody2D:
   serializedVersion: 5
@@ -251,7 +252,7 @@ MonoBehaviour:
   _offset: {x: 0, y: 0}
   _targetLayer:
     serializedVersion: 2
-    m_Bits: 1088
+    m_Bits: 1600
   _castRadius: 0.3
   _castTargetMaxAmount: 2
 --- !u!114 &403125093461781174

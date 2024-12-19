@@ -19,7 +19,7 @@ namespace Agents.Players.Combat
             _player = agent as Player;
             //_player.PlayerInput.OnAttackEvent += HandleAttackEvent;
 
-            foreach(PlayerWeapon weapon in _weapons)
+            foreach (PlayerWeapon weapon in _weapons)
             {
                 weapon.Initialize(_player);
             }
@@ -45,8 +45,16 @@ namespace Agents.Players.Combat
             _currentWeaponIndex = index;
             CurrentWeapon.SetEnabled();
         }
+        private void Update()
+        {
+            Vector2 mousePos = _player.PlayerInput.MousePosition;
+            Vector2 direction = mousePos - (Vector2)transform.position;
+            direction.Normalize();
 
-      
+            _weaponHandleTrm.localPosition = direction * _weaponDistance;
+        }
+
+
 
         private void HandleAttackEvent() // 폐기
         {

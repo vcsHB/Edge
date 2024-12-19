@@ -254,6 +254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <type>k__BackingField: 8
   _speed: 30
+  _breakVFXType: 9
 --- !u!114 &7259077728673176664
 MonoBehaviour:
   m_ObjectHideFlags: 0
