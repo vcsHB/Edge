@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 6644969473562622143}
   - component: {fileID: 2360962794970160373}
   - component: {fileID: 6030000653343015215}
-  - component: {fileID: 7459926771030276206}
   - component: {fileID: 1173496164728293524}
+  - component: {fileID: 7459926771030276206}
   m_Layer: 0
   m_Name: SkillManager
   m_TagString: Untagged
@@ -173,27 +173,6 @@ MonoBehaviour:
   explosionRadius: 3
   explosionDamage: 60
   _barierPrefab: {fileID: 7959739239863602447, guid: c2da6ef80f1e214498356323a8f95f0e, type: 3}
---- !u!114 &7459926771030276206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2166436181107525681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adf63594e79919b44bfd9a49a9e29c4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillEnabled: 1
-  _cooldown: 3
-  _isAutoSkill: 0
-  player: {fileID: 0}
-  whatIsEnemy:
-    serializedVersion: 2
-    m_Bits: 128
-  _playerStatus: {fileID: 11400000, guid: 0c61b65f7174ab44b95ecb1194836950, type: 2}
-  duration: 5
 --- !u!114 &1173496164728293524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,3 +194,23 @@ MonoBehaviour:
     m_Bits: 128
   duration: 5
   attackIncrease: 20
+--- !u!114 &7459926771030276206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2166436181107525681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adf63594e79919b44bfd9a49a9e29c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillEnabled: 1
+  _cooldown: 3
+  _isAutoSkill: 0
+  player: {fileID: 0}
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 128
+  duration: 5
