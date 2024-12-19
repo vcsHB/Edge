@@ -1267,6 +1267,9 @@ MonoBehaviour:
   OnHealthChangedEvent:
     m_PersistentCalls:
       m_Calls: []
+  OnDamagedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   OnDieEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1295,7 +1298,14 @@ MonoBehaviour:
   _isOnceInteract: 0
   _canInteract: 1
   _scneeName: GameScene
-  _movePanel: []
+  _movePanel:
+  - {fileID: 1375512175}
+  - {fileID: 2059030792}
+  - {fileID: 1339843958}
+  - {fileID: 1487902553}
+  - {fileID: 1747367369}
+  - {fileID: 208481111}
+  - {fileID: 2066981958}
   _lineObj: {fileID: 1754338650}
   _menuText: {fileID: 1019394291}
   _baseSize: 6
@@ -2200,6 +2210,9 @@ MonoBehaviour:
   OnHealthChangedEvent:
     m_PersistentCalls:
       m_Calls: []
+  OnDamagedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   OnDieEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -2355,6 +2368,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnHealthChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDamagedEvent:
     m_PersistentCalls:
       m_Calls: []
   OnDieEvent:
@@ -2692,7 +2708,7 @@ MonoBehaviour:
   - {fileID: 2059030792}
   - {fileID: 1375512175}
   _player: {fileID: 883069985}
-  _soundSO: {fileID: 11400000, guid: a0a2580f947195b43af00cb192286ea1, type: 2}
+  _soundSO: {fileID: 11400000, guid: b8234a0b647ccf4469bcf0f4ef0057f7, type: 2}
   _lineObj: {fileID: 1754338650}
 --- !u!4 &964160921
 Transform:
@@ -6942,6 +6958,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnHealthChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDamagedEvent:
     m_PersistentCalls:
       m_Calls: []
   OnDieEvent:
