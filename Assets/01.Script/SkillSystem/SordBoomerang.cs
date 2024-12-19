@@ -5,20 +5,20 @@ public class SordBoomerang : MonoBehaviour
 {
     public float damage = 30f;             // 충돌 시 피해량
     public float duration = 1f;           // 전체 비행 시간 (0.5초 앞으로, 0.5초 뒤로)
-    public AnimationCurve easeCurve;      // 검 회오리 애니메이션 커브
-    public LayerMask enemyLayer;          // 적 레이어
-    private Transform owner;              // 검을 던지는 주체 (플레이어)
+    public AnimationCurve easeCurve;      // 검 회오리
+    public LayerMask enemyLayer;          
+    private Transform owner;               // 검을 던지는 주체 (플레이어)
 
-    private Vector2 _startPosition;       // 시작 위치
-    private Vector2 _targetPosition;      // 목표 위치
-    private float _elapsedTime = 0f;      // 경과 시간
+    private Vector3 _startPosition;
+    private Vector3 _targetPosition;
+    private float _elapsedTime = 0f;
     private bool _isReturning = false;    // 현재 돌아오는 중인지 여부
 
-    public void Initialize(Vector2 targetPosition)
+    public void Initialize(Vector3 targetPosition)
     {
         _startPosition = transform.position;
         _targetPosition = targetPosition;
-        owner = GameObject.Find("Player").transform;
+        owner = GameObject.Find("Player").GetComponent<Transform>();
     }
 
     private void Update()
@@ -32,13 +32,13 @@ public class SordBoomerang : MonoBehaviour
         if (_isReturning)
         {
             // 돌아오는 경우
-            transform.position = Vector2.Lerp(_targetPosition, _startPosition, easedT);
-            if (t >= 1f) Destroy(gameObject); // 돌아오면 삭제
+            transform.position = Vector3.Lerp(_targetPosition, _startPosition, easedT);
+            if (t >= 1f) Destroy(gameObject);
         }
         else
         {
             // 앞으로 날아가는 경우
-            transform.position = Vector2.Lerp(_startPosition, _targetPosition, easedT);
+            transform.position = Vector3.Lerp(_startPosition, _targetPosition, easedT);
             if (t >= 1f)
             {
                 _isReturning = true;
@@ -47,11 +47,9 @@ public class SordBoomerang : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter(Collider other)
     {
-        // 적 레이어 감지
-        Debug.Log("부메랑");
-        if ((enemyLayer & (1 << other.gameObject.layer)) > 0)
+        if ((enemyLayer.value & (1 << other.gameObject.layer)) > 0)
         {
             var enemyHealth = other.GetComponent<Health>();
             if (enemyHealth != null)
