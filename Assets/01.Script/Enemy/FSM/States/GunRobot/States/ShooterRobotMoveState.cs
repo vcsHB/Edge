@@ -14,7 +14,6 @@ namespace Enemys
         public override void Enter()
         {
             base.Enter();
-            _enemy.CanMove = true;
             _moveTime = _enemy.moveTime;
         }
 
