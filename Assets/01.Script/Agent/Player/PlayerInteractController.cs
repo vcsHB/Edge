@@ -41,11 +41,15 @@ namespace Agents.Players
             if(hit == null) return;
             if (hit.transform.TryGetComponent(out IInteractable interactable))
             {
-                if (_currentInteractObject != null)
+                if (_currentInteractObject == interactable)
+                    return;
+
+                if (_currentInteractObject != null )
                     _currentInteractObject.UnDetect();
 
                 _currentInteractObject = interactable;
                 _currentInteractObject.Detect();
+
             }
         }
 
@@ -58,6 +62,15 @@ namespace Agents.Players
             _currentInteractObject.Interact(_player);
             
         }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere
+                (transform.position, _detectRadius);
+        }
     }
+
+    
 
 }
