@@ -66,13 +66,13 @@ namespace ObjectManage
         public void Enter()
         {
             //_collider.enabled = false;
-            _healthCompo.isResist = false;
+            //_healthCompo.isResist = false;
         }
 
         public void Exit()
         {
             //_collider.enabled = true;
-            _healthCompo.isResist = true;
+            //_healthCompo.isResist = true;
         }
 
 

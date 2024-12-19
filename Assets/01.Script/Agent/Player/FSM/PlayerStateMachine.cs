@@ -20,7 +20,9 @@ namespace Agents.Players.FSM
         {
             AddState("Idle");
             AddState("Move");
+            AddState("NoLimitEnter");
             AddState("NoLimitIdle");
+            AddState("NoLimitMove");
             AddState("Limit");
 
             if (_stateDictionary.TryGetValue(firstState, out PlayerState state))

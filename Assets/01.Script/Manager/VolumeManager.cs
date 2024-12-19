@@ -18,7 +18,7 @@ namespace Managers
 
         public void HandleChromaticActive()
         {
-            SetChromatic(1.5f);
+            SetChromatic(0.13f);
         }
 
         public void HandleChromaticDisable()
