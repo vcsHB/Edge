@@ -8,10 +8,10 @@ using InputManage;
 public class EnergyBallSkill : Skill
 {
     public int damage = 4;          // 피해량
-    public float speed = 3f;        // 초기 속도
+    public float speed = 10f;        // 초기 속도
     public float lifetime = 1.5f;    // 에너지볼 지속시간
     public float slowDuration = 1.5f; // 적 이동 속도 감소 지속 시간
-    public float slowAmount = 0.25f; // 이동 속도 감소율
+    public float slowAmount = 0.25f; // 에너지볼 이동 속도 감소율
 
     [SerializeField] private EnergyBall _energyBallPrefab;
     [SerializeField] private Transform _playerTrm;

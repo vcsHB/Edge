@@ -4979,7 +4979,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9209335952989870115, guid: 57e71bae09a47844bb3005525639c4fd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.12
+      value: 2.95
       objectReference: {fileID: 0}
     - target: {fileID: 9209335952989870115, guid: 57e71bae09a47844bb3005525639c4fd, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5138,7 +5138,6 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 128
-  _playerStatus: {fileID: 11400000, guid: 0c61b65f7174ab44b95ecb1194836950, type: 2}
   duration: 5
   attackIncrease: 20
 --- !u!114 &208810761
@@ -5162,8 +5161,10 @@ MonoBehaviour:
     m_Bits: 128
   damagePerSecond: 50
   duration: 0.75
+  knockbackForce: 10
   _energyBimPrefab: {fileID: 904835755987472457, guid: a847208c510c0cb429ddb551d4c5db93, type: 3}
   _playerInput: {fileID: 11400000, guid: b24ab240d3078af4cb0f6ee35d4f7fdd, type: 2}
+  _playerMover: {fileID: 1083011078}
 --- !u!114 &208810762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5184,7 +5185,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   damage: 4
-  speed: 1
+  speed: 10
   lifetime: 5
   slowDuration: 1.5
   slowAmount: 0.25
@@ -5215,7 +5216,6 @@ MonoBehaviour:
   explosionRadius: 3
   explosionDamage: 60
   _barierPrefab: {fileID: 7959739239863602447, guid: c2da6ef80f1e214498356323a8f95f0e, type: 3}
-  _playerStatus: {fileID: 11400000, guid: 0c61b65f7174ab44b95ecb1194836950, type: 2}
 --- !u!114 &208810764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5684,7 +5684,7 @@ Transform:
   m_GameObject: {fileID: 1083011073}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.79, y: 0.47, z: 0}
+  m_LocalPosition: {x: -6.14, y: 0.47, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
