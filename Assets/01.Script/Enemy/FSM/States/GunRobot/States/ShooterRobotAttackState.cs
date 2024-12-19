@@ -12,6 +12,7 @@ namespace Enemys
         private Vector3 _playerPos;
         private int _bulletCnt;
         private bool _isShooting = false;
+
         
         public ShooterRobotAttackState(Enemy enemy, AnimParamSO anim) : base(enemy, anim)
         {
@@ -36,12 +37,19 @@ namespace Enemys
         public override void Attack()
         {
             base.Attack();
-            Bullet bullet1 = PoolManager.Instance.Pop(PoolingType.EnemyBullet) as Bullet;
-            Bullet bullet2 = PoolManager.Instance.Pop(PoolingType.EnemyBullet) as Bullet;
-            bullet1.transform.position = _enemy.bulletFirePos[0].position;
-            bullet2.transform.position = _enemy.bulletFirePos[1].position;
-            bullet1.transform.up = _renderer.transform.up;
-            bullet2.transform.up = _renderer.transform.up;
+            Bullet bullet = PoolManager.Instance.Pop(PoolingType.EnemyBullet) as Bullet;
+            if(_bulletCnt % 2 == 0)
+            {
+                bullet.transform.position = _enemy.bulletFirePos[0].position;
+                _bulletCnt--;
+            }
+            else
+            {
+                bullet.transform.position = _enemy.bulletFirePos[1].position;
+                _bulletCnt--;
+            }
+
+            bullet.transform.up = _renderer.transform.up;
         }
 
         public override void Update()
@@ -49,7 +57,6 @@ namespace Enemys
             base.Update();
             if(_isAnimationEnd)
             {
-                _bulletCnt--;
                 _enemy.ChangeState(EnemyStateEnum.Attack);
             }
 

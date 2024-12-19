@@ -8,6 +8,7 @@ namespace Enemys
         public int bulletCnt;
         public float moveTime;
         public Transform [] bulletFirePos;
+        public float safetyDistance;
     }
 }
 
