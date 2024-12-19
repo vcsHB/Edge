@@ -2,6 +2,7 @@ using Agents;
 using UnityEngine;
 using System.Collections;
 using StatSystem;
+using Agents.Players;
 
 public class DataBarierSkill : Skill
 {
@@ -13,7 +14,7 @@ public class DataBarierSkill : Skill
     public float explosionDamage = 60f;     // 폭발 피해량(60)
     private Transform playerTrm;
     [SerializeField] private DataBarier _barierPrefab; // 배리어 프리팹
-    [SerializeField] private PlayerStatusSO _playerStatus; // 플레이어 스탯
+    private PlayerStatusSO _playerStatus;
 
     private Health _playerHealth;           // 플레이어의 체력 컴포넌트
 
@@ -21,10 +22,9 @@ public class DataBarierSkill : Skill
     {
         playerTrm = GameObject.Find("Player").transform;
         _playerHealth = playerTrm.GetComponent<Health>();
-        if (_playerHealth == null)
-        {
-            Debug.LogError("Health 컴포넌트가 연결되지 않음.");
-        }
+      
+        _playerStatus = playerTrm.GetComponent<Player>().PlayerStatus;
+
     }
 
     public override bool UseSkill()
