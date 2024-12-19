@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 819450640584964109}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.325, y: 0.371, z: 0}
+  m_LocalPosition: {x: 0.654, y: 0.749, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -100,7 +100,7 @@ Transform:
   m_GameObject: {fileID: 4149086233234752534}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.333, y: 0.372, z: 0}
+  m_LocalPosition: {x: -0.672, y: 0.744, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -376,7 +376,7 @@ MonoBehaviour:
   <type>k__BackingField: 3
   dropScore: 15
   bulletCnt: 2
-  moveTime: 0.5
+  moveTime: 1.5
   bulletFirePos:
   - {fileID: 78013906605956156}
   - {fileID: 4610823013058538726}

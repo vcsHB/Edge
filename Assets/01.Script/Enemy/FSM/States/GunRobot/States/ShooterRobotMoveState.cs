@@ -21,7 +21,7 @@ namespace Enemys
         {
             base.Update();
 
-            if ((_enemy.PlayerManager.PlayerTrm.position - _enemy.transform.position).sqrMagnitude < 4)
+            if (Vector2.Distance(_enemy.PlayerManager.PlayerTrm.position, _enemy.transform.position) < _enemy.safetyDistance) 
                 _enemy.CanMove = false;
             else
                 _enemy.CanMove = true;

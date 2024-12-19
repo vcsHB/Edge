@@ -6,7 +6,7 @@ namespace Enemys
 {
     public enum EnemyStateEnum
     {
-        Idle,Move,Attack,Dead
+        Idle,Move,Attack,Dead,Skill
     }
 
     [CreateAssetMenu(fileName = "EnemyStateListSO", menuName = "SO/EnemyFSM/StateListSO")]

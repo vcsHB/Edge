@@ -36,9 +36,8 @@ namespace Enemys
                 _enemy.CanMove = false;
             else
             {
-                
-            }
                 _enemy.CanMove = true;
+            }
 
             if (_listTime + _enemy.attackCoolTime > Time.time && _listTime != 0)
                 return;
