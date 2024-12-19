@@ -1,5 +1,7 @@
 using Agents.Players;
 using DG.Tweening;
+using ObjectPooling;
+using SoundManage;
 using System.Collections;
 using TMPro;
 using UIManage;
@@ -11,21 +13,23 @@ namespace InteractSystem
     public class StartInteraction : InteractObject
     {
         [SerializeField] private string _scneeName;
-        [SerializeField] private UIMovePanel[] _movePannel;
+        [SerializeField] private TitleUIMovePanel[] _movePanel;
         [SerializeField] private GameObject _lineObj;
         [SerializeField] private TextMeshPro _menuText;
         [SerializeField] int _baseSize, _selectedFornt;
         [SerializeField] PlayerMover playerMove;
+        [SerializeField] private SoundSO _soundSO;
 
         private Vector3 _baseScale;
         private Tween fontSizeTween;
-
+        private SoundSO _cloneSoundSO;
 
         private void Awake()
         {
             OnUnDetectedEvent.AddListener(Clear);
             OnDetectedEvent.AddListener(PannelConnection);
             //_baseScale = transform.localScale;
+            _cloneSoundSO = Instantiate(_soundSO);
         }
 
         private void PannelConnection()
@@ -59,10 +63,13 @@ namespace InteractSystem
 
         private IEnumerator MovePanels()
         {
-            for(int i =0;i < _movePannel.Length ; i++)
+            for(int i =0;i < _movePanel.Length ; i++)
             {
-                _movePannel[i].Open();
+                _movePanel[i].Open();
                 yield return new WaitForSeconds(0.1f);
+                SoundPlayer soundPlayer = PoolManager.Instance.Pop(PoolingType.SoundPlayer) as SoundPlayer;
+                _cloneSoundSO.volume -= 0.1f;
+                soundPlayer.PlaySound(_cloneSoundSO);
             }
 
             _lineObj.transform.DOMoveY(-15,0.7f);
