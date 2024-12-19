@@ -68,8 +68,8 @@ namespace WaveSystem
         private void HandleEnemyDie(IPoolable poolable)
         {
             Enemy enemy = poolable as Enemy;
-            ScoreManager.Instance.PlusScore(199);
             enemyList.Remove(enemy);
+
             PoolManager.Instance.Push(poolable);
             enemy.OnDeadEvent -= HandleEnemyDie;
         }

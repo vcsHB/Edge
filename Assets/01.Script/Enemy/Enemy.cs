@@ -75,6 +75,7 @@ namespace Enemys
 
         public void ResetItem()
         {
+
         }
     }
 }
