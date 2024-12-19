@@ -8,7 +8,7 @@ public class TutorialManager : MonoBehaviour
     public float typingSpeed = 0.05f;    // 타이핑 속도 (글자당 딜레이)
 
     private int currentIndex = 0;        // 현재 메시지 인덱스
-    public GameObject waveManager;       // 웨이브 매니저 오브젝트
+    [SerializeField] GameObject waveManager;       // 웨이브 매니저 오브젝트
     private bool isWaveStarted = false;  // 웨이브 시작 여부
     private bool isTyping = false;       // 텍스트가 타이핑 중인지 여부
     private Coroutine typingCoroutine;   // 현재 실행 중인 타이핑 코루틴 참조
