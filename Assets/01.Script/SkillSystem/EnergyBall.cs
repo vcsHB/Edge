@@ -39,30 +39,36 @@ public class EnergyBall : MonoBehaviour
         transform.position += _direction * _speed * Time.deltaTime;
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if ((_whatIsEnemy.value & (1 << other.gameObject.layer)) > 0)
+
+        if (((1 << other.gameObject.layer) & _whatIsEnemy) != 0)
         {
+
             // 적에게 피해 적용
             var enemyHealth = other.GetComponent<Health>();
             if (enemyHealth != null)
             {
                 enemyHealth.ApplyDamage(_damage);
-                Debug.Log(enemyHealth);
+                Debug.Log("에너미 체력 감소");
             }
-
-            // 적 이동 속도 감소
-            var enemyStatus = other.GetComponent<StatusSO>();
-            if (enemyStatus != null)
+            else
             {
-                float slowEffect = enemyStatus.moveSpeed.GetValue() * -_slowAmount;
-                enemyStatus.moveSpeed.AddModifier(slowEffect);
-
-                DOVirtual.DelayedCall(_slowDuration, () =>
-                {
-                    enemyStatus.moveSpeed.RemoveModifier(slowEffect);
-                });
+                Debug.Log("예외");
             }
+
+            //// 적 이동 속도 감소
+            //var enemyStatus = other.GetComponent<StatusSO>();
+            //if (enemyStatus != null)
+            //{
+            //    float slowEffect = enemyStatus.moveSpeed.GetValue() * -_slowAmount;
+            //    enemyStatus.moveSpeed.AddModifier(slowEffect);
+
+            //    DOVirtual.DelayedCall(_slowDuration, () =>
+            //    {
+            //        enemyStatus.moveSpeed.RemoveModifier(slowEffect);
+            //    });
+            //}
         }
     }
 }
