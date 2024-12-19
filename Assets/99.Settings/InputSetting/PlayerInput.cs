@@ -63,6 +63,13 @@ namespace InputManage
             
         }
 
+        public void OnUseSkill1(InputAction.CallbackContext context)
+        {
+        }
+
+        public void OnUseSkill2(InputAction.CallbackContext context)
+        {
+        }
     }
 
 }

@@ -11,7 +11,6 @@ namespace Enemys
         public LayerMask targetLayer;
         public DamageCaster DamageCaster { get; private set; }
 
-
         public Transform attackObj;
 
         protected override void Awake()
@@ -20,6 +19,13 @@ namespace Enemys
             DamageCaster = GetComponentInChildren<DamageCaster>();
 
         }
+
+        public override void Dead()
+        {
+            base.Dead();
+            attackObj.gameObject.SetActive(false);
+        }
+
 #if UNITY_EDITOR
         private void OnDrawGizmos()
         {

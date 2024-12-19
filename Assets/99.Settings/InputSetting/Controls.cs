@@ -62,6 +62,24 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Hold"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UseSkill1"",
+                    ""type"": ""Button"",
+                    ""id"": ""ec174a10-202b-458c-b6d3-93255f87327b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UseSkill2"",
+                    ""type"": ""Button"",
+                    ""id"": ""81f68a4b-8b41-40f1-9dae-d3cebd96ae67"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -299,7 +317,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""1c04ea5f-b012-41d1-a6f7-02e963b52893"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
@@ -315,6 +333,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9624e013-767f-4809-a97f-6ce5386be7b0"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseSkill1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5ddc9a60-9251-4e52-8866-089af0f775d3"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseSkill2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -418,6 +458,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Mouse = m_Player.FindAction("Mouse", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_UseSkill1 = m_Player.FindAction("UseSkill1", throwIfNotFound: true);
+        m_Player_UseSkill2 = m_Player.FindAction("UseSkill2", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Esc = m_UI.FindAction("Esc", throwIfNotFound: true);
@@ -492,6 +534,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Mouse;
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_UseSkill1;
+    private readonly InputAction m_Player_UseSkill2;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -500,6 +544,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Mouse => m_Wrapper.m_Player_Mouse;
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @UseSkill1 => m_Wrapper.m_Player_UseSkill1;
+        public InputAction @UseSkill2 => m_Wrapper.m_Player_UseSkill2;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -521,6 +567,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @UseSkill1.started += instance.OnUseSkill1;
+            @UseSkill1.performed += instance.OnUseSkill1;
+            @UseSkill1.canceled += instance.OnUseSkill1;
+            @UseSkill2.started += instance.OnUseSkill2;
+            @UseSkill2.performed += instance.OnUseSkill2;
+            @UseSkill2.canceled += instance.OnUseSkill2;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -537,6 +589,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @UseSkill1.started -= instance.OnUseSkill1;
+            @UseSkill1.performed -= instance.OnUseSkill1;
+            @UseSkill1.canceled -= instance.OnUseSkill1;
+            @UseSkill2.started -= instance.OnUseSkill2;
+            @UseSkill2.performed -= instance.OnUseSkill2;
+            @UseSkill2.canceled -= instance.OnUseSkill2;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -651,6 +709,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnMouse(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnUseSkill1(InputAction.CallbackContext context);
+        void OnUseSkill2(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
