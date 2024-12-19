@@ -1,3 +1,4 @@
+using System.Transactions;
 using InteractSystem;
 using UnityEngine;
 
@@ -37,6 +38,7 @@ namespace Agents.Players
         private void DetectInterctTarget()
         {
             Collider2D hit = Physics2D.OverlapCircle(transform.position, _detectRadius, _targetLayer);
+            if(hit == null) return;
             if (hit.transform.TryGetComponent(out IInteractable interactable))
             {
                 if (_currentInteractObject != null)

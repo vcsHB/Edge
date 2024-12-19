@@ -26,14 +26,14 @@ public class CustomPowerEffectSO : Editor
             EditorGUILayout.PrefixLabel("Code");
             EditorGUILayout.DelayedTextField(codeProp, GUIContent.none);
 
-            if(EditorGUI.EndChangeCheck())
+            if (EditorGUI.EndChangeCheck())
             {
                 string assetPath = AssetDatabase.GetAssetPath(target);
                 string newName = $"Effect_{codeProp.stringValue}";
                 serializedObject.ApplyModifiedProperties();
 
                 string msg = AssetDatabase.RenameAsset(assetPath, newName);
-                if(string.IsNullOrEmpty(msg))
+                if (string.IsNullOrEmpty(msg))
                 {
                     target.name = newName;
                     EditorGUILayout.EndHorizontal();
@@ -47,7 +47,7 @@ public class CustomPowerEffectSO : Editor
         GUI.enabled = false; //변수 편집을 까버리는 거
         EditorGUILayout.PropertyField(typeProp);
         GUI.enabled = true;
-        
+
         //끝날때 꼭 해야하는것
         serializedObject.ApplyModifiedProperties();
     }

@@ -30,6 +30,7 @@ namespace Agents.Players.FSM
 
         private void HandleMovement(Vector2 vector)
         {
+            if(vector.magnitude < 0.1f) return;
             if(_mover.SetMoveTarget(vector))
                 _stateMachine.ChangeState("Move");
         }
