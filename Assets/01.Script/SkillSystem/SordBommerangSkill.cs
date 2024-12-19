@@ -9,7 +9,6 @@ public class SordBoomerangSkill : Skill
     public float boomerangDuration = 1f;   // 부메랑의 전체 비행 시간
     public float damage = 30f;             // 부메랑 피해량
     public AnimationCurve easeCurve;       // 부메랑의 움직임 곡선
-    public LayerMask enemyLayer;           // 적 레이어
     [SerializeField] private SordBoomerang _boomerangPrefab; // 부메랑 프리팹
     [SerializeField] private PlayerInput _playerInput;       
 
@@ -39,6 +38,6 @@ public class SordBoomerangSkill : Skill
         boomerang.damage = damage;
         boomerang.duration = boomerangDuration;
         boomerang.easeCurve = easeCurve;
-        boomerang.enemyLayer = enemyLayer;
+        boomerang.enemyLayer = whatIsEnemy;
     }
 }

@@ -4961,6 +4961,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5015943054266422757, guid: 57e71bae09a47844bb3005525639c4fd, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3243062928147619045, guid: 57e71bae09a47844bb3005525639c4fd, type: 3}
       propertyPath: m_CollisionDetection
       value: 1
@@ -5016,10 +5020,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9091508977194539842, guid: 57e71bae09a47844bb3005525639c4fd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1339708226}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57e71bae09a47844bb3005525639c4fd, type: 3}
 --- !u!1 &208810755
 GameObject:
@@ -5115,9 +5116,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 128
   _boomerangPrefab: {fileID: 756817803827202842, guid: f47101f7a164b9a4685dc61251a2c1f5, type: 3}
   _playerInput: {fileID: 11400000, guid: b24ab240d3078af4cb0f6ee35d4f7fdd, type: 2}
 --- !u!114 &208810760
@@ -5967,48 +5965,6 @@ Transform:
   - {fileID: 1683127643}
   m_Father: {fileID: 1829369453}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1339708221 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9091508977194539842, guid: 57e71bae09a47844bb3005525639c4fd, type: 3}
-  m_PrefabInstance: {fileID: 166998374}
-  m_PrefabAsset: {fileID: 0}
---- !u!70 &1339708226
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1339708221}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
-  m_Direction: 0
 --- !u!1 &1683127642
 GameObject:
   m_ObjectHideFlags: 0
