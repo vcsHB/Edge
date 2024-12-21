@@ -1,19 +1,28 @@
 using Agents;
+using ObjectManage;
+using ObjectPooling;
 using Players;
 using StatSystem;
+using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Enemys
 {
-    public class Enemy : Agent
+    public class Enemy : Agent, IPoolable
     {
         public PlayerManagerSO PlayerManager;
         [SerializeField] private EnemyStateListSO states;
+        public Action<Enemy> OnDeadEvent;
         [field:SerializeField]public StatusSO Stat{get;private set;}
         public Health HealthCompo{get; private set;}
 
         public bool CanMove { get; set; } = true;
         public EnemyStateMachine StateMachine { get; private set; }
+        [field:SerializeField]public PoolingType type { get ; set ; }
+        public int dropScore;
+
+        public GameObject ObjectPrefab => gameObject;
 
         protected override void Awake()
         {
@@ -22,6 +31,7 @@ namespace Enemys
             StateMachine.Initialize(EnemyStateEnum.Idle);
             HealthCompo = GetComponent<Health>();
             HealthCompo.Initialize(Stat.health.GetValue());
+           // HealthCompo.OnDieEvent.AddListener(Dead);
         }
 
         private void Update()
@@ -34,7 +44,46 @@ namespace Enemys
             StateMachine.ChangeState(changeState);
         }
 
+        public void ActionDelay(float delay,Action action,bool firstAndList = false)
+        {
+            StartCoroutine(Delay(delay, action, firstAndList));
+        }
 
+        private IEnumerator Delay(float delay, Action action, bool firstAndList = false)
+        {
+            if(firstAndList)
+            {
+                yield return new WaitForSeconds(delay);
+                action?.Invoke();
+            }
+            else
+            {
+                action?.Invoke();
+                yield return new WaitForSeconds(delay);
+            }
+
+        }
+
+        public virtual void Dead()
+        {
+            
+            OnDeadEvent?.Invoke(this);
+            VFXPlayer dieVFX= PoolManager.Instance.Pop(PoolingType.EnemyDieVFX) as VFXPlayer;
+            dieVFX.transform.position = transform.position;
+            dieVFX.Play();
+            PoolManager.Instance.Push(this);
+        }
+
+        public void UpgradeEnemyStat(int level)
+        {
+            Stat.health.baseValue += level * 10;
+        }
+
+        public void ResetItem()
+        {
+            HealthCompo.SetMaxHealth();
+            StateMachine.ChangeState(EnemyStateEnum.Idle);
+        }
     }
 }
 

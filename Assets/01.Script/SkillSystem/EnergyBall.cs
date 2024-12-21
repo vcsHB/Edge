@@ -1,6 +1,7 @@
 using Agents;
-using DG.Tweening;
+using Enemys;
 using StatSystem;
+using System.Collections;
 using UnityEngine;
 
 public class EnergyBall : MonoBehaviour
@@ -8,54 +9,95 @@ public class EnergyBall : MonoBehaviour
     private int _damage;
     private float _speed;
     private float _lifetime;
+    private float _slowAmount;
+    private float _slowDuration;
     private LayerMask _whatIsEnemy;
 
-    public void Initialize(int damage, float speed, float lifetime, LayerMask whatIsEnemy, Vector3 direction)
+    private Vector3 _direction;
+
+    private bool _isSlowed = false;  // 이미 슬로우된상태인지
+
+    public void Initialize(int damage, float speed, float lifetime, LayerMask whatIsEnemy, Vector3 direction, float slowAmount, float slowDuration)
     {
         _damage = damage;
         _speed = speed;
         _lifetime = lifetime;
         _whatIsEnemy = whatIsEnemy;
+        _direction = direction;
+        _slowAmount = slowAmount;
+        _slowDuration = slowDuration;
 
-        transform.forward = direction;
+        // 에너지볼 속도 감소 코루틴
+        StartCoroutine(SlowDownOverTime());
 
-        // 1초 후 속도 감소 시작
-        DOVirtual.DelayedCall(1f, () =>
-        {
-            DOTween.To(() => _speed, x => _speed = x, 0, 0.5f).SetEase(Ease.OutCubic);
-        });
-
-        Destroy(gameObject, _lifetime); // 수명 종료 후 삭제
+        Destroy(gameObject, _lifetime);  // 일정 시간 후 에너지볼 삭제
     }
 
     private void Update()
     {
-        transform.position += transform.forward * _speed * Time.deltaTime;
+        transform.position += _direction * _speed * Time.deltaTime;  // 이동
     }
 
-    private void OnTriggerEnter(Collider other)
+    // 속도 감소 및 원래 속도로 복구하는 코루틴
+    private IEnumerator SlowDownOverTime()
     {
-        if ((_whatIsEnemy.value & (1 << other.gameObject.layer)) > 0)
+        float timeElapsed = 0f;
+        float initialSpeed = _speed;
+        float targetSpeed = 0f;
+
+        // 속도 감소
+        while (timeElapsed < 1.5f)  // 1.5초 동안 속도 감소
+        {
+            _speed = Mathf.Lerp(initialSpeed, targetSpeed, timeElapsed / 1.5f);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        _speed = targetSpeed;
+
+        // 1.5초 후에 원래 속도로 복구
+        timeElapsed = 0f;
+        while (timeElapsed < 1.5f)  // 1.5초 동안 원래 속도로 복구
+        {
+            _speed = Mathf.Lerp(targetSpeed, initialSpeed, timeElapsed / 1.5f);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        _speed = initialSpeed;  // 최종적으로 원래 속도로 복원
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (((1 << other.gameObject.layer) & _whatIsEnemy) != 0)
         {
             // 적에게 피해 적용
             var enemyHealth = other.GetComponent<Health>();
             if (enemyHealth != null)
             {
                 enemyHealth.ApplyDamage(_damage);
+                Debug.Log($"에너지볼 : 에너미 체력 {_damage} 감소");
             }
 
             // 적 이동 속도 감소
-            var enemyStatus = other.GetComponent<StatusSO>();
-            if (enemyStatus != null)
+            var enemyStatus = other.GetComponent<Enemy>().Stat;
+            if (enemyStatus != null && !_isSlowed)
             {
-                float slowEffect = enemyStatus.moveSpeed.GetValue() * -0.5f;
-                enemyStatus.moveSpeed.AddModifier(slowEffect);
+                _isSlowed = true;
+                float slowEffect = enemyStatus.moveSpeed.GetValue() * -_slowAmount;
+                enemyStatus.moveSpeed.AddModifier(slowEffect);  // 속도 감소
 
-                DOVirtual.DelayedCall(1.5f, () =>
-                {
-                    enemyStatus.moveSpeed.RemoveModifier(slowEffect);
-                });
+                // 일정 시간 후 속도 복구
+                StartCoroutine(RemoveSlowEffect(enemyStatus, slowEffect));
             }
         }
+    }
+
+    // 적의 이동 속도 복구 
+    private IEnumerator RemoveSlowEffect(StatusSO enemyStatus, float slowEffect)
+    {
+        yield return new WaitForSeconds(_slowDuration);
+        enemyStatus.moveSpeed.RemoveModifier(slowEffect);  // 속도 복구
+        _isSlowed = false;
     }
 }

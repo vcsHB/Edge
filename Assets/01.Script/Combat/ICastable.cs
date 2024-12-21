@@ -5,6 +5,6 @@ namespace Combat
 
     public interface ICastable
     {
-        public void Cast(Collider2D c);
+        public void Cast(Collider2D target);
     }
 }

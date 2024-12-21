@@ -14,16 +14,19 @@ namespace ObjectManage
         private MovePointRenderer _renderer;
 
         private float _currentTime = 0f;
+        [Header("Tower Setting")]
         [SerializeField] private float _reviveCooltime = 30f;
         [SerializeField] private float _reviveTimeMultiple = 1.8f;
-
+        [SerializeField] private float _maxHealth;
 
         private void Awake()
         {
             _collider = GetComponent<Collider2D>();
             _healthCompo = GetComponent<Health>();
+            _renderer = transform.Find("Visual").GetComponent<MovePointRenderer>();
 
             _healthCompo.OnDieEvent.AddListener(HandleDestroyEvent);
+            _healthCompo.Initialize(_maxHealth);
         }
 
         private void Update()
@@ -42,6 +45,7 @@ namespace ObjectManage
             _isActive = true;
             _renderer.SetActive(false);
             _collider.enabled = true;
+            _healthCompo.SetMaxHealth();
             _leftTimeText.gameObject.SetActive(false);
         }
 
@@ -61,13 +65,13 @@ namespace ObjectManage
 
         public void Enter()
         {
-            _collider.enabled = false;
+            //_collider.enabled = false;
             //_healthCompo.isResist = false;
         }
 
         public void Exit()
         {
-            _collider.enabled = true;
+            //_collider.enabled = true;
             //_healthCompo.isResist = true;
         }
 

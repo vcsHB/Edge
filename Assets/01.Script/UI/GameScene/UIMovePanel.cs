@@ -6,9 +6,9 @@ namespace UIManage
 
     public class UIMovePanel : UIPanel
     {
-        [SerializeField] private bool _isHorizontal;
-        [SerializeField] private float _defaultPos;
-        [SerializeField] private float _activePos;
+        [SerializeField] protected bool _isHorizontal;
+        [SerializeField] protected float _defaultPos;
+        [SerializeField] protected float _activePos;
         private RectTransform _rectTrm;
 
         protected override void Awake()
@@ -16,6 +16,8 @@ namespace UIManage
             base.Awake();
             _rectTrm = transform as RectTransform;
         }
+
+        [ContextMenu("Debug Open")]
 
         public override void Open()
         {
@@ -31,7 +33,7 @@ namespace UIManage
             MovePanel(_defaultPos);
         }
 
-        private void MovePanel(float value)
+        protected void MovePanel(float value)
         {
             if (_isHorizontal)
                 _rectTrm.DOAnchorPosX(value, _duration).SetUpdate(_useUnscaledTime);

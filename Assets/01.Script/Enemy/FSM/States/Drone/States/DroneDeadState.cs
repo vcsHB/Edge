@@ -13,8 +13,8 @@ namespace Enemys
         public override void Enter()
         {
             base.Enter();
+            _enemy.Dead();
             //나중에 불링?
-            GameObject.Destroy(_enemy.gameObject);
         }
     }
 }

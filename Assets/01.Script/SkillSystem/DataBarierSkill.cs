@@ -1,24 +1,30 @@
 using Agents;
 using UnityEngine;
+using System.Collections;
+using StatSystem;
+using Agents.Players;
 
 public class DataBarierSkill : Skill
 {
-    public float cooldown = 10f;            // ½ºÅ³ ÄðÅ¸ÀÓ
-    public float duration = 2f;             // ¹è¸®¾î Áö¼Ó ½Ã°£
-    public float damageReduction = 0.75f;   // ÇÇÇØ °¨¼ÒÀ²
-    public float explosionRadius = 3f;      // Æø¹ß ¹Ý°æ
-    public float explosionDamage = 60f;     // Æø¹ß ÇÇÇØ·®
-    [SerializeField] private DataBarier _barierPrefab; // ¹è¸®¾î ÇÁ¸®ÆÕ
+    // ï¿½è¸®ï¿½î¸¦ ï¿½ï¿½È¯ï¿½Ï°ï¿½ "2ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½Þ´ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø°ï¿½ 75% ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½". 2ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ý°ï¿½ 3 ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 60ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¸ï¿½ ï¿½ï¿½ï¿½Ñ´ï¿½. ï¿½ï¿½Å¸ï¿½ï¿½ 10ï¿½ï¿½
 
-    private Health _playerHealth;           // ÇÃ·¹ÀÌ¾îÀÇ Ã¼·Â ÄÄÆ÷³ÍÆ®
+    public float duration = 2f;             // ï¿½è¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
+    public float damageReduction = 0.75f;   // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 75ï¿½ï¿½
+    public float explosionRadius = 3f;      // ï¿½ï¿½ï¿½ï¿½ ï¿½Ý°ï¿½(ï¿½ï¿½ï¿½ï¿½3)
+    public float explosionDamage = 60f;     // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø·ï¿½(60)
+    private Transform playerTrm;
+    [SerializeField] private DataBarier _barierPrefab; // ï¿½è¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    private PlayerStatusSO _playerStatus;
+
+    private Health _playerHealth;           // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 
     private void Awake()
     {
-        _playerHealth = GetComponent<Health>();
-        if (_playerHealth == null)
-        {
-            Debug.LogError("Health ÄÄÆ÷³ÍÆ®°¡ ¿¬°áµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
-        }
+        playerTrm = GameObject.Find("Player").transform;
+        _playerHealth = playerTrm.GetComponent<Health>();
+      
+        _playerStatus = playerTrm.GetComponent<Player>().PlayerStatus;
+
     }
 
     public override bool UseSkill()
@@ -31,23 +37,32 @@ public class DataBarierSkill : Skill
 
     private void ActivateBarier()
     {
-        // ¹è¸®¾î »ý¼º
-        DataBarier barier = Instantiate(_barierPrefab, transform.position, Quaternion.identity);
-        barier.Initialize(transform); // ÇÃ·¹ÀÌ¾î¸¦ ¼ÒÀ¯ÀÚ·Î ¼³Á¤
+        // ï¿½è¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        DataBarier barier = Instantiate(_barierPrefab, playerTrm.position, Quaternion.identity);
         barier.damageReduction = damageReduction;
         barier.duration = duration;
         barier.explosionRadius = explosionRadius;
         barier.explosionDamage = explosionDamage;
-        barier.enemyLayer = LayerMask.GetMask("Enemy"); // Àû ·¹ÀÌ¾î ¼³Á¤
+        barier.enemyLayer = whatIsEnemy;
+        barier.Initialize(playerTrm);
 
-        // 2ÃÊ µ¿¾È ÇÇÇØ °¨¼Ò È¿°ú Àû¿ë
+        // 2ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½Þ´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È¿ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         StartCoroutine(ApplyDamageReduction(duration));
     }
 
-    private System.Collections.IEnumerator ApplyDamageReduction(float duration)
+    private IEnumerator ApplyDamageReduction(float duration)
     {
-        _playerHealth.ApplyDamage(damageReduction); // ÇÇÇØ °¨¼Ò Àû¿ë
+        Debug.Log("ï¿½Þ´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        float originalDefense = _playerStatus.defense.GetValue();
+        float additionalDefense = originalDefense * damageReduction; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 75%ï¿½ï¿½Å­ ï¿½ß°ï¿½
+        _playerStatus.defense.AddModifier(additionalDefense);
+
         yield return new WaitForSeconds(duration);
-        // ÇÇÇØ °¨¼Ò ÇØÁ¦
+
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        Debug.Log("ï¿½Þ´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+        _playerStatus.defense.RemoveModifier(additionalDefense);
     }
 }

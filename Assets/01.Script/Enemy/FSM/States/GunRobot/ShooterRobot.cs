@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+using ObjectPooling;
 using UnityEngine;
 
 namespace Enemys
@@ -6,10 +6,9 @@ namespace Enemys
     public class ShooterRobot : Enemy
     {
         public int bulletCnt;
-        public float shootingDelay;
         public float moveTime;
         public Transform [] bulletFirePos;
-
+        public float safetyDistance;
     }
 }
 

@@ -19,6 +19,7 @@ namespace Agents.Players
 
         // Move
         public bool isEdgeMove;
+        private bool _isMoving = false;
         private Vector2 _previousPosition;
         private MovePoint _targetPoint;
         public float MoveDistance => Vector2.Distance(_previousPosition, _targetPoint.transform.position);
@@ -27,6 +28,7 @@ namespace Agents.Players
         public Vector2 Velocity { get; private set; }
         private Collider2D[] hits;
         private float _limitDetectRadius = 100f;
+        public bool canMove = true;
 
         public void Initialize(Agent agent)
         {
@@ -36,7 +38,6 @@ namespace Agents.Players
 
         public void AfterInit()
         {
-
         }
 
         public void Dispose()
@@ -46,9 +47,11 @@ namespace Agents.Players
 
         public bool SetMoveTarget(Vector2 direction)
         {
+            if(!canMove) return false;
+            if (_isMoving) return false;
             if (!isEdgeMove) return false;
             SetPreviousPos(transform.position);
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, _moveTargetDetectLength, _moveTargetLayer);
+            RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position + 2f * direction.normalized, direction, _moveTargetDetectLength, _moveTargetLayer);
 
             if (hit.collider == null)
                 return false;
@@ -57,6 +60,7 @@ namespace Agents.Players
             {
                 OnMoveStartEvent?.Invoke();
                 SetMovePoint(movePoint);
+                _isMoving = true;
             }
 
             return true;
@@ -69,6 +73,7 @@ namespace Agents.Players
 
         private void FixedUpdate()
         {
+            if(!canMove) return;
             if (!isEdgeMove)
             {
                 Velocity = _moveDirection * _player.PlayerStatus.moveSpeed.GetValue();
@@ -89,18 +94,18 @@ namespace Agents.Players
 
         public void SetMovement(float ratio)
         {
-            ratio = MathFunctions.EaseInCubic(ratio);
+            ratio = MathFunctions.EaseInSine(ratio);
             Vector2 lerpPos = Vector2.Lerp(_previousPosition, _targetPoint.transform.position, ratio);
-            transform.position = lerpPos;
+            _player.transform.position = lerpPos;
             if (ratio >= 1f)
             {
+                _isMoving = false;
                 OnArriveEvent?.Invoke();
                 _targetPoint.Enter();
+                StopImmediately();
 
             }
         }
-        #endregion
-
         public void SetMovePoint(MovePoint newPoint)
         {
             if (_targetPoint != null)
@@ -108,6 +113,13 @@ namespace Agents.Players
 
             _targetPoint = newPoint;
         }
+        #endregion
+
+        public void SetEdgeMode(bool value)
+        {
+            isEdgeMove = value;
+        }
+
 
         public MovePoint GetNearMovePoint()
         {
@@ -126,6 +138,10 @@ namespace Agents.Players
             }
 
             return near.GetComponent<MovePoint>();
+        }
+        public void StopImmediately()
+        {
+            _rigidCompo.linearVelocity = Vector2.zero;
         }
     }
 }

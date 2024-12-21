@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 public enum PlayerSkill
 {
     None = 0,
@@ -7,15 +8,16 @@ public enum PlayerSkill
     EnergyBim = 2,
     SordBoomerang = 3,
     DataBarier = 4,
-    //KnifeSharpening = 5,
-    //HighSpeedAttack = 6
+    KnifeSharpening = 5,
+    HighSpeedAttack = 6
 
 }
 
 public class SkillManager : MonoSingleton<SkillManager>
 {
     private Dictionary<Type, Skill> _skills;
-    private List<Skill> _enabledSkillList; //½ºÅ³¸®½ºÆ® È°¼ºÈ­
+    private List<Skill> _enabledSkillList; //ï¿½ï¿½Å³ï¿½ï¿½ï¿½ï¿½Æ® È°ï¿½ï¿½È­
+    public event Action<PlayerSkill> OnSelectSkillEvent;
 
     private void Awake()
     {
@@ -24,10 +26,10 @@ public class SkillManager : MonoSingleton<SkillManager>
 
         foreach (PlayerSkill skillEnum in Enum.GetValues(typeof(PlayerSkill)))
         {
-            if (skillEnum == PlayerSkill.None) continue; //³Ñ¾î°¡±â
+            if (skillEnum == PlayerSkill.None) continue; //ï¿½Ñ¾î°¡ï¿½ï¿½
 
-            Skill skillCompo = GetComponent($"{skillEnum.ToString()}Skill") as Skill; //ooSkill.cs
-            Type type = skillCompo.GetType(); //ÇØ´ç ÀÎ½ºÅÏ½ºÀÇ Å¬·¡½ºÀÇ Å¸ÀÔÀ» °¡Á®¿Â´Ù.
+            Skill skillCompo = GetComponent($"{skillEnum.ToString()}Skill") as Skill; 
+            Type type = skillCompo.GetType(); //ï¿½Ø´ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
             _skills.Add(type, skillCompo);
         }
     }
@@ -42,6 +44,30 @@ public class SkillManager : MonoSingleton<SkillManager>
         foreach (Skill skill in _enabledSkillList)
         {
             skill.UseSkill();
+        }
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            GetSkill(PlayerSkill.EnergyBall).UseSkill();
+        }
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            GetSkill(PlayerSkill.EnergyBim).UseSkill();
+        }
+        if (Input.GetKeyDown(KeyCode.F3))
+        {
+            GetSkill(PlayerSkill.SordBoomerang).UseSkill();
+        }
+        if (Input.GetKeyDown(KeyCode.F4))
+        {
+            GetSkill(PlayerSkill.DataBarier).UseSkill();
+        }
+        if (Input.GetKeyDown(KeyCode.F5))
+        {
+            GetSkill(PlayerSkill.KnifeSharpening).UseSkill();
+        }
+        if (Input.GetKeyDown(KeyCode.F6))
+        {
+            GetSkill(PlayerSkill.HighSpeedAttack).UseSkill();
         }
     }
 
@@ -65,5 +91,10 @@ public class SkillManager : MonoSingleton<SkillManager>
             return target;
         }
         return null;
+    }
+
+    public void SelectSkill(PlayerSkill skillType)
+    {
+        OnSelectSkillEvent?.Invoke(skillType);
     }
 }

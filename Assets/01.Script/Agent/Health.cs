@@ -7,6 +7,7 @@ namespace Agents
     public class Health : MonoBehaviour, IDamageable, IHealable
     {
         public UnityEvent OnHealthChangedEvent;
+        public UnityEvent OnDamagedEvent;
         public Action<float, float> OnHealthValueChangedEvent;
         public UnityEvent OnDieEvent;
 
@@ -21,7 +22,7 @@ namespace Agents
             SetMaxHealth();
         }
 
-        private void SetMaxHealth()
+        public void SetMaxHealth()
         {
             _currentHealth = MaxHealth;
             InvokeHealthChange();
@@ -33,6 +34,7 @@ namespace Agents
             if(isResist) return;
             _currentHealth -= damage;
             CheckDie();
+            OnDamagedEvent?.Invoke();
             InvokeHealthChange();
 
         }

@@ -14,13 +14,18 @@ namespace Enemys
         public override void Enter()
         {
             base.Enter();
-            _enemy.CanMove = true;
             _moveTime = _enemy.moveTime;
         }
 
         public override void Update()
         {
             base.Update();
+
+            if (Vector2.Distance(_enemy.PlayerManager.PlayerTrm.position, _enemy.transform.position) < _enemy.safetyDistance) 
+                _enemy.CanMove = false;
+            else
+                _enemy.CanMove = true;
+
             if (_moveTime >= 0)
             {
                 _moveTime -= Time.deltaTime;

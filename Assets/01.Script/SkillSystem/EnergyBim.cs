@@ -1,39 +1,76 @@
+
 using Agents;
 using UnityEngine;
+using System.Collections;
+
 
 public class EnergyBim : MonoBehaviour
 {
-    private float _damagePerSecond; // 초당 피해량
-    private float _duration;       // 지속 시간
+    private float _damagePerSecond;
+    private float _duration;
+    private float _knockbackForce;
     private LayerMask _whatIsEnemy;
     private LineRenderer _lineRenderer;
 
-    public void Initialize(float damagePerSecond, float duration, LayerMask whatIsEnemy, Vector3 start, Vector3 end)
+    public void Initialize(float damagePerSecond, float duration, float knockbackForce, LayerMask whatIsEnemy, Vector3 start, Vector3 end)
     {
         _damagePerSecond = damagePerSecond;
         _duration = duration;
+        _knockbackForce = knockbackForce;
         _whatIsEnemy = whatIsEnemy;
 
         _lineRenderer = GetComponent<LineRenderer>();
         _lineRenderer.SetPosition(0, start);
         _lineRenderer.SetPosition(1, end);
 
-        InvokeRepeating(nameof(DamageEnemies), 0f, 0.2f); // 0.2초마다 적에게 피해를 줌
-        Destroy(gameObject, _duration); // 지속 시간 후 자동 삭제
+        // 빔 단계 연출
+        StartCoroutine(BimLifecycle(start, end));
     }
 
-    private void DamageEnemies()
+    private IEnumerator BimLifecycle(Vector3 start, Vector3 end)
     {
-        Vector3 start = _lineRenderer.GetPosition(0);
-        Vector3 end = _lineRenderer.GetPosition(1);
-        RaycastHit[] hits = Physics.RaycastAll(start, (end - start).normalized, Vector3.Distance(start, end), _whatIsEnemy);
+        // 0.1초 소환
+        yield return new WaitForSeconds(0.1f);
 
+        // 0.4초 동안 빔 유지
+        float activeTime = 0.4f;
+        float elapsedTime = 0f;
+        while (elapsedTime < activeTime)
+        {
+            DamageAndKnockbackEnemies(start, end);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // 0.25초 동안 빔 사라짐
+        float fadeTime = 0.25f;
+        _lineRenderer.enabled = false;
+        yield return new WaitForSeconds(fadeTime);
+
+        Destroy(gameObject);
+    }
+
+    private void DamageAndKnockbackEnemies(Vector3 start, Vector3 end)
+    {
+        Debug.Log("넉백");
+        Vector2 direction = (end - start).normalized;
+        float distance = Vector2.Distance(start, end);
+        float lineWidth = _lineRenderer.startWidth / 2f;
+
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(start, lineWidth, direction, distance, _whatIsEnemy);
         foreach (var hit in hits)
         {
             var enemyHealth = hit.collider.GetComponent<Health>();
             if (enemyHealth != null)
             {
-                enemyHealth.ApplyDamage(_damagePerSecond * 0.2f); // 0.2초마다 피해
+                enemyHealth.ApplyDamage(_damagePerSecond * Time.deltaTime);
+            }
+
+            var enemyRigidbody = hit.collider.GetComponent<Rigidbody2D>();
+            if (enemyRigidbody != null)
+            {
+                Vector2 knockbackDirection = (enemyRigidbody.transform.position - start).normalized;
+                enemyRigidbody.AddForce(knockbackDirection * _knockbackForce, ForceMode2D.Impulse);
             }
         }
     }

@@ -1,26 +1,29 @@
 using UnityEngine;
-using InputManage; // PlayerInput ³×ÀÓ½ºÆäÀÌ½º ÂüÁ¶
-
+using InputManage;
+using Agents.Players;
+//ï¿½ï¿½ï¿½ì½ºï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½. ï¿½ï¿½
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 80ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¸ï¿½ ï¿½Ö°ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½. ï¿½ï¿½
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß¿ï¿½ ï¿½Ìµï¿½ï¿½ï¿½ ï¿½Ò°ï¿½ï¿½ï¿½ï¿½Ï´ï¿½. (ï¿½ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ 0.75ï¿½ï¿½) (0.1ï¿½ï¿½ ï¿½ï¿½È¯, 0.4ï¿½Êµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ 0.25ï¿½Êµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½.) 
+//ï¿½ï¿½Å¸ï¿½ï¿½ 12ï¿½ï¿½
 public class EnergyBimSkill : Skill
 {
-    public float damagePerSecond = 50f; // ÃÊ´ç ÇÇÇØ·®
-    public float duration = 2f;         // ºö Áö¼Ó ½Ã°£
-    public float cooldown = 8f;         // ÄðÅ¸ÀÓ
-    public LayerMask whatIsEnemy;       // Àû ·¹ÀÌ¾î
-    [SerializeField] private EnergyBim _energyBimPrefab;
-    [SerializeField] private PlayerInput _playerInput; // PlayerInput ÂüÁ¶
+    public float damagePerSecond = 80f; // ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½Ø·ï¿½
+    public float duration = 0.75f;      // ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
+    public float knockbackForce = 10f;  // ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ ï¿½ï¿½
+    public float bimLength = 50f;
 
-    private void Awake()
-    {
-        if (_playerInput == null)
-        {
-            Debug.LogError("PlayerInputÀÌ ¿¬°áµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
-        }
-    }
+    [SerializeField] private EnergyBim _energyBimPrefab;
+    [SerializeField] private PlayerInput _playerInput;
+    [SerializeField] private PlayerMover _playerMover;
+
+    private bool _isSkillActive = false;
 
     public override bool UseSkill()
     {
-        if (!base.UseSkill()) return false;
+        if (!base.UseSkill() || _isSkillActive) return false;
+
+        _isSkillActive = true;
+        _playerMover.canMove = false;
 
         SpawnEnergyBim();
         return true;
@@ -28,13 +31,22 @@ public class EnergyBimSkill : Skill
 
     private void SpawnEnergyBim()
     {
-        Vector3 start = transform.position;
+        Vector3 start = GameObject.Find("Player").transform.position;
         Vector3 mouseWorldPosition = _playerInput.MousePosition;
-
         Vector3 direction = (mouseWorldPosition - start).normalized;
-        Vector3 end = start + direction * 10f; // ºö ÃÖ´ë »ç°Å¸® 10
+        Vector3 end = start + direction * bimLength; // ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½Å¸ï¿½ 10
 
         EnergyBim energyBim = Instantiate(_energyBimPrefab, start, Quaternion.identity);
-        energyBim.Initialize(damagePerSecond, duration, whatIsEnemy, start, end);
+        energyBim.Initialize(damagePerSecond, duration, knockbackForce, whatIsEnemy, start, end);
+
+        // ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Ìµï¿½ ï¿½Ò°ï¿½
+        Invoke(nameof(EnablePlayerMovement), duration);
     }
+
+    private void EnablePlayerMovement()
+    {
+        _playerMover.canMove = true;
+    }
+
+
 }

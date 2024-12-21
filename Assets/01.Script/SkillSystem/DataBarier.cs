@@ -3,30 +3,40 @@ using UnityEngine;
 
 public class DataBarier : MonoBehaviour
 {
-    public float damageReduction = 0.75f;    // ÇÇÇØ °¨¼ÒÀ²
-    public float duration = 2f;             // ¹è¸®¾î Áö¼Ó ½Ã°£
-    public float explosionRadius = 3f;      // Æø¹ß ¹Ý°æ
-    public float explosionDamage = 60f;     // Æø¹ß ÇÇÇØ·®
-    public LayerMask enemyLayer;            // Àû ·¹ÀÌ¾î
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public float damageReduction = 0.75f;    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public float duration = 2f;             // ï¿½è¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
+
+    public float explosionRadius = 3f;      // ï¿½ï¿½ï¿½ï¿½ ï¿½Ý°ï¿½
+    public float explosionDamage = 60f;     // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø·ï¿½
+    public LayerMask enemyLayer;            // ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½
 
     private bool _isActive = false;
-    private Transform _owner;               // ¹è¸®¾î¸¦ ¼ÒÀ¯ÇÑ ´ë»ó
+    private Transform _owner;               // ï¿½è¸®ï¿½î¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+    private Transform _visualTrm;
+
+    private void Awake()
+    {
+        _visualTrm = transform.Find("Visual");
+    }
 
     public void Initialize(Transform owner)
     {
         _owner = owner;
         transform.position = owner.position;
         _isActive = true;
+        transform.localScale = Vector3.one * explosionRadius;
 
-        // ½ÃÀÛ ½Ã ¹è¸®¾î ½Ã°¢ È¿°ú¸¦ È°¼ºÈ­ÇÏ°Å³ª ÆÄÆ¼Å¬ Ãß°¡ °¡´É
-        Invoke(nameof(Explode), duration); // duration ÈÄ Æø¹ß ½ÇÇà
+
+        // + ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¿ï¿½ï¿½ ï¿½ï¿½Æ¼Å¬?
+        Invoke(nameof(Explode), duration); // duration ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 
     private void Update()
     {
         if (_isActive && _owner != null)
         {
-            // ¹è¸®¾î°¡ ÁÖÀÎÀ» µû¶ó´Ù´Ïµµ·Ï ¼³Á¤
+            // ï¿½è¸®ï¿½î°¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ù´Ïµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             transform.position = _owner.position;
         }
     }
@@ -35,8 +45,8 @@ public class DataBarier : MonoBehaviour
     {
         _isActive = false;
 
-        // Æø¹ß È¿°ú (ÆÄÆ¼Å¬ Ãß°¡ °¡´É)
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRadius, enemyLayer);
+        // ï¿½ï¿½ï¿½ï¿½ È¿ï¿½ï¿½ (ï¿½ï¿½Æ¼Å¬ ï¿½ß°ï¿½ ?)
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius, enemyLayer);
         foreach (var collider in hitColliders)
         {
             var enemyHealth = collider.GetComponent<Health>();
@@ -46,12 +56,12 @@ public class DataBarier : MonoBehaviour
             }
         }
 
-        Destroy(gameObject); // ¹è¸®¾î ¿ÀºêÁ§Æ® Á¦°Å
+        Destroy(gameObject);
     }
 
     private void OnDrawGizmosSelected()
     {
-        // Æø¹ß ¹Ý°æÀ» ½Ã°¢ÀûÀ¸·Î È®ÀÎ (µð¹ö±ë¿ë)
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }

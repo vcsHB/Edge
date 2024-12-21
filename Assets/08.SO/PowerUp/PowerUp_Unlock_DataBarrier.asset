@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54c1aa48dd868d14c80d75e9bd6477c3, type: 3}
+  m_Name: PowerUp_Unlock_DataBarrier
+  m_EditorClassIdentifier: 
+  id: 1
+  code: Unlock_DataBarrier
+  shouldBeUnlock: 0
+  title: "\uB370\uC774\uD130 \uBCA0\uB9AC\uC5B4"
+  description: "\uBC30\uB9AC\uC5B4\uB97C \uC18C\uD658\uD558\uACE0 2\uCD08\uB3D9\uC548
+    \uBAA8\uB4E0 \uBC1B\uB294 \uD53C\uD574\uAC00 75% \uAC10\uC18C\uB78D\uB2C8\uB2E4.
+    2\uCD08 \uC774\uD6C4 \uBC18\uACBD 3 \uBC94\uC704 \uB0B4 \uC801\uC5D0\uAC8C 60\uC758
+    \uD53C\uD574\uB97C \uAC00\uD569\uB2C8\uB2E4."
+  icon: {fileID: -322231682, guid: 7f8c04f53a209a143852dcbc8f8f1668, type: 3}
+  effectList:
+  - {fileID: 11400000, guid: 9ff9c1bca25ecfc44ad014444bd73ca8, type: 2}

@@ -44,22 +44,24 @@ namespace SoundManage
 
             _audioSource.loop = data.loop;
 
+            _audioSource.PlayOneShot(data.clip);
             if (!data.loop)
             {
-                float time = _audioSource.clip.length + .2f;
+                float time = _audioSource.clip.length + 1.0f;
                 StartCoroutine(DisableSoundTimer(time));
             }
-            _audioSource.Play();
         }
 
         private IEnumerator DisableSoundTimer(float time)
         {
             yield return new WaitForSeconds(time);
             //this.Push();
+            PoolManager.Instance.Push(this);
         }
 
         public void ResetItem()
         {
+            _audioSource.Stop();
             
         }
     }
