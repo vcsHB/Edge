@@ -5303,7 +5303,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 108392163}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 159725575}
+        m_TargetAssemblyTypeName: UIManage.GameOverPanel, Assembly-CSharp
+        m_MethodName: HandleExitGameScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &121437026
 GameObject:
   m_ObjectHideFlags: 0
@@ -5500,6 +5512,7 @@ GameObject:
   - component: {fileID: 159725574}
   - component: {fileID: 159725573}
   - component: {fileID: 159725572}
+  - component: {fileID: 159725575}
   m_Layer: 5
   m_Name: GameOverPanel
   m_TagString: Untagged
@@ -5579,6 +5592,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 159725570}
   m_CullTransparentMesh: 1
+--- !u!114 &159725575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159725570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4622125d48c2ac148b06c71b76258605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _useUnscaledTime: 1
+  _duration: 0.1
+  _isActive: 0
+  _scoreText: {fileID: 843851058}
 --- !u!1001 &166199202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13013,7 +13042,7 @@ GameObject:
   - component: {fileID: 843851059}
   - component: {fileID: 843851058}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: ScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14129,7 +14158,7 @@ GameObject:
   - component: {fileID: 1197141468}
   - component: {fileID: 1197141467}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26766,6 +26795,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 159725575}
+        m_TargetAssemblyTypeName: UIManage.GameOverPanel, Assembly-CSharp
+        m_MethodName: HandleExit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1787213995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27847,6 +27888,34 @@ PrefabInstance:
       propertyPath: _aim
       value: 
       objectReference: {fileID: 348466001}
+    - target: {fileID: 5265521267790149601, guid: b88d2512a2b0561498aa779d7be028c7, type: 3}
+      propertyPath: OnDieEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5265521267790149601, guid: b88d2512a2b0561498aa779d7be028c7, type: 3}
+      propertyPath: OnDieEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5265521267790149601, guid: b88d2512a2b0561498aa779d7be028c7, type: 3}
+      propertyPath: OnDieEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 159725575}
+    - target: {fileID: 5265521267790149601, guid: b88d2512a2b0561498aa779d7be028c7, type: 3}
+      propertyPath: OnDieEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5265521267790149601, guid: b88d2512a2b0561498aa779d7be028c7, type: 3}
+      propertyPath: OnDieEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Open
+      objectReference: {fileID: 0}
+    - target: {fileID: 5265521267790149601, guid: b88d2512a2b0561498aa779d7be028c7, type: 3}
+      propertyPath: OnDieEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManage.GameOverPanel, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5265521267790149601, guid: b88d2512a2b0561498aa779d7be028c7, type: 3}
+      propertyPath: OnDieEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6572366842343403428, guid: b88d2512a2b0561498aa779d7be028c7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.15
