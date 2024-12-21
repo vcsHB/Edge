@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlaterStatus
   m_EditorClassIdentifier: 
   health:
-    baseValue: 100
+    baseValue: 50
     modifier: []
   attackDamage:
     baseValue: 2

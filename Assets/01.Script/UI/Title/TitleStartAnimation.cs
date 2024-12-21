@@ -31,7 +31,7 @@ namespace UI
         {
             for (int i = 0; i < _movePanel.Length; i++)
             {
-                _movePanel[i].Close();
+                _movePanel[i].Open();
                 yield return new WaitForSeconds(0.1f);
                 SoundPlayer soundPlayer = PoolManager.Instance.Pop(PoolingType.SoundPlayer) as SoundPlayer;
                 //_cloneSoundSO.volume -= 0.1f;
@@ -41,6 +41,11 @@ namespace UI
             _lineObj.transform.DOMoveY(-5, 0.7f);
             yield return new WaitForSeconds(1.5f);
             _player.canMove = true;
+        }
+
+        public void HandleMoveToTutorial()
+        {
+            SceneManager.LoadScene("TutorialScene");
         }
     }
 }

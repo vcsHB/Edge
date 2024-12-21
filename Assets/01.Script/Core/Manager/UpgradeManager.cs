@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Core.MapConrtrolSystem;
 using InteractSystem;
+using UIManage;
 using UnityEngine;
 namespace Core
 {
@@ -12,6 +13,7 @@ namespace Core
         [SerializeField] private MapController _mapController;
         public Dictionary<int, int> upgradeDictionary = new();
         [SerializeField] private UpgradeItem _upgradeItemPrefab;
+        [SerializeField] private SkillDescriptionPanel _descriptionPanel;
 
 
         public int Find(int id)
@@ -43,7 +45,13 @@ namespace Core
             item.SetUpgradeInfo(powerUp);
         }
 
-        
+        public void ShowDescription(PowerUpSO powerUp, Vector2 position)
+        {
+            _descriptionPanel.SetPowerUp(powerUp);
+            //_descriptionPanel.transform.position = 
+        }
+
+
 
     }
 }

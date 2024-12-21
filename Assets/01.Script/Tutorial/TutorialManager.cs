@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -19,13 +20,13 @@ public class TutorialManager : MonoBehaviour
         "게임을 시작하기 전에 게임 설명과 조작방법을 알려드리겠습니다!",
         "먼저 게임 설명입니다.",
         "당신은 지금부터 타워를 수호하는 보호코어입니다.",
-        "wasd로 레일을 타고 모서리로 이동할 수 있습니다.",
+        "WASD로 레일을 타고 모서리로 이동할 수 있습니다.",
         "가운데 큰 마름표 안의 파란색이 체력, 작은 마름표 안의 빨간색이 노 리미트 게이지입니다!",
         "가운데 숫자는 점수판입니다. 적을 해치울 수록\n 점수가 올라갑니다!",
         "타워를 침략하는 로봇 군단으로부터 타워를 지키고 살아남으세요!",
         "마침 저기 적 허수아비가 있네요. 좌클릭해서 공격해봅시다.",
         "적 처치 시마다 게이지가 일정량 충전됩니다. 100% 충전 시 노 리미트 타임이 발동됩니다!",
-        "노 리미트 타임(15초)동안에는 이동 제한이 해제됩니다.",
+        "노 리미트 타임동안에는 이동 제한이 해제됩니다.",
         "그리고 모든 적을 한방에 처치할 수 있습니다!",
         "F키로 상호작용 시 아이템을 획득할 수 있습니다!",
         "스킬은 E키와 Q키를 이용해 사용할 수 있습니다",
@@ -41,6 +42,7 @@ public class TutorialManager : MonoBehaviour
 
     void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.Space)) // 스페이스바: 현재 타이핑 완료
         {
             if (isTyping)
@@ -53,9 +55,12 @@ public class TutorialManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Return)) // 엔터: 다음 메시지로 이동
         {
+            if(currentIndex >= messages.Length -1)
+                SceneManager.LoadScene("TitleScene");
             if (!isTyping && currentIndex < messages.Length - 1)
             {
                 currentIndex++;
+                
                 StartTyping();
                 enterImage.enabled = false; // 다음 메시지가 출력되면 이미지 숨김
             }
