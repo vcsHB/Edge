@@ -1,4 +1,5 @@
 using Agents;
+using ObjectManage;
 using ObjectPooling;
 using Players;
 using StatSystem;
@@ -67,6 +68,9 @@ namespace Enemys
         {
             
             OnDeadEvent?.Invoke(this);
+            VFXPlayer dieVFX= PoolManager.Instance.Pop(PoolingType.EnemyDieVFX) as VFXPlayer;
+            dieVFX.transform.position = transform.position;
+            dieVFX.Play();
             PoolManager.Instance.Push(this);
         }
 

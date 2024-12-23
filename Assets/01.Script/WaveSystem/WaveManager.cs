@@ -24,7 +24,7 @@ namespace WaveSystem
         public int WaveCount { get; private set; } // ���� ���̺� ���� ī��Ʈ (�����ϱ⸸ ��)
         public int WaveLevel { get; private set; } = 1; //���̺� ī��Ʈ
         [SerializeField] private float _spawnRadius = 1f;
-
+        [SerializeField] private float _waveStartDelay = 3f;
 
 
         private void Start()
@@ -34,6 +34,8 @@ namespace WaveSystem
 
         private IEnumerator Wave()
         {
+            yield return new WaitForSeconds(_waveStartDelay);
+
             while (true) // ���̺� ���ѷ���
             {
                 _currentWaveIndex = 0; // ���̺� ����

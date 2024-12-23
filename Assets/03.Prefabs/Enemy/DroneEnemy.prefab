@@ -218,6 +218,64 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &3453082346444733581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2043341866127135509}
+  - component: {fileID: 1489421207081602174}
+  - component: {fileID: 5010951566547170294}
+  m_Layer: 7
+  m_Name: DieFeedback
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2043341866127135509
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3453082346444733581}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9209335952989870115}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1489421207081602174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3453082346444733581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65e010ab53abc384b8472bdcff60e154, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5010951566547170294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3453082346444733581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5145f7a3ee4aefc4787274767788ce9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundSO: {fileID: 11400000, guid: 1241346e97092e446bdcf9123cc7aa5b, type: 2}
 --- !u!1 &4777105212866526930
 GameObject:
   m_ObjectHideFlags: 0
@@ -734,6 +792,7 @@ Transform:
   - {fileID: 247916572429783226}
   - {fileID: 680938129796171799}
   - {fileID: 2334195066238261672}
+  - {fileID: 2043341866127135509}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &3243062928147619045
@@ -826,12 +885,27 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnDamagedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   OnDieEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 9135131912972556602}
         m_TargetAssemblyTypeName: FeedbackSystem.FeedbackPlayer, Assembly-CSharp
         m_MethodName: StopFeedback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1489421207081602174}
+        m_TargetAssemblyTypeName: FeedbackSystem.FeedbackPlayer, Assembly-CSharp
+        m_MethodName: CreateFeedback
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

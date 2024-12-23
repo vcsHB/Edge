@@ -10,6 +10,7 @@ public class EnergyBimSkill : Skill
     public float damagePerSecond = 80f; // �ʴ� ���ط�
     public float duration = 0.75f;      // �� ��ü ���� �ð�
     public float knockbackForce = 10f;  // ���ĳ��� ��
+    public float bimLength = 50f;
 
     [SerializeField] private EnergyBim _energyBimPrefab;
     [SerializeField] private PlayerInput _playerInput;
@@ -33,7 +34,7 @@ public class EnergyBimSkill : Skill
         Vector3 start = GameObject.Find("Player").transform.position;
         Vector3 mouseWorldPosition = _playerInput.MousePosition;
         Vector3 direction = (mouseWorldPosition - start).normalized;
-        Vector3 end = start + direction * 10f; // �� �ִ� ��Ÿ� 10
+        Vector3 end = start + direction * bimLength; // �� �ִ� ��Ÿ� 10
 
         EnergyBim energyBim = Instantiate(_energyBimPrefab, start, Quaternion.identity);
         energyBim.Initialize(damagePerSecond, duration, knockbackForce, whatIsEnemy, start, end);
