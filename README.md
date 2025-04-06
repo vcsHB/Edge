@@ -28,7 +28,7 @@
 
 > **김수현 (💻개발)**
 >
-> ▶ Player Skill System, Skill
+> ▶ Player Skill System, Active Skill 4
 
 > **이원호 (💻개발)**
 >
@@ -36,4 +36,4 @@
 
 > **김민준 (🎨아트)**
 >
-> ▶ Player, Enemy + Entity Assets, SFX Searching, Tower & 
+> ▶ Player, Enemy + Entity Assets, SFX Searching, Tower & Skill Icons
